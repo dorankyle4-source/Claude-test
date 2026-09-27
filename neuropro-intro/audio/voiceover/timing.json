@@ -1,0 +1,14 @@
+{
+  "vo1": {
+    "duration": 3.144,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "After a concussion, your brain can act a little differently."
+  },
+  "vo2": {
+    "duration": 2.3,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "That's where understanding what's happening matters."
+  }
+}

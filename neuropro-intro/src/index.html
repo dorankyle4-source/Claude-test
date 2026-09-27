@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroPro Intro — Preview</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root { --bg: #0b1422; --fg: #e6edf5; --muted: #8aa0b8; --accent: #1FC8B4; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: Inter, system-ui, sans-serif; }
+  #wrap { max-width: 1280px; margin: 24px auto; padding: 0 16px; }
+  #stage { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 10px; overflow: hidden; }
+  #stage svg { width: 100%; height: 100%; }
+  .bar { display: flex; gap: 12px; align-items: center; margin-top: 12px; }
+  button { background: var(--accent); color: #062; border: 0; border-radius: 8px; padding: 8px 16px; font-weight: 600; cursor: pointer; }
+  input[type=range] { flex: 1; accent-color: var(--accent); }
+  #time { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 64px; text-align: right; }
+  p { color: var(--muted); font-size: 14px; }
+  /* render mode: bare 1920×1080 stage */
+  body.render #wrap { max-width: none; margin: 0; padding: 0; }
+  body.render #stage { width: 1920px; height: 1080px; border-radius: 0; }
+  body.render .bar, body.render p { display: none; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="stage"><svg id="svg" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080"></svg></div>
+  <div class="bar"><button id="play">Play</button><input id="scrub" type="range" min="0" max="10" step="0.001" value="0"><span id="time">0.00s</span></div>
+  <p>Live preview. Edit files in <code>config/</code> or <code>src/</code> and refresh. Audio: <code>audio/generated/mix.wav</code> (run <code>npm run audio</code>).</p>
+</div>
+<audio id="audio" src="../audio/generated/mix.wav" preload="auto"></audio>
+<script type="module">
+  import { createStage } from './main.js';
+  const render = new URLSearchParams(location.search).has('render');
+  if (render) document.body.classList.add('render');
+  const stage = await createStage(document.getElementById('svg'));
+  stage.renderFrame(0);
+  window.NP = { ...stage, ready: true };
+  if (!render) {
+    const scrub = document.getElementById('scrub'), time = document.getElementById('time'), btn = document.getElementById('play'), audio = document.getElementById('audio');
+    scrub.max = stage.duration;
+    let playing = false, t0 = 0, start = 0;
+    const show = (t) => { stage.renderFrame(t); scrub.value = t; time.textContent = t.toFixed(2) + 's'; };
+    scrub.oninput = () => { playing = false; audio.pause(); btn.textContent = 'Play'; show(+scrub.value); };
+    btn.onclick = () => {
+      playing = !playing; btn.textContent = playing ? 'Pause' : 'Play';
+      if (playing) { t0 = +scrub.value >= stage.duration ? 0 : +scrub.value; start = performance.now(); audio.currentTime = t0; audio.play().catch(() => {}); requestAnimationFrame(loop); }
+      else audio.pause();
+    };
+    function loop(now) {
+      if (!playing) return;
+      const t = t0 + (now - start) / 1000;
+      if (t >= stage.duration) { show(stage.duration); playing = false; btn.textContent = 'Play'; return; }
+      show(t); requestAnimationFrame(loop);
+    }
+  }
+</script>
+</body>
+</html>

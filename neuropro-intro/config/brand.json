@@ -1,0 +1,28 @@
+{
+  "_note": "Brand identity. Change colours/type here; every scene reads from this file.",
+  "name": "NEUROPRO",
+  "wordmark": { "primary": "NEURO", "accent": "PRO" },
+  "subtitle": "Concussion & Brain Health",
+  "tagline": "Understand the brain. Improve the outcome.",
+  "logoImage": null,
+  "_logoImageNote": "Drop the real logo in assets/brand/ (SVG or PNG) and set logoImage to its path, e.g. \"assets/brand/neuropro-logo.svg\". It replaces the temporary mark + wordmark on the title card.",
+  "fonts": {
+    "display": "Manrope",
+    "body": "Inter"
+  },
+  "colors": {
+    "navy": "#0B2545",
+    "navyDeep": "#061a33",
+    "ink": "#1B2B44",
+    "teal": "#1FC8B4",
+    "tealDeep": "#0E9F93",
+    "cyan": "#63E2F5",
+    "sky": "#4FA8FF",
+    "violet": "#8C7FD1",
+    "violetSoft": "#B9AEE6",
+    "coral": "#FF6B4A",
+    "amber": "#F5A524",
+    "cream": "#F7F1E8",
+    "white": "#FFFFFF"
+  }
+}

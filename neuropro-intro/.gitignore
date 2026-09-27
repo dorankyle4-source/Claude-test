@@ -1,0 +1,8 @@
+node_modules/
+output/frames/
+*.tmp
+audio/voiceover/.cache/
+audio/generated/music.wav
+audio/generated/sfx.wav
+audio/generated/voice.wav
+__pycache__/
