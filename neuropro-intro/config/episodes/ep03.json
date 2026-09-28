@@ -1,0 +1,182 @@
+{
+  "_note": "Episode 3 master timeline. 'at' = narration start (s). Cue words measured by `npm run ep03:voiceover`.",
+  "title": "Episode 3 — What Is Brain Fog?",
+  "duration": 82,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "captions": false,
+  "sections": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 8.2,
+      "title": "The hook",
+      "beats": {
+        "lookPaper": 0.3,
+        "lookBack": 5.4,
+        "fogIn": 6.0
+      }
+    },
+    {
+      "id": "fog",
+      "start": 8.2,
+      "end": 16.2,
+      "title": "Introduce brain fog",
+      "beats": {
+        "tokens": 12.0
+      }
+    },
+    {
+      "id": "feel",
+      "start": 16.2,
+      "end": 29.0,
+      "title": "What does it feel like?",
+      "beats": {
+        "cardsOut": 28.4
+      }
+    },
+    {
+      "id": "lazy",
+      "start": 29.0,
+      "end": 39.6,
+      "title": "It's not laziness",
+      "beats": {
+        "laptop": 29.2,
+        "battery": 29.5,
+        "faster": 33.4,
+        "exhausted": 36.0,
+        "text": 34.3
+      }
+    },
+    {
+      "id": "inside",
+      "start": 39.6,
+      "end": 54.0,
+      "title": "Why it can happen",
+      "beats": {
+        "slow": 42.6,
+        "caption": 51.3
+      }
+    },
+    {
+      "id": "morning",
+      "start": 54.0,
+      "end": 66.2,
+      "title": "The everyday effect",
+      "beats": {
+        "phone": 55.3,
+        "coffee": 56.0,
+        "email": 56.7,
+        "talk": 57.4,
+        "keys": 58.1,
+        "door": 58.8,
+        "freeze": 59.4,
+        "simplify": 60.8,
+        "relax": 62.0
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 66.2,
+      "end": 82,
+      "title": "Takeaway",
+      "beats": {
+        "clean": 66.2,
+        "one": 67.4,
+        "breaks": 68.3,
+        "listen": 69.2,
+        "cardsOut": 72.0,
+        "badgeIn": 72.2,
+        "badgeLand": 72.8,
+        "thumbs": 73.6,
+        "iris": 75.4,
+        "markLand": 76.0,
+        "wordmark": 76.0,
+        "subtitle": 76.6,
+        "quote": 77.1,
+        "episode": 77.8
+      }
+    }
+  ],
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 1.6,
+      "text": "Ever read the same sentence three times and still have no idea what it said?",
+      "cues": [
+        "same sentence",
+        "three times",
+        "no idea"
+      ]
+    },
+    {
+      "id": "l2",
+      "at": 8.8,
+      "text": "That feeling is often called brain fog—and it's a common complaint after a concussion.",
+      "cues": [
+        "brain fog",
+        "common complaint"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 17.0,
+      "text": "It can feel like your thoughts are slower, your memory isn't as sharp, or it takes more effort to concentrate.",
+      "cues": [
+        "thoughts are slower",
+        "memory",
+        "takes more effort",
+        "concentrate"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 30.0,
+      "text": "And brain fog isn't the same thing as being lazy or simply not trying hard enough.",
+      "cues": [
+        "isn't the same",
+        "lazy",
+        "not trying hard"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 41.0,
+      "text": "After a concussion, the brain may have a harder time efficiently processing and coordinating information. Tasks that used to feel automatic can suddenly require much more effort.",
+      "cues": [
+        "processing",
+        "coordinating",
+        "Tasks that used",
+        "much more effort"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 55.0,
+      "text": "That's why a busy day can sometimes leave you feeling completely drained—even when you haven't done anything physically demanding.",
+      "cues": [
+        "busy day",
+        "completely drained",
+        "even when"
+      ]
+    },
+    {
+      "id": "l7",
+      "at": 67.0,
+      "text": "If brain fog is getting in the way of your day, don't just push through it. Your brain may need the right evaluation and recovery plan.",
+      "cues": [
+        "don't just push",
+        "Your brain may need",
+        "evaluation",
+        "recovery plan"
+      ]
+    }
+  ],
+  "endCard": {
+    "subtitle": "Concussion & Brain Health",
+    "quote": "“Your brain deserves answers.”",
+    "episode": "Episode 3 · What Is Brain Fog?",
+    "disclaimer": "For education only. Not a substitute for professional medical advice."
+  }
+}

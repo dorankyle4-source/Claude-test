@@ -1,0 +1,81 @@
+{
+  "l1": {
+    "duration": 4.269,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Ever read the same sentence three times and still have no idea what it said?",
+    "cues": {
+      "same sentence": 0.808,
+      "three times": 1.463,
+      "no idea": 2.947
+    }
+  },
+  "l2": {
+    "duration": 4.881,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "That feeling is often called brain fog\u2014and it's a common complaint after a concussion.",
+    "cues": {
+      "brain fog": 1.481,
+      "common complaint": 2.905
+    }
+  },
+  "l3": {
+    "duration": 5.995,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "It can feel like your thoughts are slower, your memory isn't as sharp, or it takes more effort to concentrate.",
+    "cues": {
+      "thoughts are slower": 1.087,
+      "memory": 2.22,
+      "takes more effort": 4.12,
+      "concentrate": 5.322
+    }
+  },
+  "l4": {
+    "duration": 4.912,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "And brain fog isn't the same thing as being lazy or simply not trying hard enough.",
+    "cues": {
+      "isn't the same": 0.927,
+      "lazy": 2.426,
+      "not trying hard": 3.376
+    }
+  },
+  "l5": {
+    "duration": 11.394,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "After a concussion, the brain may have a harder time efficiently processing and coordinating information. Tasks that used to feel automatic can suddenly require much more effort.",
+    "cues": {
+      "processing": 3.391,
+      "coordinating": 4.436,
+      "Tasks that used": 6.248,
+      "much more effort": 10.249
+    }
+  },
+  "l6": {
+    "duration": 7.112,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "That's why a busy day can sometimes leave you feeling completely drained\u2014even when you haven't done anything physically demanding.",
+    "cues": {
+      "busy day": 0.825,
+      "completely drained": 2.691,
+      "even when": 4.42
+    }
+  },
+  "l7": {
+    "duration": 7.752,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "If brain fog is getting in the way of your day, don't just push through it. Your brain may need the right evaluation and recovery plan.",
+    "cues": {
+      "don't just push": 2.59,
+      "Your brain may need": 3.627,
+      "evaluation": 5.494,
+      "recovery plan": 6.637
+    }
+  }
+}

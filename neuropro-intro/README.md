@@ -6,6 +6,7 @@ Two productions share one codebase, one cast and one set:
 |---|---|---|
 | **Episode 1 — What Is a Concussion?** | 85 s | `output/ep01-what-is-a-concussion.mp4` (+ `.srt` captions) |
 | **Episode 2 — Why Do I Still Feel Bad After a Concussion?** | 81 s | `output/ep02-why-do-i-still-feel-bad.mp4` (+ `.srt` captions) |
+| **Episode 3 — What Is Brain Fog?** | 82 s | `output/ep03-what-is-brain-fog.mp4` (+ `.srt` captions) |
 | Series intro (style test) | 10 s | `output/neuropro-intro.mp4` |
 
 ## Episode 1 — What Is a Concussion?
@@ -37,6 +38,22 @@ Same mascot, studio, icons, neuron view, badge and end card as Episode 1 (import
 | 1:06–1:21 | What to do + end card | Clean NeuroPro backdrop with REST · RECOVER · GET EVALUATED, the NeuroPro badge and a thumbs up. End card: logo, "Concussion & Brain Health", *"Your brain deserves answers."*, episode title, disclaimer. |
 
 Files: `config/episodes/ep02.json`, `src/episodes/ep02/` (timeline, acting, overlays, main). Build with `npm run ep02:build`.
+
+## Episode 3 — What Is Brain Fog?
+
+Same mascot, studio, neuron view, badge and end card as Episodes 1–2, plus new desk props (`src/episodes/ep03/props.js`).
+
+| Time | Section | What happens |
+|---|---|---|
+| 0:00–0:08 | Hook | The Brain sits at a desk holding a page ("What did I just read?"), re-reads the same line three times, and looks confused as a fog cloud forms around its head. |
+| 0:08–0:16 | Brain fog | The Brain points at the cloud, **BRAIN FOG** appears, and letters and numbers drift into the fog and slow down. |
+| 0:16–0:29 | What it feels like | Four cards synced to the narration: Reading (text blurs), Remembering (the thought vanishes), Conversations (words jumble), Multitasking (tasks pile up). |
+| 0:29–0:40 | It's not laziness | Typing at a laptop while a BRAIN ENERGY battery drains, faster when pushing, until the Brain slumps. "Your brain is working harder." |
+| 0:40–0:54 | Why it can happen | The shared neuron view in a gentler mode: some pathways flow smoothly while others slow down. "Automatic tasks can take more effort." |
+| 0:54–1:06 | The everyday effect | A tower of morning tasks (notification, coffee, email, conversation, keys, leave the house) stacks and sways. The Brain freezes, then it all clears to one task ("One thing at a time") and it relaxes. |
+| 1:06–1:22 | What helps + end card | ONE TASK · TAKE BREAKS · LISTEN TO YOUR SYMPTOMS, the NeuroPro badge, a thumbs up, then the end card with *"Your brain deserves answers."* |
+
+Build with `npm run ep03:build`.
 
 # Series intro (10-second style test)
 

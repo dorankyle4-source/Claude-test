@@ -20,7 +20,12 @@
     "ep02:audio": "node scripts/build-audio.mjs --comp ep02",
     "ep02:render": "node scripts/render.mjs --comp ep02",
     "ep02:captions": "node scripts/captions.mjs --comp ep02",
-    "ep02:build": "npm run ep02:audio && npm run ep02:render && npm run ep02:captions"
+    "ep02:build": "npm run ep02:audio && npm run ep02:render && npm run ep02:captions",
+    "ep03:voiceover": "python3 scripts/voiceover.py --comp ep03",
+    "ep03:audio": "node scripts/build-audio.mjs --comp ep03",
+    "ep03:render": "node scripts/render.mjs --comp ep03",
+    "ep03:captions": "node scripts/captions.mjs --comp ep03",
+    "ep03:build": "npm run ep03:audio && npm run ep03:render && npm run ep03:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",

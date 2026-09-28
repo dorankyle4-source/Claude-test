@@ -27,5 +27,15 @@
     "audioDir": "audio/generated/ep02",
     "output": "output/ep02-why-do-i-still-feel-bad.mp4",
     "captions": "output/ep02-why-do-i-still-feel-bad.srt"
+  },
+  "ep03": {
+    "title": "Episode 3 — What Is Brain Fog?",
+    "storyboard": "config/episodes/ep03.json",
+    "stage": "src/episodes/ep03/main.js",
+    "timeline": "src/episodes/ep03/timeline.js",
+    "voiceDir": "audio/voiceover/ep03",
+    "audioDir": "audio/generated/ep03",
+    "output": "output/ep03-what-is-brain-fog.mp4",
+    "captions": "output/ep03-what-is-brain-fog.srt"
   }
 }

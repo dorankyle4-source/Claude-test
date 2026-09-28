@@ -37,8 +37,12 @@ function cell(i) {
 //   tracker  – show the Normal / Disruption / Recovery tracker
 //   caption  – { text } big line at the bottom, shown from T.caption
 //   T.drainAt – when the energy starts draining (default: just after the disruption)
+//   shock    – play the shockwave + shake at T.disruption
+//   energy   – show the energy gauge
+//   mixed    – only some pathways slow down (the rest keep flowing normally); cells keep their colour
 export function createNeurons(cfg, T, opts = {}) {
-  const O = { recover: true, scan: true, tracker: true, caption: null, ...opts };
+  const O = { recover: true, scan: true, tracker: true, caption: null, shock: true, energy: true, mixed: false, ...opts };
+  const SLOWSET = O.slowLinks ?? [1, 3, 6, 9, 12, 14];
   const c = cfg.brand.colors;
   const curves = LINKS.map(([a, b], i) => curve(a, b, i));
   const stages = ['Normal', 'Disruption', 'Recovery'];
@@ -108,37 +112,38 @@ export function createNeurons(cfg, T, opts = {}) {
       const dis = hitK * (1 - rec);
       const brk = prog(t, T.disrupt, T.disrupt + 0.5) * (O.recover ? 1 - prog(t, T.recover + 0.3, T.recover + 1.6) : 1);
       const push = 1 + prog(t, T.toNeurons, T.toStudio, (k) => k) * 0.06;
-      const shake = Math.exp(-Math.max(0, t - T.disruption) * 3) * (t > T.disruption ? 14 : 0);
+      const shake = O.shock ? Math.exp(-Math.max(0, t - T.disruption) * 3) * (t > T.disruption ? 14 : 0) : 0;
       set('nr-net', 'transform', `translate(960 540) ${sc(push)} translate(-960 -540) ${tr(fnoise(t * 30, 1) * shake, fnoise(t * 30, 2) * shake)}`);
 
       const cool = c.cyan, hot = '#B9A3FF';
-      set('nr-cells', 'color', dis > 0.5 ? hot : cool);
+      set('nr-cells', 'color', dis > 0.5 && !O.mixed ? hot : cool);
       CELLS.forEach(([x, y], i) => {
-        const j = dis * 10;
-        const flick = dis > 0.2 && Math.sin(t * 23 + i * 5) > 0.6 ? 0.45 : 1;
+        const j = O.mixed ? 0 : dis * 10;
+        const flick = !O.mixed && dis > 0.2 && Math.sin(t * 23 + i * 5) > 0.6 ? 0.45 : 1;
         set(`nr-cw${i}`, 'transform', `${tr(x + fnoise(t * 3 + i, i) * j, y + fnoise(t * 3 + i, i + 9) * j)} ${sc(1 + 0.06 * Math.sin(t * 2 + i))}`);
         set(`nr-cw${i}`, 'opacity', flick);
       });
       curves.forEach((cv, i) => {
         const isB = BROKEN.includes(i);
-        set(`nr-l${i}`, 'stroke', dis > 0.5 ? '#8C7FD1' : c.teal);
+        const dl = O.mixed ? (SLOWSET.includes(i) ? dis : 0) : dis;   // this pathway's disruption
+        set(`nr-l${i}`, 'stroke', dl > 0.5 ? '#8C7FD1' : c.teal);
         set(`nr-l${i}`, 'stroke-dasharray', isB && brk > 0 ? `${(0.5 - brk * 0.12).toFixed(3)} ${(brk * 0.24).toFixed(3)} 1` : '1 0');
         // signals: steady flow → slow, erratic, stuck at breaks → speed back up
-        const speed = lerp(0.9, 0.18, dis);
+        const speed = lerp(0.9, 0.18, dl);
         let u = ((t * speed + i * 0.37) % 1);
         if (isB && brk > 0.3) u = Math.min(u, 0.38 + Math.sin(t * 8 + i) * 0.03);
         const [px, py] = qpt(cv, u);
-        set(`nr-s${i}`, 'cx', (px + fnoise(t * 8, i) * dis * 8).toFixed(1));
-        set(`nr-s${i}`, 'cy', (py + fnoise(t * 8, i + 3) * dis * 8).toFixed(1));
-        const dim = dis > 0.3 && Math.sin(t * 17 + i * 3) > 0.3 ? 0.25 : 1;
+        set(`nr-s${i}`, 'cx', (px + fnoise(t * 8, i) * dl * 8).toFixed(1));
+        set(`nr-s${i}`, 'cy', (py + fnoise(t * 8, i + 3) * dl * 8).toFixed(1));
+        const dim = dl > 0.3 && Math.sin(t * 17 + i * 3) > 0.3 ? 0.25 : 1;
         set(`nr-s${i}`, 'opacity', (Math.sin(u * Math.PI) * dim).toFixed(2));
-        set(`nr-s${i}`, 'fill', dis > 0.5 ? '#FFD28A' : '#FFFFFF');
+        set(`nr-s${i}`, 'fill', dl > 0.5 ? '#FFD28A' : '#FFFFFF');
       });
       BROKEN.forEach((_, k) => set(`nr-k${k}`, 'opacity', (brk * (0.6 + 0.4 * Math.sin(t * 12 + k))).toFixed(2)));
 
       const sk = prog(t, T.disruption - 0.05, T.disruption + 0.9, outCubic);
       set('nr-shock', 'r', (sk * 2400).toFixed(1));
-      set('nr-shock', 'opacity', (sk > 0 && sk < 1 ? (1 - sk) * 0.8 : 0).toFixed(3));
+      set('nr-shock', 'opacity', (O.shock && sk > 0 && sk < 1 ? (1 - sk) * 0.8 : 0).toFixed(3));
       set('nr-shock', 'stroke-width', (40 * (1 - sk) + 4).toFixed(1));
 
       set('nr-eyebrow', 'opacity', (prog(t, T.toNeurons + 0.6, T.toNeurons + 1.0)).toFixed(3));
@@ -150,7 +155,7 @@ export function createNeurons(cfg, T, opts = {}) {
       const d0 = T.drainAt ?? T.disruption + 0.3;
       const drain = prog(t, d0, d0 + 2.2, inOutCubic) * (O.recover ? 1 - prog(t, T.recover, T.toStudio - 0.2, inOutSine) : 1);
       const level = 1 - 0.68 * drain;
-      set('nr-energy', 'opacity', prog(t, T.toNeurons + 0.9, T.toNeurons + 1.4).toFixed(3));
+      set('nr-energy', 'opacity', O.energy ? prog(t, T.toNeurons + 0.9, T.toNeurons + 1.4).toFixed(3) : 0);
       const pulse = 1 + 0.12 * Math.max(0, Math.sin(clamp((t - T.energy) / 0.6) * Math.PI));
       set('nr-energy', 'transform', `translate(1480 90) translate(150 50) ${sc(pulse)} translate(-150 -50)`);
       set('nr-eFill', 'width', (280 * level).toFixed(1));
