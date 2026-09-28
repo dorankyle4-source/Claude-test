@@ -68,6 +68,7 @@ export async function createStage(svg, comp = 'ep01') {
   const applyIcons = icons.mount(svg);
   const applyBadge = badge.mount(svg.querySelector('#badge'));
   overlays.mount(svg);
+  anatomy.mount(svg);
   endcard.mount?.(svg);
 
   const $ = (id) => svg.querySelector(`#${id}`);

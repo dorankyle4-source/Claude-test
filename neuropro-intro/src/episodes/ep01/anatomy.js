@@ -15,9 +15,9 @@ const NAVY = '#0B1829';
 
 function chip(id, text, color) {
   return h('g', { id, opacity: 0 },
-    h('rect', { x: 0, y: -34, width: 20 + text.length * 21, height: 68, rx: 34, fill: '#FFFFFF', filter: 'url(#dropShadow)' }),
+    h('rect', { class: 'chip-bg', x: 0, y: -34, width: 20 + text.length * 26, height: 68, rx: 34, fill: '#FFFFFF', filter: 'url(#dropShadow)' }),
     h('circle', { cx: 34, cy: 0, r: 11, fill: color }),
-    h('text', { x: 58, y: 12, 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 32, fill: NAVY, 'letter-spacing': 1.5 }, text));
+    h('text', { class: 'chip-t', x: 58, y: 12, 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 32, fill: NAVY, 'letter-spacing': 1.5 }, text));
 }
 
 export function createAnatomy(cfg, T) {
@@ -72,13 +72,13 @@ export function createAnatomy(cfg, T) {
           h('circle', { r: 20, fill: c.amber, opacity: 0.6 })),
         h('g', { id: 'an-lines', stroke: c.teal, 'stroke-width': 7, 'stroke-linecap': 'round', opacity: 0 },
           h('path', { d: 'M-330,-120 L-420,-120 M-340,-60 L-460,-60 M-330,0 L-420,0' }),
-          h('path', { d: 'M470,-120 L560,-120 M480,-60 L600,-60 M470,0 L560,0' })),
+          h('path', { d: 'M420,-120 L480,-120 M430,-60 L520,-60 M420,0 L480,0' })),
         // labels (head coordinates)
-        h('g', { transform: 'translate(820 560) scale(1.12)' }, ...[['sk', 'Skull', -150, -250, -330, -300], ['fl', 'Protective fluid', 232, -110, 420, -235], ['br', 'Brain', -120, -40, -360, 110]].map(([k, text, px, py, lx, ly]) =>
+        h('g', { transform: 'translate(820 560) scale(1.12)' }, ...[['sk', 'Skull', -150, -250, -290, -165], ['fl', 'Protective fluid', 232, -110, 420, -235], ['br', 'Brain', -120, -40, -360, 110]].map(([k, text, px, py, lx, ly]) =>
           h('g', { id: `an-lab-${k}`, opacity: 0 },
-            h('path', { d: `M${px},${py} L${lx},${ly + 16}`, stroke: NAVY, 'stroke-width': 3, 'stroke-dasharray': '6 6' }),
+            h('path', { d: `M${px},${py} L${lx + (lx < px ? 12 : -12)},${ly - 12}`, stroke: NAVY, 'stroke-width': 3, 'stroke-dasharray': '6 6' }),
             h('circle', { cx: px, cy: py, r: 7, fill: NAVY }),
-            h('text', { x: lx, y: ly, 'text-anchor': 'middle', 'font-family': 'Manrope', 'font-weight': 700, 'font-size': 34, fill: NAVY }, text)))),
+            h('text', { x: lx, y: ly, 'text-anchor': lx < px ? 'end' : 'start', 'font-family': 'Manrope', 'font-weight': 700, 'font-size': 34, fill: NAVY }, text)))),
       ),
       // screen-space overlays
       h('text', { id: 'an-eyebrow', x: 110, y: 120, 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 30, fill: c.tealDeep, 'letter-spacing': 5, opacity: 0 }, 'WHAT IS A CONCUSSION?'),
@@ -102,6 +102,14 @@ export function createAnatomy(cfg, T) {
 
   return {
     markup,
+    mount(svg) {
+      // size each chip's pill to its real (loaded-font) text width, with even padding on both sides
+      for (let i = 0; i < 4; i++) {
+        const g = svg.querySelector(`#an-chip${i}`);
+        const w = g.querySelector('.chip-t').getComputedTextLength();
+        g.querySelector('.chip-bg').setAttribute('width', (58 + w + 30).toFixed(1));
+      }
+    },
     update(t, ctx) {
       const $ = (id) => ctx.root.querySelector(`#${id}`), set = (id, a, v) => $(id).setAttribute(a, v);
       const open = prog(t, T.toAnatomy + 0.35, T.toAnatomy + 1.0, inOutCubic);
