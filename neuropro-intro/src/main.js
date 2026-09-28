@@ -8,13 +8,12 @@ import { sharedDefs } from './engine/defs.js';
 import { createCamera } from './engine/camera.js';
 import { prog, clamp } from './engine/anim.js';
 import { createStudio } from './backgrounds/studio.js';
-import { createPatient } from './characters/patient.js';
-import { createClinician } from './characters/clinician.js';
-import { createBrainPanel } from './props/brain.js';
+import { createMascot } from './characters/mascot.js';
+import { createBadge } from './props/badge.js';
 import { createIcons } from './props/icons.js';
-import { jordanPose, riveraPose } from './scenes/acting.js';
+import { mascotPose } from './scenes/acting.js';
 import { createScene01 } from './scenes/01-establish.js';
-import { createScene02, PANEL } from './scenes/02-symptoms.js';
+import { createScene02 } from './scenes/02-symptoms.js';
 import { createScene03 } from './scenes/03-neuropro.js';
 import { createScene04 } from './scenes/04-title.js';
 
@@ -27,9 +26,9 @@ export async function createStage(svg) {
 
   const camera = createCamera(sb.camera, W, H);
   const studio = createStudio(brand);
-  const jordan = createPatient(characters.patient.palette);
-  const rivera = createClinician(characters.clinician.palette, brand);
-  const panel = createBrainPanel(brand);
+  const mascot = createMascot(characters.mascot.palette);
+  const L = brand.logoLayout;
+  const badge = createBadge(brand, [L.icon[2] - L.icon[0], L.icon[3] - L.icon[1]]);
   const icons = createIcons(brand, cfg.scene['02-symptoms'].icons, sb.iconLabels);
   const scenes = [createScene01(cfg), createScene02(cfg), createScene03(cfg), createScene04(cfg)];
 
@@ -54,10 +53,8 @@ export async function createStage(svg) {
       h('g', { id: 'L-far', filter: 'url(#bgBlur)' }, studio.far),
       h('g', { id: 'L-mid' }, studio.mid),
       h('g', { id: 'L-chars' },
-        h('g', { id: 'jordan' }, jordan.markup),
-        h('g', { id: 'rivera' }, rivera.markup),
         scenes.map((s) => s.world || ''),
-        h('g', { id: 'panel' }, panel.markup),
+        h('g', { id: 'mascot' }, mascot.markup),
         icons.markup,
       ),
       h('g', { id: 'L-light' }, studio.light),
@@ -66,7 +63,7 @@ export async function createStage(svg) {
     h('rect', { id: 'vigN', width: W, height: H, fill: 'url(#vignetteN)', opacity: 0.16, 'pointer-events': 'none' }),
     h('rect', { id: 'vigDizzy', width: W, height: H, fill: 'url(#vignette)', opacity: 0 }),
     h('rect', { id: 'flash', width: W, height: H, fill: '#FFFFFF', opacity: 0 }),
-    h('g', { id: 'screen' }, scenes.map((s) => s.screen || '')),
+    h('g', { id: 'screen' }, scenes.map((s) => s.screen || ''), h('g', { id: 'badge' }, badge.markup)),
     sb.captions ? h('g', { id: 'captions' },
       h('rect', { id: 'capBg', x: 0, y: 952, width: 0, height: 64, rx: 32, fill: c.navy, opacity: 0 }),
       h('text', { id: 'capT', x: W / 2, y: 994, 'text-anchor': 'middle', 'font-family': brand.fonts.body, 'font-weight': 500, 'font-size': 32, fill: '#fff' })) : '',
@@ -87,9 +84,8 @@ export async function createStage(svg) {
     svg.querySelector('#grainImg').setAttribute('href', cv.toDataURL());
   }
 
-  const applyJordan = jordan.mount(svg.querySelector('#jordan'));
-  const applyRivera = rivera.mount(svg.querySelector('#rivera'));
-  const applyPanel = panel.mount(svg.querySelector('#panel'));
+  const applyMascot = mascot.mount(svg.querySelector('#mascot'));
+  const applyBadge = badge.mount(svg.querySelector('#badge'));
   const applyIcons = icons.mount(svg);
   for (const s of scenes) s.mount?.(svg);
 
@@ -105,24 +101,38 @@ export async function createStage(svg) {
     const icState = {};
     for (const ic of cfg.scene['02-symptoms'].icons) icState[ic.id] = { x: 0, y: 0, sx: 0, sy: 0, opacity: 0 };
     const state = {
-      panel: { t, x: PANEL.x, y: PANEL.y, scale: PANEL.scale, appear: 0, order: 0, pulse: 0, arc: 0, sx: 1, sy: 1 },
-      icons: icState, dots: [], dotsFade: 0, sparkK: 0,
+      icons: icState, sparkK: 0, beam: 0, scanK: 0, ringK: 0,
+      badge: { x: 0, y: 0, scale: 1, appear: 0, t },
       grade: { dizzy: 0, flash: 0 },
     };
     const ctx = { t, cfg, root: svg, cam, camera, state };
-    for (const s of scenes) s.update?.(t, ctx);
+    // scenes 1–3 run first; the badge is then projected to screen space for the title match-cut
+    for (const s of scenes.slice(0, 3)) s.update?.(t, ctx);
+    const bw = state.badge;
+    const [bx, by] = camera.project(cam, bw.x, bw.y);
+    state.badgeScreen = { ...bw, x: bx, y: by, scale: bw.scale * cam.zoom };
+    scenes[3].update(t, ctx);
+    const trail = [];
+    const b3 = cfg.scene['03-neuropro'].beats;
+    if (t > b3.badgeEnter && t < b3.badgeLand + 0.1) {
+      for (let i = 1; i <= 4; i++) {
+        const tt = t - i * 0.035, pw = scenes[2].badgeAt(tt), c2 = camera.at(tt);
+        const [px, py] = camera.project(c2, pw.x, pw.y);
+        trail.push([px, py, 1 - prog(t, b3.badgeLand - 0.1, b3.badgeLand + 0.1)]);
+      }
+    }
+    const over = scenes[3].badgeOverride(t, state.badgeScreen);
+    applyBadge({ t, discFade: 0, trail, ...state.badgeScreen, ...(over || {}) });
 
     studio.update(t, svg);
-    applyJordan(jordanPose(t, cfg));
-    applyRivera(riveraPose(t, cfg));
-    applyPanel(state.panel);
+    applyMascot(mascotPose(t, cfg));
     applyIcons(state.icons, t);
     for (const s of scenes) s.apply?.(ctx);
 
     // Grade: the world loses colour and focus while dizzy; NeuroPro brings it back.
     const d = state.grade.dizzy;
     $('bgBlurStd').setAttribute('stdDeviation', (d * 3.2).toFixed(2));
-    if (d > 0.001) { $('world').setAttribute('filter', 'url(#grade)'); $('gradeM').setAttribute('values', (1 - d * 0.38).toFixed(3)); }
+    if (d > 0.001) { $('world').setAttribute('filter', 'url(#grade)'); $('gradeM').setAttribute('values', (1 - d * 0.3).toFixed(3)); }
     else $('world').removeAttribute('filter');
     $('vigDizzy').setAttribute('opacity', (d * 0.32).toFixed(3));
     $('flash').setAttribute('opacity', state.grade.flash.toFixed(3));

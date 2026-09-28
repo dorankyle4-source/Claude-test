@@ -4,6 +4,7 @@ export async function loadConfig() {
   const [brand, characters, storyboard, audio] = await Promise.all(
     ['brand.json', 'characters.json', 'storyboard.json', 'audio.json'].map(get));
   const scene = Object.fromEntries(storyboard.scenes.map((s) => [s.id, s]));
+  if (brand.logo?.layout) brand.logoLayout = await fetch(new URL(`../../${brand.logo.layout}`, import.meta.url)).then((r) => r.json());
   return { brand, characters, storyboard, audio, scene };
 }
 

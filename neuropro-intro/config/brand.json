@@ -1,11 +1,8 @@
 {
   "_note": "Brand identity. Change colours/type here; every scene reads from this file.",
   "name": "NEUROPRO",
-  "wordmark": { "primary": "NEURO", "accent": "PRO" },
-  "subtitle": "Concussion & Brain Health",
+  "subtitle": "Concussion Clinic",
   "tagline": "Understand the brain. Improve the outcome.",
-  "logoImage": null,
-  "_logoImageNote": "Drop the real logo in assets/brand/ (SVG or PNG) and set logoImage to its path, e.g. \"assets/brand/neuropro-logo.svg\". It replaces the temporary mark + wordmark on the title card.",
   "fonts": {
     "display": "Manrope",
     "body": "Inter"
@@ -23,6 +20,15 @@
     "coral": "#FF6B4A",
     "amber": "#F5A524",
     "cream": "#F7F1E8",
-    "white": "#FFFFFF"
-  }
+    "white": "#FFFFFF",
+    "logoInk": "#2F2F2F",
+    "paper": "#F8F6F1"
+  },
+  "logo": {
+    "full": "assets/brand/neuropro-logo.png",
+    "icon": "assets/brand/neuropro-icon.png",
+    "wordmark": "assets/brand/neuropro-wordmark.png",
+    "layout": "assets/brand/logo-layout.json"
+  },
+  "_logoNote": "The real NeuroPro logo. To replace it, overwrite assets/brand/neuropro-logo.png and run: python3 scripts/split-logo.py"
 }

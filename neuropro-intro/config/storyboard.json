@@ -19,7 +19,8 @@
         "textOut": 2.35,
         "blink1": 0.72,
         "glanceWindow": 1.05,
-        "glanceBack": 1.6
+        "glanceBack": 1.55,
+        "unsure": 1.45
       }
     },
     {
@@ -30,33 +31,29 @@
       "beats": {
         "wobble": 2.0,
         "handToHead": 2.15,
-        "thoughtDots": 2.25,
-        "panelIn": 2.4,
-        "brainPop": 2.5,
         "doubleBlink": 2.95,
-        "lookAtBrain": 3.35,
         "headShake": 4.2
       },
       "icons": [
         {
           "id": "dizziness",
           "label": "Dizziness",
-          "at": 2.85
+          "at": 2.55
         },
         {
           "id": "headache",
           "label": "Headache",
-          "at": 3.1
+          "at": 2.8
         },
         {
           "id": "fog",
           "label": "Brain fog",
-          "at": 3.35
+          "at": 3.05
         },
         {
           "id": "concentration",
           "label": "Focus",
-          "at": 3.6
+          "at": 3.3
         }
       ]
     },
@@ -66,16 +63,16 @@
       "end": 8,
       "title": "NeuroPro enters",
       "beats": {
-        "clinicianEnter": 4.95,
-        "clinicianSettle": 6.0,
-        "jordanTurns": 5.3,
-        "iconsAbsorb": 5.3,
-        "organize": 5.45,
+        "badgeEnter": 4.9,
+        "badgeLand": 5.3,
+        "lookAtBadge": 5.2,
+        "iconsAbsorb": 5.35,
+        "scan": 5.45,
         "activationPulse": 5.75,
-        "gesture": 6.05,
-        "jordanRelief": 6.3,
-        "nod": 6.95,
-        "lookToBrain": 7.4
+        "relief": 6.05,
+        "hop": 6.3,
+        "thumbsUp": 6.55,
+        "lookToCamera": 7.3
       }
     },
     {
@@ -85,11 +82,10 @@
       "title": "Brand reveal",
       "beats": {
         "iris": 7.9,
-        "markLand": 8.55,
-        "wordmark": 8.45,
-        "subtitle": 8.85,
-        "tagline": 9.2,
-        "logoPulse": 9.35
+        "markLand": 8.5,
+        "wordmark": 8.5,
+        "tagline": 9.05,
+        "logoPulse": 9.3
       }
     }
   ],
@@ -98,33 +94,33 @@
     "keys": [
       {
         "t": 0.0,
-        "cx": 945,
-        "cy": 600,
-        "zoom": 1.08
+        "cx": 960,
+        "cy": 580,
+        "zoom": 1.0
       },
       {
         "t": 2.0,
-        "cx": 860,
-        "cy": 560,
-        "zoom": 1.2
+        "cx": 880,
+        "cy": 595,
+        "zoom": 1.1
       },
       {
         "t": 4.85,
-        "cx": 930,
-        "cy": 475,
-        "zoom": 1.3
+        "cx": 845,
+        "cy": 595,
+        "zoom": 1.18
       },
       {
         "t": 6.3,
-        "cx": 1080,
-        "cy": 545,
-        "zoom": 1.12
+        "cx": 1000,
+        "cy": 600,
+        "zoom": 1.06
       },
       {
-        "t": 8.0,
-        "cx": 1092,
-        "cy": 455,
-        "zoom": 1.22
+        "t": 7.9,
+        "cx": 1030,
+        "cy": 575,
+        "zoom": 1.1
       }
     ],
     "wobble": {
@@ -153,39 +149,44 @@
       "gain": 0.35
     },
     {
-      "id": "pop",
-      "at": 2.5,
-      "gain": 0.3
-    },
-    {
       "id": "tick",
-      "at": 2.85,
+      "at": 2.55,
       "gain": 0.22
     },
     {
       "id": "tick",
-      "at": 3.1,
+      "at": 2.8,
       "gain": 0.22
     },
     {
       "id": "tick",
-      "at": 3.35,
+      "at": 3.05,
       "gain": 0.22
     },
     {
       "id": "tick",
-      "at": 3.6,
+      "at": 3.3,
       "gain": 0.22
     },
     {
       "id": "whoosh",
-      "at": 4.9,
+      "at": 4.95,
       "gain": 0.4
+    },
+    {
+      "id": "pop",
+      "at": 5.3,
+      "gain": 0.3
     },
     {
       "id": "activation",
       "at": 5.5,
       "gain": 0.45
+    },
+    {
+      "id": "pop",
+      "at": 6.6,
+      "gain": 0.35
     },
     {
       "id": "whoosh",

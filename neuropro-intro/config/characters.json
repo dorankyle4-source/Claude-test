@@ -1,45 +1,126 @@
 {
-  "_note": "Recurring cast. Palettes + expression presets. Rigs live in src/characters/*.js",
+  "_note": "Recurring cast. Palettes + expression presets. Rigs live in src/characters/*.js. The series is hosted by the mascot; patient/clinician are kept as optional supporting cast.",
+  "mascot": {
+    "name": "Neo",
+    "role": "The NeuroPro Brain, host of the series (working name)",
+    "reference": "assets/reference/brain-mascot-reference.png",
+    "palette": {
+      "fill": "#FC9D7B",
+      "fold": "#DC6446",
+      "hi": "#FFC2A8",
+      "dizzy": "#9C8FD8",
+      "teal": "#1FC8B4",
+      "cyan": "#63E2F5",
+      "excite": "#E8704E"
+    }
+  },
   "patient": {
     "name": "Jordan",
     "role": "Recurring athlete / patient (late 20s)",
     "palette": {
-      "skin": "#B9784E", "skinShade": "#9B5F3C", "blush": "#E0735A",
-      "hair": "#23150F", "hairHi": "#3A261C",
+      "skin": "#B9784E",
+      "skinShade": "#9B5F3C",
+      "blush": "#E0735A",
+      "hair": "#23150F",
+      "hairHi": "#3A261C",
       "iris": "#3B2418",
-      "jacket": "#FF6B4A", "jacketShade": "#DE4F33", "jacketHi": "#FF8C6E",
+      "jacket": "#FF6B4A",
+      "jacketShade": "#DE4F33",
+      "jacketHi": "#FF8C6E",
       "stripe": "#FFFFFF",
       "tee": "#F4F1EA",
-      "pants": "#2C3446", "pantsShade": "#222838",
-      "shoe": "#F7F7F5", "shoeAccent": "#1FC8B4", "sole": "#C9CED6",
+      "pants": "#2C3446",
+      "pantsShade": "#222838",
+      "shoe": "#F7F7F5",
+      "shoeAccent": "#1FC8B4",
+      "sole": "#C9CED6",
       "wristband": "#1FC8B4",
-      "bottle": "#63E2F5", "bottleCap": "#0B2545"
+      "bottle": "#63E2F5",
+      "bottleCap": "#0B2545"
     }
   },
   "clinician": {
     "name": "Dr. Rivera",
     "role": "Recurring NeuroPro clinician",
     "palette": {
-      "skin": "#EDBF9C", "skinShade": "#D19D7A", "blush": "#E88C7A",
-      "hair": "#2F1D1A", "hairHi": "#4A2E28",
+      "skin": "#EDBF9C",
+      "skinShade": "#D19D7A",
+      "blush": "#E88C7A",
+      "hair": "#2F1D1A",
+      "hairHi": "#4A2E28",
       "iris": "#4A2D1C",
-      "top": "#1B3A63", "topShade": "#132C4D", "topHi": "#27497A",
+      "top": "#1B3A63",
+      "topShade": "#132C4D",
+      "topHi": "#27497A",
       "zip": "#1FC8B4",
-      "pants": "#B8A58E", "pantsShade": "#9F8C76",
-      "shoe": "#1B2B44", "sole": "#E9E4DC",
+      "pants": "#B8A58E",
+      "pantsShade": "#9F8C76",
+      "shoe": "#1B2B44",
+      "sole": "#E9E4DC",
       "glasses": "#1B2B44",
-      "lanyard": "#1FC8B4", "badge": "#FFFFFF",
-      "tablet": "#1B2B44", "tabletScreen": "#63E2F5"
+      "lanyard": "#1FC8B4",
+      "badge": "#FFFFFF",
+      "tablet": "#1B2B44",
+      "tabletScreen": "#63E2F5"
     }
   },
   "expressions": {
     "_note": "brows: lift (-1..1), furrow (0..1), asym (-1..1). mouth: w (width), smile (-1..1), open (0..1)",
-    "neutral":  { "browLift": 0,    "browFurrow": 0,   "browAsym": 0,    "mouthW": 1.0,  "smile": 0.25, "open": 0 },
-    "content":  { "browLift": 0.15, "browFurrow": 0,   "browAsym": 0,    "mouthW": 1.05, "smile": 0.55, "open": 0 },
-    "confused": { "browLift": 0.55, "browFurrow": 0.7, "browAsym": 0.45, "mouthW": 0.7,  "smile": -0.35, "open": 0.18 },
-    "worried":  { "browLift": 0.7,  "browFurrow": 0.9, "browAsym": 0,    "mouthW": 0.75, "smile": -0.45, "open": 0.05 },
-    "relieved": { "browLift": 0.35, "browFurrow": 0.1, "browAsym": 0,    "mouthW": 1.1,  "smile": 0.7,  "open": 0.05 },
-    "warm":     { "browLift": 0.25, "browFurrow": 0,   "browAsym": 0,    "mouthW": 1.1,  "smile": 0.8,  "open": 0.1 },
-    "explain":  { "browLift": 0.45, "browFurrow": 0,   "browAsym": -0.3, "mouthW": 1.05, "smile": 0.6,  "open": 0.22 }
+    "neutral": {
+      "browLift": 0,
+      "browFurrow": 0,
+      "browAsym": 0,
+      "mouthW": 1.0,
+      "smile": 0.25,
+      "open": 0
+    },
+    "content": {
+      "browLift": 0.15,
+      "browFurrow": 0,
+      "browAsym": 0,
+      "mouthW": 1.05,
+      "smile": 0.55,
+      "open": 0
+    },
+    "confused": {
+      "browLift": 0.55,
+      "browFurrow": 0.7,
+      "browAsym": 0.45,
+      "mouthW": 0.7,
+      "smile": -0.35,
+      "open": 0.18
+    },
+    "worried": {
+      "browLift": 0.7,
+      "browFurrow": 0.9,
+      "browAsym": 0,
+      "mouthW": 0.75,
+      "smile": -0.45,
+      "open": 0.05
+    },
+    "relieved": {
+      "browLift": 0.35,
+      "browFurrow": 0.1,
+      "browAsym": 0,
+      "mouthW": 1.1,
+      "smile": 0.7,
+      "open": 0.05
+    },
+    "warm": {
+      "browLift": 0.25,
+      "browFurrow": 0,
+      "browAsym": 0,
+      "mouthW": 1.1,
+      "smile": 0.8,
+      "open": 0.1
+    },
+    "explain": {
+      "browLift": 0.45,
+      "browFurrow": 0,
+      "browAsym": -0.3,
+      "mouthW": 1.05,
+      "smile": 0.6,
+      "open": 0.22
+    }
   }
 }

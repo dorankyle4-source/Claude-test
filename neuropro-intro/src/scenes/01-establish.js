@@ -7,8 +7,8 @@ import { measureRun, placeRun } from '../engine/text.js';
 export function createScene01(cfg) {
   const sc = cfg.scene['01-establish'], b = sc.beats, c = cfg.brand.colors;
   const words = sc.onScreenText.split(' ');
-  const style = { 'font-family': cfg.brand.fonts.display, 'font-weight': 700, 'font-size': 62, fill: c.navy, 'letter-spacing': -0.5 };
-  const X = 1120, Y = 790;
+  const style = { 'font-family': cfg.brand.fonts.display, 'font-weight': 700, 'font-size': 58, fill: c.navy, 'letter-spacing': -0.5 };
+  const X = 1165, Y = 905;
   let n = 0;
 
   return {

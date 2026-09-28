@@ -4,10 +4,10 @@
 
 import { h, tr, rot } from '../engine/svg.js';
 import { fnoise } from '../engine/anim.js';
-import { MARK_BRAIN, MARK_PULSE } from '../props/logo.js';
 
 export function createStudio(brand) {
   const c = brand.colors;
+  const logoIcon = brand.logo?.icon;
 
   const defs = h('defs', {},
     h('linearGradient', { id: 'wallGrad', x1: 0, y1: 0, x2: 0, y2: 1 },
@@ -27,6 +27,7 @@ export function createStudio(brand) {
     h('linearGradient', { id: 'slatShade', x1: 0, y1: 0, x2: 1, y2: 0 },
       h('stop', { offset: 0, 'stop-color': '#FFFFFF', 'stop-opacity': 0.35 }), h('stop', { offset: 1, 'stop-color': '#0B2545', 'stop-opacity': 0.08 })),
     h('filter', { id: 'shaftBlur', x: '-20%', y: '-20%', width: '140%', height: '140%' }, h('feGaussianBlur', { stdDeviation: 40 })),
+    h('filter', { id: 'toWhite' }, h('feColorMatrix', { type: 'matrix', values: '0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0' })),
     h('clipPath', { id: 'windowClip' }, h('rect', { x: 130, y: 120, width: 560, height: 610, rx: 26 })),
   );
 
@@ -73,10 +74,7 @@ export function createStudio(brand) {
     h('g', { transform: 'translate(1560 190)' },
       h('rect', { x: 0, y: 0, width: 230, height: 290, rx: 10, fill: '#FFFFFF' }),
       h('rect', { x: 16, y: 16, width: 198, height: 258, rx: 4, fill: '#0F2B4C' }),
-      h('g', { transform: 'translate(115 122) scale(0.62)' },
-        h('circle', { r: 92, fill: 'none', stroke: c.teal, 'stroke-width': 5 }),
-        h('path', { d: MARK_BRAIN, fill: 'none', stroke: '#FFFFFF', 'stroke-width': 5.5, 'stroke-linejoin': 'round' }),
-        h('path', { d: MARK_PULSE, fill: 'none', stroke: c.cyan, 'stroke-width': 5.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' })),
+      logoIcon ? h('image', { href: `../${logoIcon}`, x: 60, y: 62, width: 110, height: 132, filter: 'url(#toWhite)' }) : '',
       h('rect', { x: 62, y: 222, width: 106, height: 7, rx: 3.5, fill: c.teal, opacity: 0.8 }),
       h('rect', { x: 80, y: 238, width: 70, height: 5, rx: 2.5, fill: '#8FA7C4', opacity: 0.6 }),
     ),

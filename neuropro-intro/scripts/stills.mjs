@@ -8,7 +8,7 @@ import { serve } from './serve.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'output', 'stills');
 fs.mkdirSync(OUT, { recursive: true });
-const KEYS = [[1.4, '01-establish'], [3.9, '02-symptoms'], [7.0, '03-neuropro'], [9.95, '04-title']];
+const KEYS = [[1.4, '01-establish'], [3.6, '02-symptoms'], [6.9, '03-neuropro'], [9.95, '04-title']];
 
 const server = await serve();
 const base = `http://127.0.0.1:${server.address().port}`;
@@ -22,6 +22,6 @@ for (const [t, name] of KEYS) {
 }
 await page.goto(`${base}/src/model-sheet.html`);
 await page.waitForFunction(() => window.NP?.ready === true);
-await page.screenshot({ path: path.join(OUT, 'cast-model-sheet.png') });
+await page.screenshot({ path: path.join(OUT, 'mascot-model-sheet.png') });
 await browser.close(); server.close();
 console.log(`  → output/stills/ (${KEYS.length + 1} images)`);
