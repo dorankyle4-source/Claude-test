@@ -1,0 +1,184 @@
+{
+  "_note": "Episode 2 master timeline. 'at' = narration start (s). Cue words are measured by `npm run ep02:voiceover` into audio/voiceover/ep02/timing.json.",
+  "title": "Episode 2 — Why Do I Still Feel Bad After a Concussion?",
+  "duration": 81,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "captions": false,
+  "sections": [
+    {
+      "id": "question",
+      "start": 0,
+      "end": 8.9,
+      "title": "The question",
+      "beats": {
+        "walkEnd": 2.2,
+        "bubbleIn": 2.3,
+        "bubbleOut": 5.6
+      }
+    },
+    {
+      "id": "outside",
+      "start": 8.9,
+      "end": 16.8,
+      "title": "You can look fine",
+      "beats": {
+        "split": 9.0
+      }
+    },
+    {
+      "id": "inside",
+      "start": 16.8,
+      "end": 28.6,
+      "title": "What changes?",
+      "beats": {
+        "event": 18.3,
+        "caption": 25.3
+      }
+    },
+    {
+      "id": "feel",
+      "start": 28.6,
+      "end": 38.6,
+      "title": "Why you feel it",
+      "beats": {
+        "clear": 38.2
+      }
+    },
+    {
+      "id": "fluctuate",
+      "start": 38.6,
+      "end": 50.4,
+      "title": "Symptoms can fluctuate",
+      "beats": {
+        "walkStart": 38.9,
+        "meterIn": 39.2,
+        "good2": 46.0,
+        "bad2": 47.7,
+        "linear": 45.0
+      }
+    },
+    {
+      "id": "overload",
+      "start": 50.4,
+      "end": 66.4,
+      "title": "Why this matters",
+      "beats": {
+        "phone": 52.2,
+        "laptop": 52.8,
+        "exercise": 53.4,
+        "lights": 54.0,
+        "talk": 54.6,
+        "peak": 55.3,
+        "calm": 57.0,
+        "note": 58.9,
+        "time": 61.7
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 66.4,
+      "end": 81,
+      "title": "Takeaway",
+      "beats": {
+        "clean": 66.4,
+        "badgeIn": 72.0,
+        "badgeLand": 72.6,
+        "thumbs": 73.2,
+        "iris": 74.9,
+        "markLand": 75.5,
+        "wordmark": 75.5,
+        "subtitle": 76.1,
+        "quote": 76.6,
+        "episode": 77.3
+      }
+    }
+  ],
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 3.4,
+      "text": "Ever wonder why you can feel okay right after a concussion… and then feel terrible later?",
+      "cues": [
+        "feel okay",
+        "and then",
+        "terrible"
+      ]
+    },
+    {
+      "id": "l2",
+      "at": 9.6,
+      "text": "That's because a concussion doesn't always cause something you can see from the outside.",
+      "cues": [
+        "doesn't always",
+        "see from the outside"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 18.0,
+      "text": "After an injury, the brain can temporarily have trouble communicating efficiently and managing the energy it needs to function normally.",
+      "cues": [
+        "After an injury",
+        "trouble communicating",
+        "managing the energy",
+        "function normally"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 29.8,
+      "text": "That can affect everything from concentration and memory to balance, energy, and how you process information.",
+      "cues": [
+        "everything",
+        "concentration",
+        "memory",
+        "balance",
+        "energy",
+        "process information"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 40.0,
+      "text": "And symptoms can fluctuate. You might feel pretty good one day and struggle the next.",
+      "cues": [
+        "fluctuate",
+        "pretty good",
+        "struggle"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 51.4,
+      "text": "Sometimes, too much physical or mental activity can temporarily make symptoms worse. That doesn't necessarily mean you're getting new brain damage—it can mean your brain needs a little more time and the right recovery strategy.",
+      "cues": [
+        "physical",
+        "mental activity",
+        "make symptoms worse",
+        "That doesn't",
+        "new brain damage",
+        "a little more time",
+        "recovery strategy"
+      ]
+    },
+    {
+      "id": "l7",
+      "at": 67.6,
+      "text": "If your symptoms are sticking around, don't just push through them. Get evaluated and find out what your brain needs.",
+      "cues": [
+        "don't just push",
+        "through them",
+        "Get evaluated",
+        "find out"
+      ]
+    }
+  ],
+  "endCard": {
+    "subtitle": "Concussion & Brain Health",
+    "quote": "“Your brain deserves answers.”",
+    "episode": "Episode 2 · Why Do I Still Feel Bad After a Concussion?",
+    "disclaimer": "For education only. Not a substitute for professional medical advice."
+  }
+}

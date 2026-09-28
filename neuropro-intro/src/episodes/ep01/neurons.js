@@ -31,7 +31,14 @@ function cell(i) {
     h('circle', { r: 7, fill: '#FFFFFF', opacity: 0.85 }));
 }
 
-export function createNeurons(cfg, T) {
+// opts (all optional; defaults = Episode 1 behaviour):
+//   recover  – signals recover inside this section (Normal → Disruption → Recovery)
+//   scan     – show the "Brain scan: no obvious damage" card (T.noDamage)
+//   tracker  – show the Normal / Disruption / Recovery tracker
+//   caption  – { text } big line at the bottom, shown from T.caption
+//   T.drainAt – when the energy starts draining (default: just after the disruption)
+export function createNeurons(cfg, T, opts = {}) {
+  const O = { recover: true, scan: true, tracker: true, caption: null, ...opts };
   const c = cfg.brand.colors;
   const curves = LINKS.map(([a, b], i) => curve(a, b, i));
   const stages = ['Normal', 'Disruption', 'Recovery'];
@@ -73,7 +80,8 @@ export function createNeurons(cfg, T) {
         h('rect', { id: 'nr-eFill', x: 10, y: 32, width: 280, height: 36, rx: 8, fill: c.teal }),
         h('text', { id: 'nr-ePct', x: 300, y: 0, 'text-anchor': 'end', 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 28, fill: '#FFFFFF' }, '100%')),
       // stage tracker
-      h('g', { id: 'nr-track', transform: 'translate(960 985)' },
+      O.caption ? h('text', { id: 'nr-cap', x: 960, y: 1000, 'text-anchor': 'middle', 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 56, fill: '#FFFFFF', opacity: 0 }, O.caption.text) : '',
+      h('g', { id: 'nr-track', transform: 'translate(960 985)', opacity: O.tracker ? 1 : 0 },
         h('rect', { x: -420, y: -34, width: 840, height: 68, rx: 34, fill: '#FFFFFF', opacity: 0.08 }),
         h('rect', { id: 'nr-tFill', x: -420, y: -34, width: 0, height: 68, rx: 34, fill: c.teal, opacity: 0.25 }),
         ...stages.map((s, i) => h('text', { id: `nr-t${i}`, x: -280 + i * 280, y: 11, 'text-anchor': 'middle', 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 30, fill: '#FFFFFF', opacity: 0.4 }, s)),
@@ -96,9 +104,9 @@ export function createNeurons(cfg, T) {
 
       // state: 0 normal … 1 fully disrupted; recovery gradual
       const hitK = prog(t, T.disruption, T.disruption + 0.4);
-      const rec = prog(t, T.recover, T.toStudio - 0.2, inOutSine);
+      const rec = O.recover ? prog(t, T.recover, T.toStudio - 0.2, inOutSine) : 0;
       const dis = hitK * (1 - rec);
-      const brk = prog(t, T.disrupt, T.disrupt + 0.5) * (1 - prog(t, T.recover + 0.3, T.recover + 1.6));
+      const brk = prog(t, T.disrupt, T.disrupt + 0.5) * (O.recover ? 1 - prog(t, T.recover + 0.3, T.recover + 1.6) : 1);
       const push = 1 + prog(t, T.toNeurons, T.toStudio, (k) => k) * 0.06;
       const shake = Math.exp(-Math.max(0, t - T.disruption) * 3) * (t > T.disruption ? 14 : 0);
       set('nr-net', 'transform', `translate(960 540) ${sc(push)} translate(-960 -540) ${tr(fnoise(t * 30, 1) * shake, fnoise(t * 30, 2) * shake)}`);
@@ -134,12 +142,13 @@ export function createNeurons(cfg, T) {
       set('nr-shock', 'stroke-width', (40 * (1 - sk) + 4).toFixed(1));
 
       set('nr-eyebrow', 'opacity', (prog(t, T.toNeurons + 0.6, T.toNeurons + 1.0)).toFixed(3));
-      const sc1 = outBack(prog(t, T.noDamage, T.noDamage + 0.4), 1.6);
-      set('nr-scan', 'opacity', (prog(t, T.noDamage, T.noDamage + 0.2) * (1 - prog(t, T.disruption - 0.3, T.disruption))).toFixed(3));
+      const sc1 = O.scan ? outBack(prog(t, T.noDamage, T.noDamage + 0.4), 1.6) : 0;
+      set('nr-scan', 'opacity', O.scan ? (prog(t, T.noDamage, T.noDamage + 0.2) * (1 - prog(t, T.disruption - 0.3, T.disruption))).toFixed(3) : 0);
       set('nr-scan', 'transform', `translate(${110 - (1 - sc1) * 60} 160)`);
 
       // energy: full → drains after the hit → highlighted on "energy" → refills during recovery
-      const drain = prog(t, T.disruption + 0.3, T.disruption + 2.5, inOutCubic) * (1 - prog(t, T.recover, T.toStudio - 0.2, inOutSine));
+      const d0 = T.drainAt ?? T.disruption + 0.3;
+      const drain = prog(t, d0, d0 + 2.2, inOutCubic) * (O.recover ? 1 - prog(t, T.recover, T.toStudio - 0.2, inOutSine) : 1);
       const level = 1 - 0.68 * drain;
       set('nr-energy', 'opacity', prog(t, T.toNeurons + 0.9, T.toNeurons + 1.4).toFixed(3));
       const pulse = 1 + 0.12 * Math.max(0, Math.sin(clamp((t - T.energy) / 0.6) * Math.PI));
@@ -148,6 +157,12 @@ export function createNeurons(cfg, T) {
       set('nr-eFill', 'fill', level < 0.6 ? c.amber : c.teal);
       $('nr-ePct').textContent = `${Math.round(level * 100)}%`;
 
+      if (O.caption) {
+        const ck = prog(t, T.caption, T.caption + 0.5, outCubic) * (1 - prog(t, T.toStudio - 0.2, T.toStudio + 0.2));
+        set('nr-cap', 'opacity', ck.toFixed(3));
+        set('nr-cap', 'transform', tr(0, (1 - ck) * 20));
+      }
+      if (!O.tracker) return;
       const stage = t < T.disruption ? 0 : t < T.recover ? 1 : 2;
       for (let i = 0; i < 3; i++) set(`nr-t${i}`, 'opacity', i === stage ? 1 : 0.4);
       set('nr-t1', 'fill', stage === 1 ? '#FFD28A' : '#FFFFFF');

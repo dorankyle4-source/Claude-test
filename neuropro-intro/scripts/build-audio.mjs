@@ -257,6 +257,8 @@ const MOODS = {
   tick:    { cut: 1100, pluck: 0.5,  kick: 0, snap: 0, shaker: 1, wob: 0,   lvl: 0.8 },
   warm:    { cut: 2300, pluck: 1,    kick: 1, snap: 1, shaker: 1, wob: 0,   lvl: 1 },
   resolve: { cut: 2600, pluck: 0,    kick: 0, snap: 0, shaker: 0, wob: 0,   lvl: 1 },
+  overload:{ cut: 2400, pluck: 1,    kick: 1, snap: 1, shaker: 1, wob: 0.6, lvl: 1 },
+  calm:    { cut: 900,  pluck: 0.25, kick: 0, snap: 0, shaker: 0, wob: 0,   lvl: 0.75 },
 };
 function buildEpisodeMusic(sections) {
   const LOOP = [[53, 57, 60, 64, 67, 41], [50, 53, 57, 60, 64, 38], [46, 50, 53, 57, 60, 34], [48, 52, 55, 57, 62, 36]];
@@ -343,6 +345,39 @@ function buildEpisodeMusic(sections) {
 
 // ---------------------------------------------------------------- SFX
 const SFX = {
+
+  // phone vibrating
+  buzz(buf, t0, g) {
+    for (let r = 0; r < 2; r++) {
+      const s0 = Math.floor((t0 + r * 0.35) * SR);
+      for (let n = s0; n < Math.min(N, s0 + SR * 0.25); n++) {
+        const x = (n - s0) / SR;
+        const v = Math.sign(Math.sin(2 * Math.PI * 150 * x)) * 0.35 * (0.6 + 0.4 * Math.sin(2 * Math.PI * 23 * x)) * Math.sin(Math.PI * x / 0.25) * g;
+        add(buf, n, v, v);
+      }
+    }
+  },
+  // notification ding
+  ding(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR);
+    [[1568, 0], [2093, 0.09]].forEach(([f, dt]) => {
+      const st = s0 + Math.floor(dt * SR);
+      for (let n = st; n < Math.min(N, st + SR * 0.6); n++) { const x = (n - st) / SR, v = Math.sin(2 * Math.PI * f * x) * Math.exp(-x * 7) * Math.min(1, x / 0.003) * g * 0.5; add(buf, n, v * 0.8, v); }
+    });
+  },
+  // murmur of overlapping voices (formant-filtered noise bursts)
+  chatter(buf, t0, g) {
+    for (let k = 0; k < 9; k++) {
+      const st = t0 + k * 0.16 + (k % 3) * 0.05, s0 = Math.floor(st * SR), dur = 0.22 + (k % 4) * 0.05;
+      const bp1 = biquadBP(), bp2 = biquadBP(), f1 = 500 + (k * 137) % 400, f2 = 1400 + (k * 211) % 700;
+      const [l, r] = panLR(((k % 5) - 2) * 0.3);
+      for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+        const x = (n - s0) / SR, e = Math.sin(Math.PI * x / dur) ** 2, nz = rand();
+        const v = (bp1(nz, f1 * (1 + 0.1 * Math.sin(x * 30)), 6) + bp2(nz, f2, 7) * 0.6) * e * g * 1.6;
+        add(buf, n, v * l, v * r);
+      }
+    }
+  },
 
   // soft footstep
   step(buf, t0, g) {

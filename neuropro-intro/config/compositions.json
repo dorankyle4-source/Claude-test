@@ -17,5 +17,15 @@
     "output": "output/ep01-what-is-a-concussion.mp4",
     "captions": "output/ep01-what-is-a-concussion.srt",
     "timeline": "src/episodes/ep01/timeline.js"
+  },
+  "ep02": {
+    "title": "Episode 2 — Why Do I Still Feel Bad After a Concussion?",
+    "storyboard": "config/episodes/ep02.json",
+    "stage": "src/episodes/ep02/main.js",
+    "timeline": "src/episodes/ep02/timeline.js",
+    "voiceDir": "audio/voiceover/ep02",
+    "audioDir": "audio/generated/ep02",
+    "output": "output/ep02-why-do-i-still-feel-bad.mp4",
+    "captions": "output/ep02-why-do-i-still-feel-bad.srt"
   }
 }

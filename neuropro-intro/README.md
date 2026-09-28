@@ -5,6 +5,7 @@ Two productions share one codebase, one cast and one set:
 | | Length | File |
 |---|---|---|
 | **Episode 1 — What Is a Concussion?** | 85 s | `output/ep01-what-is-a-concussion.mp4` (+ `.srt` captions) |
+| **Episode 2 — Why Do I Still Feel Bad After a Concussion?** | 81 s | `output/ep02-why-do-i-still-feel-bad.mp4` (+ `.srt` captions) |
 | Series intro (style test) | 10 s | `output/neuropro-intro.mp4` |
 
 ## Episode 1 — What Is a Concussion?
@@ -20,6 +21,22 @@ Two productions share one codebase, one cast and one set:
 | 1:08–1:25 | Takeaway + end card | Step 1: stop the activity. Step 2: get evaluated by a qualified professional. The NeuroPro badge flies in; "I'm your brain" (ta-da), "let's learn together" (thumbs up). The badge match-cuts into the NeuroPro logo, then "Concussion & Brain Health", the episode title and a short education-only disclaimer. |
 
 The episode runs about 85 s rather than 80 s because the narration alone is about 59 s and the sections need room to breathe. Every visual beat is keyed to the *measured* narration: `scripts/voiceover.py` times each cue word (e.g. "bump", "fatigue", "you do not"), so animation and sound effects stay in sync when a line is re-recorded or re-timed.
+
+## Episode 2 — Why Do I Still Feel Bad After a Concussion?
+
+Same mascot, studio, icons, neuron view, badge and end card as Episode 1 (imported from the same files), so the series stays visually identical.
+
+| Time | Section | What happens |
+|---|---|---|
+| 0:00–0:09 | The question | The brain walks in smiling, "I thought I was fine…", then winces as a headache and dizziness pop up. |
+| 0:09–0:17 | You can look fine | Split screen: OUTSIDE (the brain looks great, hands on hips) and INSIDE (a small network with signals moving less efficiently). |
+| 0:17–0:29 | What changes? | The Episode 1 neuron view: a concussion shockwave, links flicker, signals slow and scatter, energy drains. "The brain is working differently." |
+| 0:29–0:39 | Why you feel it | Icons synced to the narration: headache, concentration, memory, dizziness (balance), fatigue (energy), brain fog (processing). |
+| 0:39–0:50 | Symptoms can fluctuate | The brain strolls while a GOOD DAY / BAD DAY meter swings above it. A graph card shows "Recovery isn't always linear." |
+| 0:50–1:06 | Why this matters | Phone, laptop, exercise, bright light and chatter crowd in, the room brightens, the brain covers its ears, then everything calms. Cards: "Not necessarily new damage" and "More time + the right plan". |
+| 1:06–1:21 | What to do + end card | Clean NeuroPro backdrop with REST · RECOVER · GET EVALUATED, the NeuroPro badge and a thumbs up. End card: logo, "Concussion & Brain Health", *"Your brain deserves answers."*, episode title, disclaimer. |
+
+Files: `config/episodes/ep02.json`, `src/episodes/ep02/` (timeline, acting, overlays, main). Build with `npm run ep02:build`.
 
 # Series intro (10-second style test)
 

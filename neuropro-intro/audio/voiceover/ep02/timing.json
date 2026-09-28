@@ -1,0 +1,87 @@
+{
+  "l1": {
+    "duration": 5.185,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Ever wonder why you can feel okay right after a concussion\u2026 and then feel terrible later?",
+    "cues": {
+      "feel okay": 1.24,
+      "and then": 3.388,
+      "terrible": 4.193
+    }
+  },
+  "l2": {
+    "duration": 4.579,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "That's because a concussion doesn't always cause something you can see from the outside.",
+    "cues": {
+      "doesn't always": 1.258,
+      "see from the outside": 3.394
+    }
+  },
+  "l3": {
+    "duration": 8.23,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "After an injury, the brain can temporarily have trouble communicating efficiently and managing the energy it needs to function normally.",
+    "cues": {
+      "After an injury": 0.0,
+      "trouble communicating": 2.815,
+      "managing the energy": 4.884,
+      "function normally": 6.985
+    }
+  },
+  "l4": {
+    "duration": 6.654,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "That can affect everything from concentration and memory to balance, energy, and how you process information.",
+    "cues": {
+      "everything": 0.849,
+      "concentration": 1.489,
+      "memory": 2.515,
+      "balance": 3.298,
+      "energy": 4.27,
+      "process information": 5.296
+    }
+  },
+  "l5": {
+    "duration": 4.699,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "And symptoms can fluctuate. You might feel pretty good one day and struggle the next.",
+    "cues": {
+      "fluctuate": 0.99,
+      "pretty good": 2.318,
+      "struggle": 3.698
+    }
+  },
+  "l6": {
+    "duration": 13.525,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Sometimes, too much physical or mental activity can temporarily make symptoms worse. That doesn't necessarily mean you're getting new brain damage\u2014it can mean your brain needs a little more time and the right recovery strategy.",
+    "cues": {
+      "physical": 1.183,
+      "mental activity": 1.814,
+      "make symptoms worse": 3.735,
+      "That doesn't": 5.058,
+      "new brain damage": 7.5,
+      "a little more time": 10.334,
+      "recovery strategy": 12.103
+    }
+  },
+  "l7": {
+    "duration": 6.198,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "If your symptoms are sticking around, don't just push through them. Get evaluated and find out what your brain needs.",
+    "cues": {
+      "don't just push": 1.93,
+      "through them": 2.535,
+      "Get evaluated": 3.029,
+      "find out": 4.351
+    }
+  }
+}
