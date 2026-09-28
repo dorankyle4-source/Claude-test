@@ -1,0 +1,183 @@
+{
+  "_note": "Episode 1 master timeline. Line start times ('at') and scene bounds are seconds. Cue words are measured by `npm run voiceover -- --comp ep01` and written to audio/voiceover/ep01/timing.json.",
+  "title": "Episode 1 — What Is a Concussion?",
+  "duration": 85,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "captions": false,
+  "sections": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 6.6,
+      "title": "Hook",
+      "beats": {
+        "walkEnd": 2.1,
+        "jolt": 2.1,
+        "textIn": 2.6,
+        "textOut": 6.3
+      },
+      "onScreenText": "What actually happens when you get a concussion?"
+    },
+    {
+      "id": "what",
+      "start": 6.6,
+      "end": 19.6,
+      "title": "What is a concussion?",
+      "beats": {
+        "transitionIn": 6.6,
+        "labels": 8.0,
+        "settle": 16.8
+      }
+    },
+    {
+      "id": "inside",
+      "start": 19.6,
+      "end": 32.6,
+      "title": "What happens inside?",
+      "beats": {
+        "transitionIn": 19.6,
+        "recover": 30.0
+      }
+    },
+    {
+      "id": "symptoms",
+      "start": 32.6,
+      "end": 44.2,
+      "title": "The symptoms",
+      "beats": {
+        "transitionIn": 32.6
+      }
+    },
+    {
+      "id": "knockout",
+      "start": 44.2,
+      "end": 56.0,
+      "title": "No knockout required",
+      "beats": {
+        "clear": 44.2,
+        "fall": 44.6,
+        "popUp": 45.5,
+        "point": 48.5
+      }
+    },
+    {
+      "id": "time",
+      "start": 56.0,
+      "end": 68.4,
+      "title": "Symptoms can take time",
+      "beats": {
+        "feelFine": 56.5,
+        "feelFineOut": 60.3
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 68.4,
+      "end": 85,
+      "title": "Takeaway",
+      "beats": {
+        "clear": 68.4,
+        "chipsOut": 75.3,
+        "badgeIn": 75.4,
+        "badgeLand": 75.9,
+        "iris": 80.5,
+        "markLand": 81.1,
+        "wordmark": 81.1,
+        "subtitle": 81.7,
+        "episode": 82.1
+      }
+    }
+  ],
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 2.7,
+      "text": "So… what actually happens to your brain when you get a concussion?"
+    },
+    {
+      "id": "l2",
+      "at": 7.9,
+      "text": "A concussion is a type of brain injury caused by a bump, blow, or jolt to the head—or even a hit to the body that makes the brain move rapidly inside the skull.",
+      "cues": [
+        "brain injury",
+        "bump",
+        "blow",
+        "jolt",
+        "hit to the body",
+        "move rapidly"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 20.6,
+      "text": "Even when there's no obvious damage on a scan, that sudden movement can temporarily disrupt how brain cells communicate and how the brain uses energy.",
+      "cues": [
+        "no obvious damage",
+        "sudden movement",
+        "disrupt",
+        "communicate",
+        "energy"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 33.6,
+      "text": "That can lead to symptoms like headache, dizziness, fatigue, brain fog, trouble concentrating, memory problems, or sensitivity to light and noise.",
+      "cues": [
+        "headache",
+        "dizziness",
+        "fatigue",
+        "brain fog",
+        "trouble concentrating",
+        "memory problems",
+        "sensitivity"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 46.3,
+      "text": "And here's something important: you do not have to lose consciousness to have a concussion. In fact, most people with concussions do not.",
+      "cues": [
+        "something important",
+        "you do not",
+        "In fact"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 57.4,
+      "text": "Symptoms can also show up right away—or develop hours or even days later. That's why it's important to pay attention to how you're feeling after an injury.",
+      "cues": [
+        "right away",
+        "hours",
+        "days later",
+        "pay attention"
+      ]
+    },
+    {
+      "id": "l7",
+      "at": 69.3,
+      "text": "If you think you've had a concussion, stop the activity and get evaluated by a qualified professional.",
+      "cues": [
+        "stop the activity",
+        "get evaluated"
+      ]
+    },
+    {
+      "id": "l8",
+      "at": 76.0,
+      "text": "A concussion is a brain injury. I'm your brain—let's learn together.",
+      "cues": [
+        "I'm your brain",
+        "let's learn"
+      ]
+    }
+  ],
+  "endCard": {
+    "subtitle": "Concussion & Brain Health",
+    "episode": "Episode 1 · What Is a Concussion?",
+    "disclaimer": "For education only. Not a substitute for professional medical advice."
+  }
+}

@@ -26,19 +26,24 @@
 <div id="wrap">
   <div id="stage"><svg id="svg" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080"></svg></div>
   <div class="bar"><button id="play">Play</button><input id="scrub" type="range" min="0" max="10" step="0.001" value="0"><span id="time">0.00s</span></div>
-  <p>Live preview. Edit files in <code>config/</code> or <code>src/</code> and refresh. Audio: <code>audio/generated/mix.wav</code> (run <code>npm run audio</code>).</p>
+  <p>Live preview (<a href="?comp=intro" style="color:#1FC8B4">intro</a> · <a href="?comp=ep01" style="color:#1FC8B4">episode 1</a>). Edit files in <code>config/</code> or <code>src/</code> and refresh. Audio: <code>audio/generated/mix.wav</code> (run <code>npm run audio</code>).</p>
 </div>
-<audio id="audio" src="../audio/generated/mix.wav" preload="auto"></audio>
+<audio id="audio" preload="auto"></audio>
 <script type="module">
-  import { createStage } from './main.js';
-  const render = new URLSearchParams(location.search).has('render');
+  const params = new URLSearchParams(location.search);
+  const comp = params.get('comp') || 'intro';
+  const comps = await fetch('../config/compositions.json').then((r) => r.json());
+  const { createStage } = await import(`../${comps[comp].stage}`);
+  const render = params.has('render');
   if (render) document.body.classList.add('render');
-  const stage = await createStage(document.getElementById('svg'));
+  const stage = await createStage(document.getElementById('svg'), comp);
+  document.title = comps[comp].title;
   stage.renderFrame(0);
   window.NP = { ...stage, ready: true };
   if (!render) {
     const scrub = document.getElementById('scrub'), time = document.getElementById('time'), btn = document.getElementById('play'), audio = document.getElementById('audio');
     scrub.max = stage.duration;
+    audio.src = `../${comps[comp].audioDir}/mix.wav`;
     let playing = false, t0 = 0, start = 0;
     const show = (t) => { stage.renderFrame(t); scrub.value = t; time.textContent = t.toFixed(2) + 's'; };
     scrub.oninput = () => { playing = false; audio.pause(); btn.textContent = 'Play'; show(+scrub.value); };

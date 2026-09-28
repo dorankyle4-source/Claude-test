@@ -1,6 +1,6 @@
 // Frame-accurate render: headless Chromium draws each frame at exact time t, piped to ffmpeg (H.264 + AAC).
 //
-//   node scripts/render.mjs                 → output/neuropro-intro.mp4
+//   node scripts/render.mjs [--comp ep01]   → the composition's output file (config/compositions.json)
 //   node scripts/render.mjs --out x.mp4 --from 2 --to 5   (render a section)
 
 import { chromium } from 'playwright';
@@ -13,17 +13,19 @@ import { serve } from './serve.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i > 0 ? process.argv[i + 1] : d; };
-const sb = JSON.parse(fs.readFileSync(path.join(ROOT, 'config', 'storyboard.json'), 'utf8'));
+const comp = arg('comp', 'intro');
+const C = JSON.parse(fs.readFileSync(path.join(ROOT, 'config', 'compositions.json'), 'utf8'))[comp];
+const sb = JSON.parse(fs.readFileSync(path.join(ROOT, C.storyboard), 'utf8'));
 const fps = Number(arg('fps', sb.fps));
 const from = Number(arg('from', 0)), to = Number(arg('to', sb.duration));
-const out = path.resolve(ROOT, arg('out', 'output/neuropro-intro.mp4'));
-const audio = path.join(ROOT, 'audio', 'generated', 'mix.wav');
+const out = path.resolve(ROOT, arg('out', C.output));
+const audio = path.join(ROOT, C.audioDir, 'mix.wav');
 fs.mkdirSync(path.dirname(out), { recursive: true });
 
 const server = await serve();
 const browser = await chromium.launch();
 const WORKERS = Number(arg('workers', 4));
-const url = `http://127.0.0.1:${server.address().port}/src/index.html?render`;
+const url = `http://127.0.0.1:${server.address().port}/src/index.html?render&comp=${comp}`;
 const pages = await Promise.all(Array.from({ length: WORKERS }, async () => {
   const ctx = await browser.newContext({ viewport: { width: sb.width, height: sb.height }, deviceScaleFactor: 1 });
   const page = await ctx.newPage();
@@ -38,7 +40,7 @@ const ff = spawn(ffmpeg, [
   '-y', '-loglevel', 'error',
   '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
   ...(hasAudio ? ['-ss', String(from), '-t', String(to - from), '-i', audio] : []),
-  '-c:v', 'libx264', '-preset', 'slow', '-crf', String(arg('crf', 17)), '-pix_fmt', 'yuv420p', '-profile:v', 'high',
+  '-c:v', 'libx264', '-preset', 'slow', '-crf', String(arg('crf', 20)), '-pix_fmt', 'yuv420p', '-profile:v', 'high',
   '-color_primaries', 'bt709', '-color_trc', 'bt709', '-colorspace', 'bt709',
   ...(hasAudio ? ['-c:a', 'aac', '-b:a', '256k', '-shortest'] : []),
   '-movflags', '+faststart', out,

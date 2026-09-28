@@ -29,7 +29,7 @@ function lobeOutline(n = 17) {
 }
 export const MASCOT_OUTLINE = lobeOutline();
 
-const FOLDS = [
+export const FOLDS = [
   'M-200,-60 C-185,-95 -150,-80 -140,-110 C-130,-140 -95,-130 -90,-155',
   'M-215,10 C-190,-5 -175,25 -150,5 C-130,-12 -120,15 -100,0',
   'M-195,70 C-170,55 -160,90 -130,75 C-110,65 -95,95 -70,80',
@@ -71,6 +71,11 @@ function glove(kind, side) {
     h('circle', { cx: 0, cy: 0, r: 27, ...g }),
     h('path', { d: 'M-14,-6 q7,6 0,13 M-2,-9 q7,7 0,15 M10,-8 q7,6 0,13', fill: 'none', stroke: NAVY, 'stroke-width': 4, 'stroke-linecap': 'round' }),
     h('ellipse', { cx: -side * 22, cy: -8, rx: 10, ry: 14, ...g, transform: `rotate(${side * 25} ${-side * 22} -8)` }));
+  if (kind === 'point') return h('g', {}, cuff,
+    h('circle', { cx: 0, cy: 0, r: 26, ...g }),
+    h('rect', { x: -7, y: 8, width: 15, height: 44, rx: 7.5, ...g }),
+    h('circle', { cx: 0, cy: 6, r: 20, fill: '#FFFDF8' }),
+    h('path', { d: 'M-16,-4 q8,6 0,12 M-6,-8 q7,6 0,12', fill: 'none', stroke: NAVY, 'stroke-width': 4, 'stroke-linecap': 'round' }));
   if (kind === 'thumb') return h('g', {}, cuff,
     h('rect', { x: -26, y: -20, width: 52, height: 46, rx: 18, ...g }),
     h('path', { d: 'M-26,-4 h34 M-26,10 h32', stroke: NAVY, 'stroke-width': 4, 'stroke-linecap': 'round' }),
@@ -146,7 +151,7 @@ export function createMascot(pal = {}, prefix = 'mb-') {
       ...['L', 'R'].map((s) => h('g', {},
         h('path', { id: id(`arm${s}`), fill: 'none', stroke: NAVY, 'stroke-width': 16, 'stroke-linecap': 'round' }),
         h('g', { id: id(`hand${s}`) },
-          ...['fist', 'thumb', 'open'].map((k) => h('g', { id: id(`h${s}${k}`), opacity: k === 'fist' ? 1 : 0 }, h('g', { transform: 'scale(1.4)' }, glove(k, s === 'L' ? -1 : 1))))))),
+          ...['fist', 'thumb', 'open', 'point'].map((k) => h('g', { id: id(`h${s}${k}`), opacity: k === 'fist' ? 1 : 0 }, h('g', { transform: 'scale(1.4)' }, glove(k, s === 'L' ? -1 : 1))))))),
       // excitement lines
       h('g', { id: id('excite'), stroke: c.excite, 'stroke-width': 9, 'stroke-linecap': 'round', opacity: 0 },
         ...excite.map(([x, y, a], i) => h('path', { id: id(`x${i}`), d: 'M0,0 L38,0', transform: `${tr(x, y)} ${rot(a)}` }))),
@@ -163,7 +168,9 @@ export function createMascot(pal = {}, prefix = 'mb-') {
 
       return (p) => {
         const t = p.t ?? 0;
-        set('root', 'transform', `${tr(p.x ?? 0, p.y ?? 0)} ${sc(p.s ?? 1)}`);
+        // fall: rotate the whole character about a ground pivot (e.g. a heel) — used for "knocked over"
+        const fall = p.fall ?? 0, pv = p.fallPivot ?? [-90, 0];
+        set('root', 'transform', `${tr(p.x ?? 0, p.y ?? 0)} ${sc(p.s ?? 1)} ${rot(fall, pv[0], pv[1])}`);
         const bob = p.bob ?? 0, sq = p.squash ?? 1; // sq > 1 = stretched tall
         set('shadow', 'rx', (200 * (1 - Math.min(0.35, bob / 200))).toFixed(1));
         set('shadow', 'opacity', (0.14 * (1 - Math.min(0.5, bob / 160))).toFixed(3));
@@ -173,10 +180,12 @@ export function createMascot(pal = {}, prefix = 'mb-') {
         set('body', 'transform', `translate(0 ${(-bob).toFixed(2)}) ${rot(p.tilt ?? 0, 0, HIP_Y)} translate(0 ${HIP_Y}) ${sc(sx, sy)} translate(0 ${-HIP_Y})`);
 
         // legs: hose from hips (which follow the body) to the shoes
-        const lift = p.footLift ?? 0;
+        // feet: shared lift, plus per-foot [dx, lift] for walk cycles
         for (const [s, side] of [['L', -1], ['R', 1]]) {
+          const f = (s === 'L' ? p.footL : p.footR) || [0, 0];
+          const lift = (p.footLift ?? 0) + f[1];
           const hx = side * 62 * sx, hy = HIP_Y - bob;
-          const ax = side * 72, ay = -34 - lift;
+          const ax = side * 72 + f[0], ay = -34 - lift;
           const bend = side * (4 + Math.max(0, 110 - (ay - hy)) * 0.25);
           set(`leg${s}`, 'd', `M${hx.toFixed(1)},${hy.toFixed(1)} Q${((hx + ax) / 2 + bend).toFixed(1)},${((hy + ay) / 2).toFixed(1)} ${ax},${ay.toFixed(1)}`);
           set(`shoe${s}`, 'transform', tr(ax + side * 10, -18 - lift));
@@ -190,7 +199,8 @@ export function createMascot(pal = {}, prefix = 'mb-') {
           const dz = (p.dizzy ?? 0) * (s === 'L' ? 1 : -1);
           const ex = (p.eyeX ?? 0) * 9 + dz * Math.sin(t * 5) * 4, ey = (p.eyeY ?? 0) * 7 + dz * Math.cos(t * 4) * 3;
           const lid = Math.max(0.08, 1 - blink * 0.92) * (1 - (p.squint ?? 0) * 0.35);
-          set(`eye${s}`, 'transform', `translate(${(x + ex).toFixed(2)} ${(-34 + ey).toFixed(2)}) ${sc(1, lid)} translate(${-x} 34)`);
+          const es = p.eyeScale ?? 1;
+          set(`eye${s}`, 'transform', `translate(${(x + ex).toFixed(2)} ${(-34 + ey).toFixed(2)}) ${sc(es, lid * es)} translate(${-x} 34)`);
           const lift = (p.browLift ?? 0) * 12 + (s === 'L' ? 1 : -1) * (p.browAsym ?? 0) * 7;
           const ang = (s === 'L' ? -1 : 1) * (p.browWorry ?? 0) * 14;
           set(`brow${s}`, 'transform', `translate(${ex * 0.5} ${-lift}) ${rot(ang, x, -96)}`);
@@ -234,7 +244,7 @@ export function createMascot(pal = {}, prefix = 'mb-') {
           const ang = (s === 'L' ? p.handAngL : p.handAngR) ?? endAng;
           set(`hand${s}`, 'transform', `${tr(hx, hy)} ${rot(ang)}`);
           const pose = (s === 'L' ? p.gloveL : p.gloveR) || { fist: 1 };
-          for (const k of ['fist', 'thumb', 'open']) set(`h${s}${k}`, 'opacity', clamp(pose[k] ?? 0).toFixed(3));
+          for (const k of ['fist', 'thumb', 'open', 'point']) set(`h${s}${k}`, 'opacity', clamp(pose[k] ?? 0).toFixed(3));
         }
 
         // excitement lines

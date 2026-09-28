@@ -6,3 +6,6 @@ audio/generated/music.wav
 audio/generated/sfx.wav
 audio/generated/voice.wav
 __pycache__/
+audio/generated/**/music.wav
+audio/generated/**/sfx.wav
+audio/generated/**/voice.wav

@@ -1,0 +1,94 @@
+{
+  "l1": {
+    "duration": 3.398,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "So\u2026 what actually happens to your brain when you get a concussion?",
+    "cues": {}
+  },
+  "l2": {
+    "duration": 10.109,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "A concussion is a type of brain injury caused by a bump, blow, or jolt to the head\u2014or even a hit to the body that makes the brain move rapidly inside the skull.",
+    "cues": {
+      "brain injury": 1.462,
+      "bump": 3.033,
+      "blow": 3.71,
+      "jolt": 4.34,
+      "hit to the body": 5.84,
+      "move rapidly": 7.585
+    }
+  },
+  "l3": {
+    "duration": 9.381,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Even when there's no obvious damage on a scan, that sudden movement can temporarily disrupt how brain cells communicate and how the brain uses energy.",
+    "cues": {
+      "no obvious damage": 0.944,
+      "sudden movement": 3.05,
+      "disrupt": 4.856,
+      "communicate": 6.419,
+      "energy": 8.788
+    }
+  },
+  "l4": {
+    "duration": 9.158,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "That can lead to symptoms like headache, dizziness, fatigue, brain fog, trouble concentrating, memory problems, or sensitivity to light and noise.",
+    "cues": {
+      "headache": 1.507,
+      "dizziness": 2.18,
+      "fatigue": 2.96,
+      "brain fog": 3.72,
+      "trouble concentrating": 4.72,
+      "memory problems": 5.97,
+      "sensitivity": 7.22
+    }
+  },
+  "l5": {
+    "duration": 7.783,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "And here's something important: you do not have to lose consciousness to have a concussion. In fact, most people with concussions do not.",
+    "cues": {
+      "something important": 0.676,
+      "you do not": 1.77,
+      "In fact": 4.631
+    }
+  },
+  "l6": {
+    "duration": 9.754,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Symptoms can also show up right away\u2014or develop hours or even days later. That's why it's important to pay attention to how you're feeling after an injury.",
+    "cues": {
+      "right away": 1.56,
+      "hours": 2.64,
+      "days later": 3.946,
+      "pay attention": 6.636
+    }
+  },
+  "l7": {
+    "duration": 5.741,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "If you think you've had a concussion, stop the activity and get evaluated by a qualified professional.",
+    "cues": {
+      "stop the activity": 1.91,
+      "get evaluated": 2.945
+    }
+  },
+  "l8": {
+    "duration": 4.048,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "A concussion is a brain injury. I'm your brain\u2014let's learn together.",
+    "cues": {
+      "I'm your brain": 1.847,
+      "let's learn": 3.05
+    }
+  }
+}

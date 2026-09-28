@@ -17,8 +17,8 @@ import { createScene02 } from './scenes/02-symptoms.js';
 import { createScene03 } from './scenes/03-neuropro.js';
 import { createScene04 } from './scenes/04-title.js';
 
-export async function createStage(svg) {
-  const cfg = await loadConfig();
+export async function createStage(svg, comp = 'intro') {
+  const cfg = await loadConfig(comp);
   await loadFonts();
   const { brand, characters, storyboard: sb } = cfg;
   const c = brand.colors;

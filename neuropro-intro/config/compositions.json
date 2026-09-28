@@ -1,0 +1,21 @@
+{
+  "_note": "Every production in this project. Scripts take --comp <id> (default: intro).",
+  "intro": {
+    "title": "NeuroPro intro (10 s)",
+    "storyboard": "config/storyboard.json",
+    "stage": "src/main.js",
+    "voiceDir": "audio/voiceover",
+    "audioDir": "audio/generated",
+    "output": "output/neuropro-intro.mp4"
+  },
+  "ep01": {
+    "title": "Episode 1 — What Is a Concussion?",
+    "storyboard": "config/episodes/ep01.json",
+    "stage": "src/episodes/ep01/main.js",
+    "voiceDir": "audio/voiceover/ep01",
+    "audioDir": "audio/generated/ep01",
+    "output": "output/ep01-what-is-a-concussion.mp4",
+    "captions": "output/ep01-what-is-a-concussion.srt",
+    "timeline": "src/episodes/ep01/timeline.js"
+  }
+}

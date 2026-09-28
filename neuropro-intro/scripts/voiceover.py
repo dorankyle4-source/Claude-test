@@ -2,11 +2,13 @@
 """Generate the voiceover lines from config/storyboard.json with Kokoro-82M (Apache-2.0, runs locally).
 
   pip install kokoro-onnx soundfile
-  python3 scripts/voiceover.py            # uses config/audio.json → voice, voiceSpeed
+  python3 scripts/voiceover.py [--comp ep01]   # uses config/audio.json → voice, voiceSpeed
 
 Model weights + voice styles are fetched once from the npm registry into audio/voiceover/.cache/
 (kokoro-q8-shards = the ONNX model, kokoro-js = voice style vectors). Output: audio/voiceover/<id>.wav
 + timing.json with each line's duration (read by build-audio + the captions).
+A line may list "cues": words/phrases whose start time inside the line is measured (by synthesising the text
+up to that phrase), so animation can sync to specific words. Results land in timing.json → <id>.cues.
 
 To use a human VO artist instead: drop vo1.wav / vo2.wav into audio/voiceover/ and skip this script.
 """
@@ -50,24 +52,84 @@ def ensure_assets():
     return model, voices
 
 
+def comp_paths(comp):
+    comps = json.load(open(os.path.join(ROOT, 'config', 'compositions.json')))
+    c = comps[comp]
+    return os.path.join(ROOT, c['storyboard']), os.path.join(ROOT, c['voiceDir'])
+
+
+def trim(audio, sr):
+    idx = np.where(np.abs(audio) > 0.01)[0]
+    if not len(idx):
+        return audio, 0
+    start = max(0, idx[0] - int(0.02 * sr))
+    return audio[start: idx[-1] + int(0.08 * sr)], start
+
+
+def pauses(audio, sr, th=0.02, min_len=0.08):
+    """(start, end) of low-energy gaps in seconds (commas and dashes produce these)."""
+    f = int(sr * 0.01)
+    rms = [float(np.sqrt(np.mean(audio[i:i + f] ** 2))) for i in range(0, len(audio) - f, f)]
+    out, run = [], 0
+    for i, v in enumerate(rms + [1.0]):
+        if v < th:
+            run += 1
+        else:
+            if run * 0.01 >= min_len:
+                out.append(((i - run) * 0.01, i * 0.01))
+            run = 0
+    merged = []
+    for g in out:  # join gaps separated by < 30 ms
+        if merged and g[0] - merged[-1][1] < 0.03:
+            merged[-1] = (merged[-1][0], g[1])
+        else:
+            merged.append(g)
+    return merged
+
+
 def main():
     from kokoro_onnx import Kokoro
-    sb = json.load(open(os.path.join(ROOT, 'config', 'storyboard.json')))
+    comp = sys.argv[sys.argv.index('--comp') + 1] if '--comp' in sys.argv else 'intro'
+    only = sys.argv[sys.argv.index('--only') + 1].split(',') if '--only' in sys.argv else None
+    sb_path, out_dir = comp_paths(comp)
+    os.makedirs(out_dir, exist_ok=True)
+    sb = json.load(open(sb_path))
     au = json.load(open(os.path.join(ROOT, 'config', 'audio.json')))
+    voice, speed = sb.get('voice', au['voice']), sb.get('voiceSpeed', au.get('voiceSpeed', 1.0))
     model, voices = ensure_assets()
     k = Kokoro(model, voices)
-    timing = {}
+    tpath = os.path.join(out_dir, 'timing.json')
+    timing = json.load(open(tpath)) if os.path.exists(tpath) and only else {}
     for line in sb['voiceover']:
-        audio, sr = k.create(line['text'], voice=au['voice'], speed=au.get('voiceSpeed', 1.0), lang='en-us')
-        # trim leading/trailing near-silence so cue times are exact
-        idx = np.where(np.abs(audio) > 0.01)[0]
-        if len(idx):
-            audio = audio[max(0, idx[0] - int(0.02 * sr)): idx[-1] + int(0.08 * sr)]
-        path = os.path.join(OUT, f"{line['id']}.wav")
-        sf.write(path, audio, sr, subtype='PCM_16')
-        timing[line['id']] = {'duration': round(len(audio) / sr, 3), 'sampleRate': sr, 'voice': au['voice'], 'text': line['text']}
-        print(f"  {line['id']}: {timing[line['id']]['duration']:.2f}s  “{line['text']}”")
-    json.dump(timing, open(os.path.join(OUT, 'timing.json'), 'w'), indent=2)
+        if only and line['id'] not in only:
+            continue
+        audio, sr = k.create(line['text'], voice=voice, speed=line.get('speed', speed), lang='en-us')
+        audio, _ = trim(audio, sr)
+        sf.write(os.path.join(out_dir, f"{line['id']}.wav"), audio, sr, subtype='PCM_16')
+        gaps = pauses(audio, sr)
+        entry = {'duration': round(len(audio) / sr, 3), 'sampleRate': sr, 'voice': voice, 'text': line['text'], 'cues': {}}
+        last = -1.0
+        for cue in line.get('cues', []):
+            pos = line['text'].lower().find(cue.lower())
+            if pos <= 0:
+                entry['cues'][cue] = 0.0
+                continue
+            prefix = line['text'][:pos].rstrip(' ,—-')
+            pa, _ = k.create(prefix, voice=voice, speed=line.get('speed', speed), lang='en-us')
+            pa, _ = trim(pa, sr)
+            est = max(0.0, len(pa) / sr - 0.05)
+            # After a comma/dash the speaker pauses: snap to the end of that pause (much more accurate).
+            if any(ch in line['text'][max(0, pos - 12):pos] for ch in ',—:;'):
+                cands = [(e - b, e) for (b, e) in gaps if est - 0.2 <= e <= est + 0.9 and e > last + 0.2]
+                if cands:
+                    est = max(cands)[1]
+            est = max(est, last + 0.2)
+            last = est
+            entry['cues'][cue] = round(est, 3)
+        timing[line['id']] = entry
+        cues = ', '.join(f"{c}@{t:.2f}" for c, t in entry['cues'].items())
+        print(f"  {line['id']}: {entry['duration']:.2f}s  {cues}")
+    json.dump(timing, open(tpath, 'w'), indent=2)
 
 
 if __name__ == '__main__':

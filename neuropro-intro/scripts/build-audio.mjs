@@ -1,7 +1,7 @@
 // Builds the soundtrack: procedural music bed + SFX + voiceover → audio/generated/{music,sfx,mix}.wav
 // Everything is synthesised here (no samples, no licensing questions); tweak the SCORE / SFX sections freely.
 //
-//   node scripts/build-audio.mjs
+//   node scripts/build-audio.mjs [--comp ep01]
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -9,12 +9,25 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cfgJ = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, 'config', f), 'utf8'));
-const SB = cfgJ('storyboard.json');
+const argv = process.argv;
+const COMP = argv.includes('--comp') ? argv[argv.indexOf('--comp') + 1] : 'intro';
+const CI = cfgJ('compositions.json')[COMP];
+const SB = JSON.parse(fs.readFileSync(path.join(ROOT, CI.storyboard), 'utf8'));
 const AU = cfgJ('audio.json');
 const SR = AU.sampleRate || 48000;
 const DUR = SB.duration + 0.0;
 const N = Math.round(DUR * SR);
-const OUT = path.join(ROOT, 'audio', 'generated');
+const OUT = path.join(ROOT, CI.audioDir);
+const VOICE_DIR = path.join(ROOT, CI.voiceDir);
+// Episodes place SFX + music moods from their timeline module (shared with the renderer).
+let EP = null;
+if (CI.timeline) {
+  const tl = await import(path.join(ROOT, CI.timeline));
+  const timingPath = path.join(VOICE_DIR, 'timing.json');
+  const timing = fs.existsSync(timingPath) ? JSON.parse(fs.readFileSync(timingPath, 'utf8')) : {};
+  const T = tl.buildTimeline(SB, timing);
+  EP = { T, sfx: tl.sfxList(T), music: tl.musicSections(T) };
+}
 fs.mkdirSync(OUT, { recursive: true });
 
 // ---------------------------------------------------------------- utils
@@ -230,8 +243,202 @@ function buildMusic() {
   return bus;
 }
 
+
+// ---------------------------------------------------------------- EPISODE SCORE
+// Same palette as the intro (96 BPM, Fmaj9 → Dm9 → Bbmaj9 → C6/9 loop) with a mood per section.
+const MOODS = {
+  //         pad cutoff, pluck density (0/0.25/0.5/1), kick, snap, shaker, wobble, level
+  bright:  { cut: 1900, pluck: 1,    kick: 0, snap: 0, shaker: 1, wob: 0,   lvl: 1 },
+  hush:    { cut: 520,  pluck: 0,    kick: 0, snap: 0, shaker: 0, wob: 0.3, lvl: 0.7 },
+  explain: { cut: 1200, pluck: 0.5,  kick: 1, snap: 0, shaker: 1, wob: 0,   lvl: 0.85 },
+  tension: { cut: 460,  pluck: 0.25, kick: 0.5, snap: 0, shaker: 0, wob: 1, lvl: 0.85 },
+  rise:    { cut: 1500, pluck: 1,    kick: 1, snap: 0, shaker: 1, wob: 0,   lvl: 0.9 },
+  playful: { cut: 2000, pluck: 1,    kick: 1, snap: 1, shaker: 1, wob: 0,   lvl: 0.95 },
+  tick:    { cut: 1100, pluck: 0.5,  kick: 0, snap: 0, shaker: 1, wob: 0,   lvl: 0.8 },
+  warm:    { cut: 2300, pluck: 1,    kick: 1, snap: 1, shaker: 1, wob: 0,   lvl: 1 },
+  resolve: { cut: 2600, pluck: 0,    kick: 0, snap: 0, shaker: 0, wob: 0,   lvl: 1 },
+};
+function buildEpisodeMusic(sections) {
+  const LOOP = [[53, 57, 60, 64, 67, 41], [50, 53, 57, 60, 64, 38], [46, 50, 53, 57, 60, 34], [48, 52, 55, 57, 62, 36]];
+  const resolveAt = sections.find((s) => s.mood === 'resolve')?.from ?? DUR;
+  const chordAtT = (t) => (t >= resolveAt ? [53, 57, 60, 64, 67, 41] : LOOP[Math.floor(t / BAR) % 4]);
+  // smoothed mood parameters
+  const raw = (t) => MOODS[(sections.find((s) => t >= s.from && t < s.to) || sections[sections.length - 1]).mood];
+  const P = (t, key) => { let a = 0, n = 0; for (let d = -0.4; d <= 0.4; d += 0.1) { a += raw(Math.max(0, t + d))[key]; n++; } return a / n; };
+  const cache = {}; const PC = (t, key) => { const i = Math.round(t * 20); return (cache[key + i] ??= P(i / 20, key)); };
+
+  const pad = stereo(), pluck = stereo(), low = stereo(), drums = stereo();
+  // chord segments: one per bar until the resolve, then one long final chord
+  const segs = [];
+  for (let t0 = 0; t0 < resolveAt - 1e-6; t0 += BAR) segs.push([t0, Math.min(t0 + BAR, resolveAt)]);
+  segs.push([resolveAt, DUR]);
+  for (const [a, b] of segs) {
+    const notes = chordAtT(a + 0.01);
+    notes.slice(0, 5).forEach((m, ni) => {
+      const f0 = mtof(m + (ni === 0 ? 0 : 12)), f = [f0 * 0.997, f0, f0 * 1.004], ph = [ni * 0.13, ni * 0.29, ni * 0.41];
+      const [pl, pr] = panLR((ni / 4) * 1.2 - 0.6), filt = lp();
+      for (let n = Math.floor(a * SR); n < Math.min(N, Math.floor((b + 0.8) * SR)); n++) {
+        const t = n / SR, e = env(t - a, 0.4, 0.4, 0.8, b - a, 0.8);
+        if (e <= 0) continue;
+        const wob = 1 + PC(t, 'wob') * 0.007 * Math.sin(2 * Math.PI * 4.7 * t + ni);
+        let v = 0;
+        for (let k = 0; k < 3; k++) { ph[k] = (ph[k] + (f[k] * wob) / SR) % 1; v += ph[k] * 2 - 1; }
+        v = filt(v / 3, coef(PC(t, 'cut')));
+        const g = e * 0.1 * PC(t, 'lvl');
+        add(pad, n, v * g * pl, v * g * pr);
+      }
+    });
+    // sub bass
+    const fb = mtof(chordAtT(a + 0.01)[5] + 12);
+    for (let n = Math.floor(a * SR); n < Math.min(N, Math.floor((b + 0.5) * SR)); n++) {
+      const x = n / SR - a, t = n / SR;
+      const e = env(x, 0.05, 0.3, 0.7, b - a, 0.5) * (a >= resolveAt ? Math.exp(-x * 0.5) : 1) * Math.min(1, PC(t, 'kick') + 0.3);
+      const v = (Math.sin(2 * Math.PI * fb * x) + 0.35 * Math.sin(4 * Math.PI * fb * x)) * e * 0.07;
+      add(low, n, v, v);
+    }
+  }
+  // plucks on an 8th grid, thinned by density
+  const step = BEAT / 2, pattern = [0, 2, 4, 1, 3, 4, 2, 1];
+  for (let i = 1; i * step < DUR - 0.5; i++) {
+    const t0 = i * step, d = PC(t0, 'pluck');
+    const keep = d >= 0.99 || (d >= 0.45 && i % 2 === 0) || (d >= 0.2 && i % 8 === 0);
+    if (!keep || t0 >= resolveAt) continue;
+    const notes = chordAtT(t0), m = notes[pattern[i % 8] % 5] + 12, f = mtof(m);
+    const vel = 0.8 * PC(t0, 'lvl') * (i % 4 === 0 ? 1 : 0.8);
+    const [pl, pr] = panLR(Math.sin(i * 1.7) * 0.5), s0 = Math.floor(t0 * SR);
+    for (let n = s0; n < Math.min(N, s0 + Math.floor(0.5 * SR)); n++) {
+      const x = (n - s0) / SR, e = Math.exp(-x * 9) * Math.min(1, x / 0.004);
+      const v = Math.sin(2 * Math.PI * f * x + Math.sin(2 * Math.PI * f * 2 * x) * 1.2 * Math.exp(-x * 14)) * e * vel * 0.11;
+      add(pluck, n, v * pl, v * pr);
+    }
+  }
+  // drums
+  for (let i = 0; i * (BEAT / 2) < resolveAt; i++) {
+    const t0 = i * BEAT / 2, onBeat = i % 2 === 0, beatN = Math.floor(i / 2) % 4, s0 = Math.floor(t0 * SR);
+    if (onBeat && (beatN === 0 || beatN === 2) && PC(t0, 'kick') > 0.4 && !(PC(t0, 'kick') < 0.9 && beatN === 2)) {
+      let ph = 0;
+      for (let n = s0; n < Math.min(N, s0 + SR * 0.35); n++) {
+        const x = (n - s0) / SR; ph += (45 + 80 * Math.exp(-x * 28)) / SR;
+        const v = Math.sin(2 * Math.PI * ph) * Math.exp(-x * 11) * 0.2 * PC(t0, 'kick');
+        add(drums, n, v, v);
+      }
+    }
+    if (onBeat && (beatN === 1 || beatN === 3) && PC(t0, 'snap') > 0.4) {
+      const bp = biquadBP();
+      for (let n = s0; n < Math.min(N, s0 + SR * 0.18); n++) { const x = (n - s0) / SR, v = bp(rand(), 1900, 1.4) * Math.exp(-x * 30) * 0.45 * PC(t0, 'snap'); add(drums, n, v * 0.9, v); }
+    }
+    if (PC(t0, 'shaker') > 0.4) {
+      const bp = biquadBP();
+      for (let n = s0; n < Math.min(N, s0 + SR * 0.08); n++) { const x = (n - s0) / SR, v = bp(rand(), 7000, 0.9) * Math.exp(-x * 60) * (onBeat ? 0.06 : 0.09) * PC(t0, 'shaker'); add(drums, n, v * 0.7, v); }
+    }
+  }
+  const bus = stereo();
+  mixInto(bus, pad); mixInto(bus, pluck); mixInto(bus, low); mixInto(bus, drums, 0.9);
+  mixInto(bus, pingpong(pluck, BEAT * 0.75, 0.35, 0.4), 1);
+  mixInto(bus, reverb(bus, { room: 0.86, damp: 0.4, wet: 0.5 }), 1);
+  // fade the tail
+  for (let n = Math.floor((DUR - 1.2) * SR); n < N; n++) { const k = 1 - smooth((n / SR - (DUR - 1.2)) / 1.2); bus[0][n] *= k; bus[1][n] *= k; }
+  return bus;
+}
+
 // ---------------------------------------------------------------- SFX
 const SFX = {
+
+  // soft footstep
+  step(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR), bp = biquadBP();
+    for (let n = s0; n < Math.min(N, s0 + SR * 0.09); n++) { const x = (n - s0) / SR; const v = (bp(rand(), 900, 1.2) * 0.6 + Math.sin(2 * Math.PI * 110 * x) * 0.5) * Math.exp(-x * 45) * g; add(buf, n, v, v); }
+  },
+  // low bump / jolt
+  thud(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR), bp = biquadBP(); let ph = 0;
+    for (let n = s0; n < Math.min(N, s0 + SR * 0.5); n++) {
+      const x = (n - s0) / SR; ph += (55 + 90 * Math.exp(-x * 20)) / SR;
+      const v = (Math.sin(2 * Math.PI * ph) * Math.exp(-x * 8) + bp(rand(), 400, 1) * Math.exp(-x * 40) * 0.8) * g;
+      add(buf, n, v, v);
+    }
+  },
+  // cartoon impact (bump / blow)
+  impact(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR), bp = biquadBP(); let ph = 0;
+    for (let n = s0; n < Math.min(N, s0 + SR * 0.3); n++) {
+      const x = (n - s0) / SR; ph += (160 * Math.exp(-x * 10) + 70) / SR;
+      const v = (Math.sin(2 * Math.PI * ph) * 0.8 + bp(rand(), 2200, 0.8) * Math.exp(-x * 60)) * Math.exp(-x * 14) * g;
+      add(buf, n, v, v);
+    }
+  },
+  // liquid "slosh" of the brain moving in fluid
+  slosh(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR), dur = 0.6, bp = biquadBP();
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR, k = x / dur;
+      const v = bp(rand(), 300 + 500 * Math.sin(k * Math.PI) + 150 * Math.sin(x * 40), 3) * Math.sin(Math.PI * k) ** 2 * g * 1.6;
+      const [l, r] = panLR(Math.sin(k * Math.PI * 2) * 0.6);
+      add(buf, n, v * l, v * r);
+    }
+  },
+  // digital glitch / disruption
+  glitch(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR), dur = 0.7;
+    let hold = 0, val = 0;
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR;
+      if (hold-- <= 0) { hold = Math.floor(SR / (200 + 1800 * Math.abs(rand()))); val = rand(); }
+      const gate = Math.sin(x * 60) > -0.2 ? 1 : 0.2;
+      const v = (val * 0.5 + Math.sin(2 * Math.PI * 90 * x) * 0.4) * gate * Math.exp(-x * 3.5) * g;
+      add(buf, n, v, v * 0.8);
+    }
+  },
+  // energy draining (falling tone)
+  powerdown(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR), dur = 1.6; let ph = 0;
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR, k = x / dur; ph += (420 * Math.pow(0.25, k)) / SR;
+      const v = (Math.sin(2 * Math.PI * ph) + 0.3 * Math.sin(6 * Math.PI * ph)) * Math.min(1, x / 0.05) * (1 - k) * g * 0.5;
+      add(buf, n, v, v);
+    }
+  },
+  // energy returning (rising shimmer)
+  powerup(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR), dur = 2.2;
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR, k = x / dur, f = 220 * Math.pow(3, k);
+      let v = 0; [1, 1.5, 2].forEach((m, i) => { v += Math.sin(2 * Math.PI * f * m * x) / (i + 1.5); });
+      v *= smooth(k / 0.3) * (1 - smooth((k - 0.75) / 0.25)) * g * 0.35;
+      add(buf, n, v, v);
+    }
+  },
+  // pop-back-up boing
+  boing(buf, t0, g) {
+    const s0 = Math.floor(t0 * SR); let ph = 0;
+    for (let n = s0; n < Math.min(N, s0 + SR * 0.6); n++) {
+      const x = (n - s0) / SR; ph += (220 + 180 * Math.sin(x * 38) * Math.exp(-x * 5) + 160 * x) / SR;
+      const v = Math.sin(2 * Math.PI * ph) * Math.exp(-x * 5) * Math.min(1, x / 0.01) * g * 0.7;
+      add(buf, n, v, v);
+    }
+  },
+  // big stamp: thump + slap
+  stamp(buf, t0, g) {
+    SFX.thud(buf, t0, g * 0.9);
+    const s0 = Math.floor(t0 * SR), bp = biquadBP();
+    for (let n = s0; n < Math.min(N, s0 + SR * 0.25); n++) { const x = (n - s0) / SR, v = bp(rand(), 1500, 0.7) * Math.exp(-x * 25) * g * 1.2; add(buf, n, v, v); }
+  },
+  // clock ticking that speeds up
+  clock(buf, t0, g) {
+    let t = t0, gap = 0.5;
+    for (let i = 0; i < 26 && t < t0 + 4.2; i++) {
+      const s0 = Math.floor(t * SR), f = i % 2 ? 2400 : 1800;
+      for (let n = s0; n < Math.min(N, s0 + SR * 0.03); n++) { const x = (n - s0) / SR, v = Math.sin(2 * Math.PI * f * x) * Math.exp(-x * 180) * g * 0.8; add(buf, n, v, v); }
+      t += gap; gap = Math.max(0.08, gap * 0.82);
+    }
+  },
+  // calendar page flips
+  flip(buf, t0, g) {
+    for (let i = 0; i < 3; i++) {
+      const s0 = Math.floor((t0 + 0.25 + i * 0.4) * SR), bp = biquadBP();
+      for (let n = s0; n < Math.min(N, s0 + SR * 0.16); n++) { const x = (n - s0) / SR, v = bp(rand(), 3000 + 2000 * x * 6, 1.1) * Math.sin(Math.PI * x / 0.16) * g * 0.8; add(buf, n, v * 0.8, v); }
+    }
+  },
   // disorienting "wom": low tone bending down with vibrato
   wobble(buf, t0, g) {
     const s0 = Math.floor(t0 * SR); let ph = 0;
@@ -314,7 +521,7 @@ const SFX = {
 
 function buildSfx() {
   const bus = stereo();
-  for (const s of SB.sfx) SFX[s.id](bus, s.at, s.gain * (AU.sfxGain ?? 1));
+  for (const s of (EP ? EP.sfx : SB.sfx)) SFX[s.id](bus, s.at, s.gain * (AU.sfxGain ?? 1));
   mixInto(bus, reverb(bus, { room: 0.78, damp: 0.5, wet: 0.35 }), 1);
   return bus;
 }
@@ -337,7 +544,7 @@ function readWav(file) {
 function buildVoice() {
   const bus = stereo(), spans = [];
   for (const line of SB.voiceover) {
-    const f = path.join(ROOT, 'audio', 'voiceover', `${line.id}.wav`);
+    const f = path.join(VOICE_DIR, `${line.id}.wav`);
     if (!fs.existsSync(f)) { console.warn(`  (missing ${line.id}.wav — run npm run voiceover)`); continue; }
     const { sr, x } = readWav(f);
     const ratio = sr / SR, len = Math.floor(x.length / ratio), s0 = Math.floor(line.at * SR);
@@ -370,7 +577,7 @@ function writeWav(file, buf, gain = 1) {
 const peak = (buf) => { let p = 0; for (const ch of buf) for (const v of ch) p = Math.max(p, Math.abs(v)); return p; };
 
 // ---------------------------------------------------------------- MIX
-console.log('building music…');  const music = buildMusic();
+console.log('building music…');  const music = EP ? buildEpisodeMusic(EP.music) : buildMusic();
 console.log('building sfx…');    const sfx = buildSfx();
 console.log('placing voice…');   const { bus: voice, spans } = buildVoice();
 
@@ -389,6 +596,11 @@ for (let n = 0; n < N; n++) {
   const master = (AU.masterGain ?? 0.9) * smooth(t / fadeIn) * (1 - smooth((t - (DUR - fadeOut)) / fadeOut) * 0.85);
   for (let c = 0; c < 2; c++) mix[c][n] = (music[c][n] * mg + sfx[c][n] * (AU.sfxGain ?? 1) + voice[c][n]) * master;
 }
+// episodes: lift towards ~-16 LUFS with a soft knee limiter (the intro keeps its original mix)
+if (EP) {
+  const drive = AU.episodeDrive ?? 1.3;
+  for (const ch of mix) for (let n = 0; n < N; n++) { const v = ch[n] * drive, a = Math.abs(v); ch[n] = a < 0.8 ? v : Math.sign(v) * (0.8 + 0.18 * Math.tanh((a - 0.8) / 0.18)); }
+}
 // gentle bus limiter
 const p = peak(mix);
 const lim = p > 0.95 ? 0.95 / p : 1;
@@ -397,4 +609,4 @@ writeWav(path.join(OUT, 'music.wav'), music);
 writeWav(path.join(OUT, 'sfx.wav'), sfx);
 writeWav(path.join(OUT, 'voice.wav'), voice);
 writeWav(path.join(OUT, 'mix.wav'), mix, lim);
-console.log(`done → audio/generated/mix.wav  (peak ${(p * lim).toFixed(2)}, VO spans ${spans.map(([a, b]) => `${a.toFixed(2)}–${b.toFixed(2)}s`).join(', ')})`);
+console.log(`done → ${path.relative(ROOT, OUT)}/mix.wav  (peak ${(p * lim).toFixed(2)}, VO spans ${spans.map(([a, b]) => `${a.toFixed(2)}–${b.toFixed(2)}s`).join(', ')})`);

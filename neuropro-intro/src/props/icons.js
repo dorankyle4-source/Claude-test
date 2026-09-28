@@ -24,6 +24,19 @@ const GLYPHS = {
       h('path', { d: 'M-24,6 C-34,6 -34,-10 -22,-10 C-22,-24 -2,-28 4,-16 C10,-26 28,-20 26,-6 C36,-4 34,10 24,10 L-22,10Z', fill: '#9DB0C8' })),
     h('path', { id: 'f1', d: 'M-26,20 L20,20', stroke: '#B8C7D9', 'stroke-width': 4.5, 'stroke-linecap': 'round' }),
     h('path', { id: 'f2', d: 'M-14,29 L26,29', stroke: '#CDD8E5', 'stroke-width': 4.5, 'stroke-linecap': 'round' })),
+  fatigue: (c) => h('g', {},
+    h('rect', { x: -26, y: -14, width: 44, height: 28, rx: 6, fill: 'none', stroke: c.ink, 'stroke-width': 4 }),
+    h('rect', { x: 19, y: -6, width: 6, height: 12, rx: 2, fill: c.ink }),
+    h('rect', { id: 'g', x: -21, y: -9, width: 10, height: 18, rx: 3, fill: c.coral }),
+    h('text', { id: 'z', x: 16, y: -20, 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 16, fill: c.violet }, 'z')),
+  memory: (c) => h('g', {},
+    h('path', { d: 'M-24,10 C-34,10 -34,-8 -22,-8 C-22,-24 0,-28 6,-16 C14,-26 32,-20 28,-4 C38,0 34,14 24,14 L-8,14 L-16,24 L-14,14 Z', fill: 'none', stroke: c.teal, 'stroke-width': 4, 'stroke-linejoin': 'round' }),
+    h('text', { id: 'g', x: 0, y: 9, 'text-anchor': 'middle', 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 24, fill: c.navy }, '?')),
+  lightNoise: (c) => h('g', {},
+    h('g', { id: 'g', transform: 'translate(-12 0)' },
+      h('circle', { r: 9, fill: c.amber }),
+      h('path', { d: [0, 60, 120, 180, 240, 300].map((a) => { const r = (a * Math.PI) / 180; return `M${(Math.cos(r) * 13).toFixed(1)},${(Math.sin(r) * 13).toFixed(1)} L${(Math.cos(r) * 19).toFixed(1)},${(Math.sin(r) * 19).toFixed(1)}`; }).join(' '), stroke: c.amber, 'stroke-width': 3.5, 'stroke-linecap': 'round' })),
+    h('path', { id: 'w', d: 'M14,-10 q7,10 0,20 M22,-17 q12,17 0,34', fill: 'none', stroke: c.sky, 'stroke-width': 3.5, 'stroke-linecap': 'round' })),
   concentration: (c) => h('g', {},
     h('circle', { r: 24, fill: 'none', stroke: c.coral, 'stroke-width': 3.5, opacity: 0.9 }),
     h('circle', { r: 13, fill: 'none', stroke: c.coral, 'stroke-width': 3.5, opacity: 0.55 }),
@@ -52,6 +65,7 @@ export function createIcons(brand, list, showLabels = true, prefix = 'ic-') {
       const $ = (n) => root.querySelector(`#${prefix}${n}`);
       const els = Object.fromEntries(list.map((ic) => [ic.id, {
         root: $(ic.id), g: $(`${ic.id}-g`), ring: $(`${ic.id}-ring`), f1: $(`${ic.id}-f1`), f2: $(`${ic.id}-f2`), label: $(`${ic.id}-label`),
+        z: $(`${ic.id}-z`), w: $(`${ic.id}-w`),
       }]));
       /** states: { [id]: { x, y, sx, sy, opacity, labelOpacity } }, t */
       return (states, t) => {
@@ -72,6 +86,17 @@ export function createIcons(brand, list, showLabels = true, prefix = 'ic-') {
             e.g.setAttribute('transform', tr(Math.sin(t * 2.1) * 5, 0));
             e.f1.setAttribute('transform', tr(Math.sin(t * 2.6 + 1) * 6, 0));
             e.f2.setAttribute('transform', tr(Math.sin(t * 2.3 + 2.4) * 7, 0));
+          }
+          if (ic.id === 'fatigue') {
+            e.g.setAttribute('opacity', (0.55 + 0.45 * Math.abs(Math.sin(t * 2.5))).toFixed(2));
+            const zk = (t * 0.8) % 1;
+            e.z.setAttribute('transform', tr(zk * 8, -zk * 10));
+            e.z.setAttribute('opacity', Math.sin(zk * Math.PI).toFixed(2));
+          }
+          if (ic.id === 'memory') e.g.setAttribute('transform', rot(Math.sin(t * 3) * 12, 0, 0));
+          if (ic.id === 'lightNoise') {
+            e.g.setAttribute('transform', `translate(-12 0) ${rot(t * 40)}`);
+            e.w.setAttribute('opacity', (0.5 + 0.5 * Math.abs(Math.sin(t * 5))).toFixed(2));
           }
           if (ic.id === 'concentration') e.g.setAttribute('transform', tr(fnoise(t * 1.6, 5) * 20, fnoise(t * 1.6, 9) * 20));
         }

@@ -2,15 +2,20 @@
   "name": "neuropro-intro",
   "version": "0.1.0",
   "private": true,
-  "description": "NeuroPro animated series — 10-second style-test intro",
+  "description": "NeuroPro animated series \u2014 10-second style-test intro",
   "type": "module",
   "scripts": {
     "preview": "node scripts/serve.mjs",
-    "audio": "node scripts/build-audio.mjs",
     "voiceover": "python3 scripts/voiceover.py",
+    "audio": "node scripts/build-audio.mjs",
     "render": "node scripts/render.mjs",
     "stills": "node scripts/stills.mjs",
-    "build": "npm run audio && npm run render && npm run stills"
+    "build": "npm run audio && npm run render && npm run stills",
+    "ep01:voiceover": "python3 scripts/voiceover.py --comp ep01",
+    "ep01:audio": "node scripts/build-audio.mjs --comp ep01",
+    "ep01:render": "node scripts/render.mjs --comp ep01",
+    "ep01:captions": "node scripts/captions.mjs --comp ep01",
+    "ep01:build": "npm run ep01:audio && npm run ep01:render && npm run ep01:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",
