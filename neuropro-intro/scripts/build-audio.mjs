@@ -552,11 +552,63 @@ const SFX = {
       add(buf, n, v, v);
     }
   },
+  // ---- Episode 4: coffee shop (each takes s.dur and stops with a fast release → the "sudden calm")
+  // café ambience: low room murmur + occasional cup clinks
+  cafe(buf, t0, g, s) {
+    const dur = s?.dur ?? 4, s0 = Math.floor(t0 * SR), bp = biquadBP(), bp2 = biquadBP();
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR, env = Math.min(1, x / 0.4) * Math.min(1, (dur - x) / 0.25);
+      const nz = rand(), v = (bp(nz, 420 + 60 * Math.sin(x * 2.3), 1.5) * 0.9 + bp2(nz, 1300, 3) * 0.35) * env * g * (0.8 + 0.2 * Math.sin(x * 3.1));
+      add(buf, n, v * 0.9, v);
+    }
+    for (let k = 0; k < dur / 0.9; k++) {                                   // clinks
+      const st = s0 + Math.floor((0.3 + k * 0.9 + (k % 3) * 0.23) * SR), f = [2800, 3300, 2500][k % 3], [l, r] = panLR(((k % 5) - 2) * 0.35);
+      if ((st - s0) / SR > dur - 0.2) break;
+      for (let n = st; n < Math.min(N, st + SR * 0.25); n++) { const x = (n - st) / SR, v = (Math.sin(2 * Math.PI * f * x) + 0.5 * Math.sin(2 * Math.PI * f * 2.7 * x)) * Math.exp(-x * 26) * g * 0.22; add(buf, n, v * l, v * r); }
+    }
+  },
+  // fluorescent-light hum (mains buzz with harmonics)
+  hum(buf, t0, g, s) {
+    const dur = s?.dur ?? 3, s0 = Math.floor(t0 * SR);
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR, env = Math.min(1, x / 0.3) * Math.min(1, (dur - x) / 0.06);
+      let v = 0; for (let hN = 1; hN <= 6; hN++) v += Math.sin(2 * Math.PI * 120 * hN * x) / hN;
+      v = Math.tanh(v * 1.5) * env * g * 0.18 * (1 + 0.15 * Math.sin(x * 9));
+      add(buf, n, v, v);
+    }
+  },
+  // espresso steam wand: loud high hiss with gurgle
+  espresso(buf, t0, g, s) {
+    const dur = s?.dur ?? 3, s0 = Math.floor(t0 * SR), bp = biquadBP(), bp2 = biquadBP();
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR, env = Math.min(1, x / 0.15) * Math.min(1, (dur - x) / 0.06);
+      const nz = rand(), gur = 0.5 + 0.5 * Math.sin(2 * Math.PI * (7 + 3 * Math.sin(x)) * x);
+      const v = (bp(nz, 5200, 0.7) * 0.8 + bp2(nz, 900, 4) * 0.5 * gur) * env * g;
+      add(buf, n, v * 1.0, v * 0.7);
+    }
+  },
+  // blender: motor whine with a rough, rising pitch
+  blender(buf, t0, g, s) {
+    const dur = s?.dur ?? 3, s0 = Math.floor(t0 * SR), bp = biquadBP(); let ph = 0;
+    for (let n = s0; n < Math.min(N, s0 + SR * dur); n++) {
+      const x = (n - s0) / SR, env = Math.min(1, x / 0.2) * Math.min(1, (dur - x) / 0.06);
+      ph += (180 + 90 * Math.min(1, x / 0.6) + 12 * Math.sin(x * 11)) / SR;
+      const saw = 2 * (ph % 1) - 1, v = (Math.tanh(saw * 3) * 0.35 + bp(rand(), 2400, 1.2) * 0.5) * env * g * 0.7;
+      add(buf, n, v * 0.7, v);
+    }
+  },
+  // a big dial being turned down: ratchet clicks
+  knob(buf, t0, g) {
+    for (let k = 0; k < 8; k++) {
+      const st = Math.floor((t0 + k * 0.085) * SR), bp = biquadBP(), f = 2600 - k * 90;
+      for (let n = st; n < Math.min(N, st + SR * 0.05); n++) { const x = (n - st) / SR, v = (bp(rand(), f, 3) * 1.2 + Math.sin(2 * Math.PI * 900 * x) * 0.4) * Math.exp(-x * 120) * g; add(buf, n, v, v); }
+    }
+  },
 };
 
 function buildSfx() {
   const bus = stereo();
-  for (const s of (EP ? EP.sfx : SB.sfx)) SFX[s.id](bus, s.at, s.gain * (AU.sfxGain ?? 1));
+  for (const s of (EP ? EP.sfx : SB.sfx)) SFX[s.id](bus, s.at, s.gain * (AU.sfxGain ?? 1), s);
   mixInto(bus, reverb(bus, { room: 0.78, damp: 0.5, wet: 0.35 }), 1);
   return bus;
 }

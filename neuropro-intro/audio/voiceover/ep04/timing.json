@@ -1,0 +1,54 @@
+{
+  "l1": {
+    "duration": 4.727,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Your brain normally filters and organizes all the information coming in around you.",
+    "cues": {
+      "filters": 1.015,
+      "organizes": 1.627,
+      "information": 2.994
+    }
+  },
+  "l2": {
+    "duration": 4.791,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "After a concussion, that filtering system may not work as efficiently for a while.",
+    "cues": {
+      "filtering system": 1.47,
+      "may not work": 2.387,
+      "for a while": 4.068
+    }
+  },
+  "l3": {
+    "duration": 4.348,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "So light, sound, and other sensory information can feel much more intense.",
+    "cues": {
+      "light": 0.46,
+      "sound": 0.73,
+      "other sensory": 1.35,
+      "much more intense": 3.295
+    }
+  },
+  "l4": {
+    "duration": 3.815,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Sensitivity to light and sound can be a real concussion symptom.",
+    "cues": {
+      "real": 2.336
+    }
+  },
+  "l5": {
+    "duration": 4.486,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Understanding what's happening is an important part of understanding recovery.",
+    "cues": {
+      "important part": 1.717
+    }
+  }
+}

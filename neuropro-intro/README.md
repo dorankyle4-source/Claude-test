@@ -1,12 +1,13 @@
 # NeuroPro — Animated Series
 
-Two productions share one codebase, one cast and one set:
+All productions share one codebase, one cast and one set:
 
 | | Length | File |
 |---|---|---|
 | **Episode 1 — What Is a Concussion?** | 85 s | `output/ep01-what-is-a-concussion.mp4` (+ `.srt` captions) |
 | **Episode 2 — Why Do I Still Feel Bad After a Concussion?** | 81 s | `output/ep02-why-do-i-still-feel-bad.mp4` (+ `.srt` captions) |
 | **Episode 3 — What Is Brain Fog?** | 82 s | `output/ep03-what-is-brain-fog.mp4` (+ `.srt` captions) |
+| **Episode 4 — Why Does Everything Feel So Loud?** | 47.5 s | `output/ep04-why-does-everything-feel-so-loud.mp4` (16:9) · `…-vertical.mp4` (9:16) · `.srt` |
 | Series intro (style test) | 10 s | `output/neuropro-intro.mp4` |
 
 ## Episode 1 — What Is a Concussion?
@@ -54,6 +55,23 @@ Same mascot, studio, neuron view, badge and end card as Episodes 1–2, plus new
 | 1:06–1:22 | What helps + end card | ONE TASK · TAKE BREAKS · LISTEN TO YOUR SYMPTOMS, the NeuroPro badge, a thumbs up, then the end card with *"Your brain deserves answers."* |
 
 Build with `npm run ep03:build`.
+
+## Episode 4 — Why Does Everything Feel So Loud?
+
+A short episode (47.5 s) for YouTube Shorts, Instagram Reels, TikTok and the website. Same Brain, badge, palette and end card as Episodes 1–3. It adds a new coffee-shop set (`cafe.js`), an inside-the-brain sensory-filter scene (`filter.js`) and a volume knob (`knob.js`).
+
+| Time | Section | What happens |
+|---|---|---|
+| 0:00–0:07 | Hook | The Brain walks into a café. The lamps glare, the espresso wand hisses, chatter bubbles multiply, the blender whirs and a phone banner dings. The Brain freezes and covers its ears: *"Why does EVERYTHING feel so intense?"* |
+| 0:07–0:15 | The filter | Inside the brain, light, sound, movement and conversation packets reach a SENSORY FILTER. IMPORTANT → LET THROUGH; BACKGROUND NOISE → TURN DOWN (it drops to a tray). |
+| 0:15–0:27 | After a concussion | Packets arrive faster and bigger, the filter flickers and most of them get through. The tags LIGHT → BRIGHT, SOUND → LOUD, MOVEMENT → DISTRACTING and CONVERSATIONS → OVERLAPPING appear, along with "For some people, for a while." The knob jumps from NORMAL to TOO MUCH. |
+| 0:27–0:34 | The visual joke | Back in the loud café, a giant volume knob appears over the Brain's head. The NeuroPro badge flies in and clicks it down to NORMAL. Everything goes quiet at once, then "ahh…" and a knowing smile. |
+| 0:34–0:43 | Takeaway | A teal wipe leads to the Brain sitting comfortably at a café table. Two cards: "Light & sound sensitivity can be a **real** concussion symptom" and "Understanding what's happening is an important part of recovery". |
+| 0:43–0:48 | End card | Logo, "Concussion & Brain Health", *"Understand the brain. Improve the outcome."*, the episode title and the disclaimer. |
+
+The sound follows the picture. Café ambience builds layer by layer (hum, espresso, chatter, blender, phone), is cut off with a fast release when the knob turns, and a quiet room tone and a calm music section follow. The vertical cut (`scripts/vertical.mjs`) uses a branded top band, the full episode at full width, and large burned-in captions for muted playback.
+
+Build with `npm run ep04:build` (audio → render → captions → vertical).
 
 # Series intro (10-second style test)
 

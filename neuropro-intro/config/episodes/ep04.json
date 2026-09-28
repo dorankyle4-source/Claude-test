@@ -1,0 +1,133 @@
+{
+  "_note": "Episode 4 master timeline. 'at' = narration start (s). Cue words measured by `npm run ep04:voiceover`.",
+  "title": "Episode 4 — Why Does Everything Feel So Loud?",
+  "duration": 47.5,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "captions": false,
+  "sections": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 6.6,
+      "title": "The hook",
+      "beats": {
+        "walkEnd": 1.9,
+        "lights": 2.0,
+        "espresso": 2.45,
+        "talk": 2.9,
+        "blender": 3.35,
+        "phone": 3.8,
+        "freeze": 2.6,
+        "ears": 3.3,
+        "textIn": 3.9,
+        "textOut": 6.3
+      }
+    },
+    {
+      "id": "filter",
+      "start": 6.6,
+      "end": 15.4,
+      "title": "What's happening?",
+      "beats": {
+        "letThrough": 10.4,
+        "turnDown": 11.2
+      }
+    },
+    {
+      "id": "concussion",
+      "start": 15.4,
+      "end": 27.2,
+      "title": "After a concussion",
+      "beats": {
+        "soundCue": 21.95,
+        "tooMuch": 24.3
+      }
+    },
+    {
+      "id": "knob",
+      "start": 27.2,
+      "end": 33.6,
+      "title": "The visual joke",
+      "beats": {
+        "knobIn": 27.9,
+        "badgeIn": 29.4,
+        "badgeLand": 30.0,
+        "turn": 30.4,
+        "calm": 31.1,
+        "smile": 32.3
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 33.6,
+      "end": 47.5,
+      "title": "Takeaway + end card",
+      "beats": {
+        "wipe": 33.6,
+        "iris": 42.7,
+        "markLand": 43.3,
+        "wordmark": 43.3,
+        "subtitle": 43.8,
+        "quote": 44.3,
+        "episode": 44.9
+      }
+    }
+  ],
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 7.2,
+      "text": "Your brain normally filters and organizes all the information coming in around you.",
+      "cues": [
+        "filters",
+        "organizes",
+        "information"
+      ]
+    },
+    {
+      "id": "l2",
+      "at": 15.8,
+      "text": "After a concussion, that filtering system may not work as efficiently for a while.",
+      "cues": [
+        "filtering system",
+        "may not work",
+        "for a while"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 21.2,
+      "text": "So light, sound, and other sensory information can feel much more intense.",
+      "cues": [
+        "light",
+        "sound",
+        "other sensory",
+        "much more intense"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 34.0,
+      "text": "Sensitivity to light and sound can be a real concussion symptom.",
+      "cues": [
+        "real"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 38.0,
+      "text": "Understanding what's happening is an important part of understanding recovery.",
+      "cues": [
+        "important part"
+      ]
+    }
+  ],
+  "endCard": {
+    "subtitle": "Concussion & Brain Health",
+    "quote": "Understand the brain. Improve the outcome.",
+    "episode": "Episode 4 · Why Does Everything Feel So Loud?",
+    "disclaimer": "For education only. Not a substitute for professional medical advice."
+  }
+}

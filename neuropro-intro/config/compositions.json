@@ -37,5 +37,16 @@
     "audioDir": "audio/generated/ep03",
     "output": "output/ep03-what-is-brain-fog.mp4",
     "captions": "output/ep03-what-is-brain-fog.srt"
+  },
+  "ep04": {
+    "title": "Episode 4 — Why Does Everything Feel So Loud?",
+    "storyboard": "config/episodes/ep04.json",
+    "stage": "src/episodes/ep04/main.js",
+    "timeline": "src/episodes/ep04/timeline.js",
+    "voiceDir": "audio/voiceover/ep04",
+    "audioDir": "audio/generated/ep04",
+    "output": "output/ep04-why-does-everything-feel-so-loud.mp4",
+    "captions": "output/ep04-why-does-everything-feel-so-loud.srt",
+    "vertical": "output/ep04-why-does-everything-feel-so-loud-vertical.mp4"
   }
 }
