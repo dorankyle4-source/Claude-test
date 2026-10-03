@@ -46,7 +46,12 @@
     "lifted:audio": "node scripts/build-audio.mjs --comp lifted",
     "lifted:render": "node scripts/render.mjs --comp lifted",
     "lifted:captions": "node scripts/captions.mjs --comp lifted",
-    "lifted:build": "npm run lifted:audio && npm run lifted:render && npm run lifted:captions"
+    "lifted:build": "npm run lifted:audio && npm run lifted:render && npm run lifted:captions",
+    "nonantum:voiceover": "python3 scripts/voiceover.py --comp nonantum",
+    "nonantum:audio": "node scripts/build-audio.mjs --comp nonantum",
+    "nonantum:render": "node scripts/render.mjs --comp nonantum",
+    "nonantum:captions": "node scripts/captions.mjs --comp nonantum",
+    "nonantum:build": "npm run nonantum:audio && npm run nonantum:render && npm run nonantum:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",

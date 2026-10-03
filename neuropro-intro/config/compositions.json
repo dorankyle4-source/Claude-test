@@ -78,5 +78,15 @@
     "audioDir": "audio/generated/lifted",
     "output": "output/lifted-trucks-2026-ytd.mp4",
     "captions": "output/lifted-trucks-2026-ytd.srt"
+  },
+  "nonantum": {
+    "title": "Nonantum Capital Partners: 2026 Annual Meeting",
+    "storyboard": "config/episodes/nonantum.json",
+    "stage": "src/episodes/nonantum/main.js",
+    "timeline": "src/episodes/nonantum/timeline.js",
+    "voiceDir": "audio/voiceover/nonantum",
+    "audioDir": "audio/generated/nonantum",
+    "output": "output/nonantum-2026-annual-meeting.mp4",
+    "captions": "output/nonantum-2026-annual-meeting.srt"
   }
 }

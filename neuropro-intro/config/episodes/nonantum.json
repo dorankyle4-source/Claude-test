@@ -1,0 +1,103 @@
+{
+  "_note": "Nonantum Capital Partners 2026 annual meeting YTD update (theoretical). 'at' = narration start (s). Firm facts and deals are from public press releases; portfolio performance and fund multiples are illustrative placeholders; Lifted Trucks figures are the operating dashboard's estimates.",
+  "title": "Nonantum Capital Partners: 2026 Annual Meeting",
+  "duration": 77,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voice": "af_heart",
+  "voiceSpeed": 1.0,
+  "sections": [],
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 1.4,
+      "text": "Welcome to the Nonantum Capital Partners annual meeting. Here's our update on the portfolio, year to date.",
+      "cues": [
+        "year to date"
+      ]
+    },
+    {
+      "id": "l2",
+      "at": 8.7,
+      "text": "Since twenty eighteen, our partners have committed about one billion dollars across two funds, backing founder-owned businesses, corporate carve-outs, and complex situations.",
+      "cues": [
+        "one billion",
+        "founder-owned",
+        "carve-outs",
+        "complex"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 20.0,
+      "text": "Today that's twelve platform investments, across consumer, industrials, and business services.",
+      "cues": [
+        "twelve",
+        "consumer",
+        "industrials",
+        "business services"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 26.8,
+      "text": "Twenty twenty-six has been active. We welcomed Flatiron Search Partners in January, and RoadOne added Higgins Transport at the Port of Charleston.",
+      "cues": [
+        "Flatiron",
+        "RoadOne"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 36.8,
+      "text": "Across the portfolio, revenue is up fourteen percent year to date, and EBITDA is up seventeen, with nine add-on acquisitions closed.",
+      "cues": [
+        "fourteen",
+        "seventeen",
+        "nine"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 46.1,
+      "text": "Fund One stands at two point one times invested capital, and Fund Two at one point four.",
+      "cues": [
+        "two point one",
+        "Fund Two",
+        "one point four"
+      ]
+    },
+    {
+      "id": "l7",
+      "at": 52.3,
+      "text": "One standout: Lifted Trucks has sold more than six thousand four hundred trucks this year, up thirty-seven percent, and opened five new stores.",
+      "cues": [
+        "Lifted Trucks",
+        "six thousand",
+        "thirty-seven",
+        "five new"
+      ]
+    },
+    {
+      "id": "l8",
+      "at": 61.7,
+      "text": "For the rest of the year, we're focused on add-ons, cash conversion, and preparing Fund One for realizations.",
+      "cues": [
+        "add-ons",
+        "cash conversion",
+        "realizations"
+      ]
+    },
+    {
+      "id": "l9",
+      "at": 69.3,
+      "text": "Thank you for your continued partnership.",
+      "cues": []
+    }
+  ],
+  "endCard": {
+    "thanks": "Thank you for your partnership",
+    "source": "Firm history and transactions from public announcements. Portfolio performance and fund multiples are illustrative. Lifted Trucks figures are estimates."
+  }
+}

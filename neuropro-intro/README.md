@@ -73,6 +73,25 @@ The sound follows the picture. Café ambience builds layer by layer (hum, espres
 
 Build with `npm run ep04:build` (audio → render → captions → vertical).
 
+# Nonantum Capital Partners: 2026 Annual Meeting (theoretical)
+
+A 77-second LP annual-meeting update in the same style. **Firm history (founded 2018, Boston; Fund I $385M+, Fund II $625M+) and the deals shown are from public announcements. Portfolio performance (+14% revenue, +17% EBITDA, 9 add-ons) and fund multiples (2.1x, 1.4x) are illustrative placeholders, tagged ILLUSTRATIVE on screen. Lifted Trucks figures are the operating dashboard's estimates.** The wordmark is typographic in a navy, ivory and gold palette; the firm's logo wasn't reachable from this environment.
+
+**Watch:** `output/nonantum-2026-annual-meeting.mp4` (1920×1080, 30 fps) · captions `output/nonantum-2026-annual-meeting.srt`
+
+| Time | Scene | What happens |
+|---|---|---|
+| 0:00–0:08 | Open | Wordmark, *2026 Annual Meeting*, "Year-to-date portfolio update". |
+| 0:08–0:20 | The firm | $1.0B committed: Fund I (2018) and Fund II (2022) bars, plus the three strategies (founder-owned, carve-outs, complex situations). |
+| 0:20–0:26 | Portfolio | Twelve platform cards (ProVest, RoadOne, Ross-Simons, Christianbook, Lifted Trucks, Helix, Team Drive-Away, LJP, PNE, Momentum Environmental, MSI Express, Flatiron), highlighted by sector as each is named. |
+| 0:26–0:36 | 2026 so far | Timeline: Flatiron Search Partners (January), and RoadOne acquiring Higgins Transport (August). |
+| 0:36–0:46 | Portfolio performance | Illustrative: +14% revenue, +17% EBITDA, 9 add-ons. |
+| 0:46–0:52 | Fund performance | Illustrative MOIC: Fund I 2.1x, Fund II 1.4x. |
+| 0:52–1:01 | Spotlight | Lifted Trucks, in its own branding: 6,445 trucks, +37%, 5 new stores. |
+| 1:01–1:17 | Priorities + end card | Add-ons, cash conversion, Fund I realizations, then "Thank you for your partnership". |
+
+Files: `config/episodes/nonantum.json`, `src/episodes/nonantum/`. Build with `npm run nonantum:build`. Replace the illustrative values in `scenes.js` (`perf`, `funds`) and the narration lines l5/l6 with reported figures before any real use.
+
 # Lifted Trucks 2026 Year to Date (theoretical)
 
 A 72-second YTD video in the same style as the NeuroPro YTD, branded for Lifted Trucks: their logo (white background removed, `assets/lifted/lifted-trucks-logo-transparent.png`), a showroom photo, charcoal/chrome/orange, and Oswald + Public Sans as in their board deck. **All figures are the estimates in the Lifted Trucks Operating Dashboard (illustrative, built from the FY2023 board deck baseline), not actual results.** The opening and end card both say so.
