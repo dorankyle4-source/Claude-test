@@ -1,13 +1,13 @@
 1
-00:00:01,400 --> 00:00:03,848
+00:00:01,400 --> 00:00:03,898
 Welcome to the Nonantum Capital Partners
 
 2
-00:00:03,868 --> 00:00:06,316
+00:00:03,918 --> 00:00:06,415
 annual meeting. Here's our update on the
 
 3
-00:00:06,336 --> 00:00:07,797
+00:00:06,435 --> 00:00:07,926
 portfolio, year to date.
 
 4
@@ -75,50 +75,70 @@ and EBITDA is up seventeen,
 with nine add-on acquisitions closed.
 
 20
-00:00:46,100 --> 00:00:48,422
-Fund One stands at two point one times
+00:00:46,100 --> 00:00:48,467
+Here's how seven of our companies are
 
 21
-00:00:48,442 --> 00:00:50,702
-invested capital, and Fund Two at one
+00:00:48,487 --> 00:00:51,048
+tracking. Helix and Momentum are running
 
 22
-00:00:50,722 --> 00:00:51,380
-point four.
+00:00:51,068 --> 00:00:53,693
+ahead of plan, Lifted Trucks grew revenue
 
 23
-00:00:52,300 --> 00:00:54,762
-One standout: Lifted Trucks has sold more
+00:00:53,713 --> 00:00:56,338
+forty percent, and we're watching margins
 
 24
-00:00:54,782 --> 00:00:57,304
-than six thousand four hundred trucks this
+00:00:56,358 --> 00:00:58,338
+at MSI Express and Ross-Simons.
 
 25
-00:00:57,324 --> 00:00:59,121
-year, up thirty-seven percent,
+00:00:59,300 --> 00:01:01,622
+Fund One stands at two point one times
 
 26
-00:00:59,141 --> 00:01:00,755
-and opened five new stores.
+00:01:01,642 --> 00:01:03,902
+invested capital, and Fund Two at one
 
 27
-00:01:01,700 --> 00:01:03,226
-For the rest of the year,
+00:01:03,922 --> 00:01:04,580
+point four.
 
 28
-00:01:03,246 --> 00:01:04,771
-we're focused on add-ons,
+00:01:05,500 --> 00:01:07,962
+One standout: Lifted Trucks has sold more
 
 29
-00:01:04,791 --> 00:01:07,182
-cash conversion, and preparing Fund One
+00:01:07,982 --> 00:01:10,504
+than six thousand four hundred trucks this
 
 30
-00:01:07,202 --> 00:01:08,233
-for realizations.
+00:01:10,524 --> 00:01:12,321
+year, up thirty-seven percent,
 
 31
-00:01:09,300 --> 00:01:11,250
+00:01:12,341 --> 00:01:13,955
+and opened five new stores.
+
+32
+00:01:14,900 --> 00:01:16,426
+For the rest of the year,
+
+33
+00:01:16,446 --> 00:01:17,971
+we're focused on add-ons,
+
+34
+00:01:17,991 --> 00:01:20,382
+cash conversion, and preparing Fund One
+
+35
+00:01:20,402 --> 00:01:21,433
+for realizations.
+
+36
+00:01:22,500 --> 00:01:24,450
 Thank you for your continued partnership.
 
