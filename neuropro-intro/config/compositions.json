@@ -68,5 +68,15 @@
     "audioDir": "audio/generated/ytd",
     "output": "output/neuropro-2026-ytd.mp4",
     "captions": "output/neuropro-2026-ytd.srt"
+  },
+  "lifted": {
+    "title": "Lifted Trucks 2026 Year to Date",
+    "storyboard": "config/episodes/lifted.json",
+    "stage": "src/episodes/lifted/main.js",
+    "timeline": "src/episodes/lifted/timeline.js",
+    "voiceDir": "audio/voiceover/lifted",
+    "audioDir": "audio/generated/lifted",
+    "output": "output/lifted-trucks-2026-ytd.mp4",
+    "captions": "output/lifted-trucks-2026-ytd.srt"
   }
 }

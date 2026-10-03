@@ -24,7 +24,7 @@ export async function createStage(svg, comp = 'adp') {
   svg.innerHTML = [
     h('defs', {}, h('pattern', { id: 'grainPat', width: 256, height: 256, patternUnits: 'userSpaceOnUse' }, h('image', { id: 'grainImg', width: 256, height: 256 }))),
     h('rect', { width: W, height: H, fill: C.navy }),
-    ...scenes.map((s) => h('g', { id: `cam-${s.id}`, visibility: 'hidden' }, s.markup)),
+    ...scenes.map((s) => h('g', { id: `cam-${s.id}`, display: 'none' }, s.markup)),
     // scene wipe: ADP red leading edge, navy panel
     h('g', { id: 'wipe', visibility: 'hidden' },
       h('polygon', { points: '40,0 170,0 50,1080 -80,1080', fill: C.red }),
@@ -48,7 +48,7 @@ export async function createStage(svg, comp = 'adp') {
   function renderFrame(t) {
     scenes.forEach((s, i) => {
       const on = t >= s.from && t < s.to;
-      cams[i].setAttribute('visibility', on ? 'visible' : 'hidden');
+      cams[i].setAttribute('display', on ? 'inline' : 'none'); // display, not visibility: a child's own visibility='visible' would show through
       if (!on) return;
       // slow push-in per scene keeps static layouts alive
       const z = 1 + 0.028 * prog(t, s.from, s.to);

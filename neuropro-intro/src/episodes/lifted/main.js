@@ -1,7 +1,6 @@
-// NeuroPro 2026 year-to-date performance · stage / director.
-// Same engine and motion style as the ADP recap, in NeuroPro's palette, type and logo.
-//   1 open · 2 visits · 3 patients and mix · 4 revenue and margin · 5 per visit · 6 cash
-//   7 act now · 8 clinical team · 9 Q4 outlook · end card
+// Lifted Trucks theoretical 2026 year-to-date · stage / director.
+// Same engine and motion style as the NeuroPro YTD, in Lifted Trucks' logo, colors and type.
+//   1 open · 2 units · 3 footprint · 4 revenue and gross · 5 EBITDA · 6 leads · 7 watch list · 8 FY2027 · end card
 
 import { loadConfig, loadFonts } from '../../engine/config.js';
 import { h, tr } from '../../engine/svg.js';
@@ -10,9 +9,10 @@ import { buildTimeline } from './timeline.js';
 import { W, H, C, makeKit } from './kit.js';
 import { buildScenes } from './scenes.js';
 
-export async function createStage(svg, comp = 'ytd') {
+export async function createStage(svg, comp = 'lifted') {
   const cfg = await loadConfig(comp);
   await loadFonts();
+  await Promise.all(['600 40px Oswald', '700 40px Oswald', "500 40px 'Public Sans'", "600 40px 'Public Sans'", "700 40px 'Public Sans'"].map((f) => document.fonts.load(f)));
   const sb = cfg.storyboard;
   const T = buildTimeline(sb, cfg.timing);
   const K = makeKit(svg);
@@ -21,13 +21,13 @@ export async function createStage(svg, comp = 'ytd') {
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   svg.innerHTML = [
     h('defs', {}, h('pattern', { id: 'grainPat', width: 256, height: 256, patternUnits: 'userSpaceOnUse' }, h('image', { id: 'grainImg', width: 256, height: 256 }))),
-    h('rect', { width: W, height: H, fill: C.navy }),
+    h('rect', { width: W, height: H, fill: C.bg }),
     ...scenes.map((s) => h('g', { id: `cam-${s.id}`, display: 'none' }, s.markup)),
-    // scene wipe: teal leading edge, navy panel
+    // scene wipe: orange leading edge, charcoal panel
     h('g', { id: 'wipe', visibility: 'hidden' },
-      h('polygon', { points: '40,0 170,0 50,1080 -80,1080', fill: C.teal }),
-      h('polygon', { points: '150,0 2700,0 2580,1080 30,1080', fill: C.navy }),
-      h('polygon', { points: '2690,0 2730,0 2610,1080 2570,1080', fill: C.coral })),
+      h('polygon', { points: '40,0 170,0 50,1080 -80,1080', fill: C.orange }),
+      h('polygon', { points: '150,0 2700,0 2580,1080 30,1080', fill: C.bg }),
+      h('polygon', { points: '2690,0 2730,0 2610,1080 2570,1080', fill: C.chrome })),
     h('rect', { id: 'grain', width: W, height: H, fill: 'url(#grainPat)', opacity: 0.04, style: 'mix-blend-mode:overlay', 'pointer-events': 'none' }),
   ].join('');
 

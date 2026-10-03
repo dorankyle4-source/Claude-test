@@ -1,0 +1,88 @@
+{
+  "l1": {
+    "duration": 3.334,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Here's Lifted Trucks' year to date, January through September.",
+    "cues": {
+      "January": 1.88
+    }
+  },
+  "l2": {
+    "duration": 9.884,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "We've sold six thousand four hundred forty-five trucks, up thirty-seven percent on last year. And September was our biggest month yet, at seven hundred seventy-seven.",
+    "cues": {
+      "six thousand": 0.718,
+      "thirty-seven": 3.37,
+      "September": 5.628,
+      "seven hundred seventy-seven": 8.22
+    }
+  },
+  "l3": {
+    "duration": 8.262,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "The footprint keeps growing. Five new stores opened this year, for eighteen dealerships, and Texas and Oklahoma now outsell Arizona.",
+    "cues": {
+      "Five new": 1.313,
+      "eighteen": 3.82,
+      "Texas": 5.27
+    }
+  },
+  "l4": {
+    "duration": 8.064,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Revenue reached five hundred nineteen million dollars, up forty percent, with about ten thousand seven hundred dollars of gross on every truck.",
+    "cues": {
+      "five hundred nineteen": 0.937,
+      "forty percent": 3.27,
+      "ten thousand seven hundred": 4.642
+    }
+  },
+  "l5": {
+    "duration": 6.123,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Adjusted EBITDA is sixteen point seven million, up thirty-six percent, and it's grown every quarter.",
+    "cues": {
+      "sixteen point seven": 1.389,
+      "thirty-six": 3.16,
+      "every quarter": 5.095
+    }
+  },
+  "l6": {
+    "duration": 5.16,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Demand is strong. Leads are up forty-four percent, to more than forty-two thousand.",
+    "cues": {
+      "forty-four": 1.93,
+      "forty-two thousand": 3.658
+    }
+  },
+  "l7": {
+    "duration": 11.691,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Three things to watch. The newest stores are ramping slower than plan. Days supply is fifty-two, against a forty-five day goal. And Texas recon still takes about thirteen days.",
+    "cues": {
+      "newest stores": 1.592,
+      "fifty-two": 5.093,
+      "Texas recon": 8.422
+    }
+  },
+  "l8": {
+    "duration": 7.103,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Next year's plan calls for ten thousand four hundred trucks, and thirty-two million in EBITDA. Let's finish this year strong.",
+    "cues": {
+      "ten thousand four hundred": 1.482,
+      "thirty-two million": 3.44,
+      "finish": 5.846
+    }
+  }
+}

@@ -41,7 +41,12 @@
     "ytd:audio": "node scripts/build-audio.mjs --comp ytd",
     "ytd:render": "node scripts/render.mjs --comp ytd",
     "ytd:captions": "node scripts/captions.mjs --comp ytd",
-    "ytd:build": "npm run ytd:audio && npm run ytd:render && npm run ytd:captions"
+    "ytd:build": "npm run ytd:audio && npm run ytd:render && npm run ytd:captions",
+    "lifted:voiceover": "python3 scripts/voiceover.py --comp lifted",
+    "lifted:audio": "node scripts/build-audio.mjs --comp lifted",
+    "lifted:render": "node scripts/render.mjs --comp lifted",
+    "lifted:captions": "node scripts/captions.mjs --comp lifted",
+    "lifted:build": "npm run lifted:audio && npm run lifted:render && npm run lifted:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",

@@ -73,6 +73,25 @@ The sound follows the picture. Café ambience builds layer by layer (hum, espres
 
 Build with `npm run ep04:build` (audio → render → captions → vertical).
 
+# Lifted Trucks 2026 Year to Date (theoretical)
+
+A 72-second YTD video in the same style as the NeuroPro YTD, branded for Lifted Trucks: their logo (white background removed, `assets/lifted/lifted-trucks-logo-transparent.png`), a showroom photo, charcoal/chrome/orange, and Oswald + Public Sans as in their board deck. **All figures are the estimates in the Lifted Trucks Operating Dashboard (illustrative, built from the FY2023 board deck baseline), not actual results.** The opening and end card both say so.
+
+**Watch:** `output/lifted-trucks-2026-ytd.mp4` (1920×1080, 30 fps) · captions `output/lifted-trucks-2026-ytd.srt`
+
+| Time | Scene | What happens |
+|---|---|---|
+| 0:00–0:05 | Open | Showroom photo push-in, logo, *2026 Year to Date*, "theoretical results". |
+| 0:05–0:16 | Units | Monthly bars Jan 572 to Sep 777 ("Biggest month yet"), 6,445 trucks, +37% vs last year, 7% under budget. |
+| 0:16–0:25 | Footprint | Five 2026 openings (Austin, Oklahoma City, Baytown, San Antonio, Denver), dealership count 13 to 18, Texas & Oklahoma 3,623 vs Arizona 2,225. |
+| 0:25–0:34 | Revenue and gross | $518.9M revenue (+40%), $69.0M gross, ~$10,700 per truck split into front end, F&I and Lift Shop/service/wholesale. |
+| 0:34–0:41 | Adj. EBITDA | $16.7M (+36%), 3.2% margin vs $19.9M budget, quarters $4.6M, $5.9M, $6.2M. |
+| 0:41–0:47 | Leads | Funnel: 42,622 leads (+44%), 17,046 appointments, 11,937 shows, 6,445 sold. |
+| 0:47–1:00 | Watch list | 2026 class ramping slow (~31/mo vs 40+), 52 days supply vs 45, Texas recon 13 days. |
+| 1:00–1:12 | FY2027 + end card | 10,400 trucks, $840M, $32M EBITDA, 1 to 2 openings, then the logo and "Custom trucks since 1995". |
+
+Files: `config/episodes/lifted.json`, `src/episodes/lifted/`. Build with `npm run lifted:build`.
+
 # NeuroPro 2026 Year to Date
 
 A 79-second performance video built from the NeuroPro Clinic Dashboard (TherapyNotes pulled Sep 30, monthly close through August). It uses the same motion style as the ADP recap, in NeuroPro's own palette, type (Manrope + Inter) and real logo. The voice is Kokoro `af_heart`.
