@@ -172,7 +172,7 @@ function perf(K, T) {
   );
   const V = [[14, (v) => `+${Math.round(v)}%`, T.rev], [17, (v) => `+${Math.round(v)}%`, T.ebitda], [9, (v) => String(Math.round(v)), T.addons]];
   return {
-    id: 'perf', from: T.perf, to: T.funds, markup,
+    id: 'perf', from: T.perf, to: T.score, markup,
     update(t) {
       headerIn(K, 'q', t, T.perf + 0.15);
       K.pop('q-tag', 1620, 196, t, T.perf + 0.5, { amount: 0.06 });
@@ -183,6 +183,68 @@ function perf(K, T) {
         K.attr(`q-t${i}-bar`, 'width', (408 * k).toFixed(1));
       });
       K.rise('q-foot', 160, 1010, t, T.perf + 1.0, { dist: 10 });
+    },
+  };
+}
+
+// ------------------------------------------------------------------ 5b · SEVEN-COMPANY SCORECARD (illustrative)
+const SCORE = [
+  ['Helix Traffic Solutions', 'Industrials', 186, 18, 16.1, '2', 'ahead', 'helix'],
+  ['Momentum Environmental', 'Industrials', 98, 34, 15.2, '2', 'ahead', 'momentum'],
+  ['Lifted Trucks', 'Consumer', 519, 40, 3.2, '0', 'budget', 'lifted'],
+  ['RoadOne', 'Industrials', 412, 11, 12.4, '3', 'plan', null],
+  ['PNE', 'Industrials', 142, 9, 13.8, '1', 'plan', null],
+  ['MSI Express', 'Consumer', 221, 7, 10.6, '0', 'watch', 'msi'],
+  ['Ross-Simons', 'Consumer', 268, 4, 9.8, '0', 'watch', 'ross'],
+];
+const STATUS = {
+  ahead: ['Ahead of plan', C.services, C.ink, 'none'], plan: ['On plan', 'none', C.ink2, C.lineL],
+  watch: ['Watch margins', C.gold, C.ink, 'none'], budget: ['Behind budget', 'none', C.goldDeep, C.gold],
+};
+function score(K, T) {
+  const RX = 160, RY0 = 392, RH = 80, COLS = { rev: 700, gr: 790, mg: 1200, ad: 1330, st: 1380 };
+  const head = (s, x, anchor) => txt(s, { x, y: 0, size: 19, weight: 700, fill: C.muteL, anchor, ls: 2 });
+  const markup = h('g', { id: 'sc-score' },
+    bg(C.ivory),
+    ...header('k', 'PORTFOLIO SCORECARD · YEAR TO DATE', 'How seven of our companies are tracking', true),
+    illus('k-tag', true),
+    g('k-cols', head('COMPANY', 24, 'start'), head('REVENUE', COLS.rev, 'end'), head('GROWTH', COLS.gr, 'start'),
+      head('EBITDA %', COLS.mg, 'end'), head('ADD-ONS', COLS.ad, 'end'), head('STATUS', COLS.st, 'start'),
+      h('line', { x1: 0, x2: 1600, y1: 16, y2: 16, stroke: C.lineL, 'stroke-width': 2 })),
+    ...SCORE.map(([n, sec, rev, gr, mg, ad, st], i) => {
+      const [lab, fill, col, strokeC] = STATUS[st];
+      return g(`k-r${i}`,
+        rect({ id: `k-bg${i}`, x: 0, y: 0, width: 1600, height: RH - 8, rx: 12, fill: C.cardL, stroke: C.lineL, 'stroke-width': 1.5 }),
+        rect({ x: 0, y: 0, width: 6, height: RH - 8, rx: 3, fill: sec === 'Consumer' ? C.consumer : C.industrials }),
+        txt(n, { x: 24, y: 34, size: 28, weight: 600, family: SERIF, fill: C.ink }),
+        txt(sec.toUpperCase(), { x: 24, y: 60, size: 16, weight: 700, fill: C.muteL, ls: 2 }),
+        txt(`$${rev}M`, { x: COLS.rev, y: 46, size: 30, weight: 600, family: SERIF, fill: C.ink, anchor: 'end' }),
+        rect({ x: COLS.gr, y: 26, width: 200, height: 18, rx: 9, fill: C.trackL }),
+        rect({ id: `k-gb${i}`, x: COLS.gr, y: 26, width: 0, height: 18, rx: 9, fill: gr >= 15 ? C.services : C.slate }),
+        txt(`+${gr}%`, { x: COLS.gr + 216, y: 44, size: 26, weight: 700, fill: C.ink }),
+        txt(`${mg.toFixed(1)}%`, { x: COLS.mg, y: 46, size: 28, weight: 600, fill: C.ink, anchor: 'end' }),
+        txt(ad, { x: COLS.ad, y: 46, size: 26, weight: 600, fill: C.ink, anchor: 'end' }),
+        rect({ x: COLS.st, y: 16, width: 200, height: 40, rx: 20, fill, stroke: strokeC, 'stroke-width': 2 }),
+        txt(lab, { x: COLS.st + 100, y: 43, size: 20, weight: 700, fill: col, anchor: 'middle' }));
+    }),
+    foot('k-foot', 'Illustrative figures: YTD revenue ($M), growth vs prior-year period, EBITDA margin, add-on acquisitions closed. Lifted Trucks from dashboard estimates.', true),
+  );
+  return {
+    id: 'score', from: T.score, to: T.funds, markup,
+    update(t) {
+      headerIn(K, 'k', t, T.score + 0.15);
+      K.pop('k-tag', 1620, 196, t, T.score + 0.5, { amount: 0.06 });
+      K.rise('k-cols', RX, RY0 - 26, t, T.seven - 0.4, { dist: 10 });
+      SCORE.forEach(([, , , gr, , , , key], i) => {
+        const at = T.seven - 0.3 + i * 0.12;
+        K.rise(`k-r${i}`, RX, RY0 + i * RH, t, at, { dist: 20 });
+        K.attr(`k-gb${i}`, 'width', (200 * gr / 40 * prog(t, at + 0.2, at + 1.0, outCubic)).toFixed(1));
+        const cue = key ? T.sc[key] : null;
+        const hi = cue == null ? 0 : Math.max(0, Math.min(prog(t, cue - 0.15, cue + 0.2), 1 - prog(t, cue + 1.6, cue + 2.2)));
+        K.attr(`k-bg${i}`, 'fill', hi > 0.01 ? `rgba(194,155,98,${(0.22 * hi).toFixed(3)})` : C.cardL);
+        K.attr(`k-bg${i}`, 'stroke', hi > 0.5 ? C.gold : C.lineL);
+      });
+      K.rise('k-foot', 160, 1010, t, T.score + 1.0, { dist: 10 });
     },
   };
 }
@@ -302,5 +364,5 @@ function focus(K, T, cfg) {
 }
 
 export function buildScenes(K, T, cfg) {
-  return [open(K, T), firm(K, T), portfolio(K, T), activity(K, T), perf(K, T), funds(K, T), lifted(K, T), ...focus(K, T, cfg)];
+  return [open(K, T), firm(K, T), portfolio(K, T), activity(K, T), perf(K, T), score(K, T), funds(K, T), lifted(K, T), ...focus(K, T, cfg)];
 }

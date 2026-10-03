@@ -75,7 +75,7 @@ Build with `npm run ep04:build` (audio → render → captions → vertical).
 
 # Nonantum Capital Partners: 2026 Annual Meeting (theoretical)
 
-A 77-second LP annual-meeting update in the same style. **Firm history (founded 2018, Boston; Fund I $385M+, Fund II $625M+) and the deals shown are from public announcements. Portfolio performance (+14% revenue, +17% EBITDA, 9 add-ons) and fund multiples (2.1x, 1.4x) are illustrative placeholders, tagged ILLUSTRATIVE on screen. Lifted Trucks figures are the operating dashboard's estimates.** The wordmark is typographic in a navy, ivory and gold palette; the firm's logo wasn't reachable from this environment.
+A 90-second LP annual-meeting update in the same style. "Nonantum" is voiced as *No-NAN-tum* via a phoneme override (`pronounce` in the storyboard; captions keep the spelling). **Firm history (founded 2018, Boston; Fund I $385M+, Fund II $625M+) and the deals shown are from public announcements. Portfolio performance (+14% revenue, +17% EBITDA, 9 add-ons), the seven-company scorecard and fund multiples (2.1x, 1.4x) are illustrative placeholders, tagged ILLUSTRATIVE on screen. Lifted Trucks figures are the operating dashboard's estimates.** The wordmark is typographic in a navy, ivory and gold palette; the firm's logo wasn't reachable from this environment.
 
 **Watch:** `output/nonantum-2026-annual-meeting.mp4` (1920×1080, 30 fps) · captions `output/nonantum-2026-annual-meeting.srt`
 
@@ -86,11 +86,12 @@ A 77-second LP annual-meeting update in the same style. **Firm history (founded 
 | 0:20–0:26 | Portfolio | Twelve platform cards (ProVest, RoadOne, Ross-Simons, Christianbook, Lifted Trucks, Helix, Team Drive-Away, LJP, PNE, Momentum Environmental, MSI Express, Flatiron), highlighted by sector as each is named. |
 | 0:26–0:36 | 2026 so far | Timeline: Flatiron Search Partners (January), and RoadOne acquiring Higgins Transport (August). |
 | 0:36–0:46 | Portfolio performance | Illustrative: +14% revenue, +17% EBITDA, 9 add-ons. |
-| 0:46–0:52 | Fund performance | Illustrative MOIC: Fund I 2.1x, Fund II 1.4x. |
-| 0:52–1:01 | Spotlight | Lifted Trucks, in its own branding: 6,445 trucks, +37%, 5 new stores. |
-| 1:01–1:17 | Priorities + end card | Add-ons, cash conversion, Fund I realizations, then "Thank you for your partnership". |
+| 0:46–0:59 | Scorecard | Illustrative table of seven companies (Helix, Momentum Environmental, Lifted Trucks, RoadOne, PNE, MSI Express, Ross-Simons): YTD revenue, growth, EBITDA margin, add-ons and status. Each row lights up as it's named. |
+| 0:59–1:05 | Fund performance | Illustrative MOIC: Fund I 2.1x, Fund II 1.4x. |
+| 1:05–1:14 | Spotlight | Lifted Trucks, in its own branding: 6,445 trucks, +37%, 5 new stores. |
+| 1:14–1:30 | Priorities + end card | Add-ons, cash conversion, Fund I realizations, then "Thank you for your partnership". |
 
-Files: `config/episodes/nonantum.json`, `src/episodes/nonantum/`. Build with `npm run nonantum:build`. Replace the illustrative values in `scenes.js` (`perf`, `funds`) and the narration lines l5/l6 with reported figures before any real use.
+Files: `config/episodes/nonantum.json`, `src/episodes/nonantum/`. Build with `npm run nonantum:build`. Replace the illustrative values in `scenes.js` (`perf`, `SCORE`, `funds`) and the narration lines l5/l5b/l6 with reported figures before any real use.
 
 # Lifted Trucks 2026 Year to Date (theoretical)
 

@@ -1,7 +1,7 @@
 {
-  "_note": "Nonantum Capital Partners 2026 annual meeting YTD update (theoretical). 'at' = narration start (s). Firm facts and deals are from public press releases; portfolio performance and fund multiples are illustrative placeholders; Lifted Trucks figures are the operating dashboard's estimates.",
+  "_note": "Nonantum Capital Partners 2026 annual meeting YTD update (theoretical). 'at' = narration start (s). Firm facts and deals are from public press releases; portfolio performance, the seven-company scorecard and fund multiples are illustrative placeholders; Lifted Trucks figures are the operating dashboard's estimates.",
   "title": "Nonantum Capital Partners: 2026 Annual Meeting",
-  "duration": 77,
+  "duration": 90,
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -59,8 +59,21 @@
       ]
     },
     {
-      "id": "l6",
+      "id": "l5b",
       "at": 46.1,
+      "text": "Here's how seven of our companies are tracking. Helix and Momentum are running ahead of plan, Lifted Trucks grew revenue forty percent, and we're watching margins at MSI Express and Ross-Simons.",
+      "cues": [
+        "seven",
+        "Helix",
+        "Momentum",
+        "Lifted Trucks",
+        "MSI Express",
+        "Ross-Simons"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 59.3,
       "text": "Fund One stands at two point one times invested capital, and Fund Two at one point four.",
       "cues": [
         "two point one",
@@ -70,7 +83,7 @@
     },
     {
       "id": "l7",
-      "at": 52.3,
+      "at": 65.5,
       "text": "One standout: Lifted Trucks has sold more than six thousand four hundred trucks this year, up thirty-seven percent, and opened five new stores.",
       "cues": [
         "Lifted Trucks",
@@ -81,7 +94,7 @@
     },
     {
       "id": "l8",
-      "at": 61.7,
+      "at": 74.9,
       "text": "For the rest of the year, we're focused on add-ons, cash conversion, and preparing Fund One for realizations.",
       "cues": [
         "add-ons",
@@ -91,7 +104,7 @@
     },
     {
       "id": "l9",
-      "at": 69.3,
+      "at": 82.5,
       "text": "Thank you for your continued partnership.",
       "cues": []
     }
@@ -99,5 +112,8 @@
   "endCard": {
     "thanks": "Thank you for your partnership",
     "source": "Firm history and transactions from public announcements. Portfolio performance and fund multiples are illustrative. Lifted Trucks figures are estimates."
+  },
+  "pronounce": {
+    "Nonantum": "nˌoʊnˈæntəm"
   }
 }

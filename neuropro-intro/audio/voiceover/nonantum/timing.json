@@ -1,11 +1,11 @@
 {
   "l1": {
-    "duration": 6.417,
+    "duration": 6.546,
     "sampleRate": 24000,
     "voice": "af_heart",
     "text": "Welcome to the Nonantum Capital Partners annual meeting. Here's our update on the portfolio, year to date.",
     "cues": {
-      "year to date": 5.66
+      "year to date": 5.78
     }
   },
   "l2": {
@@ -51,6 +51,20 @@
       "fourteen": 2.292,
       "seventeen": 5.171,
       "nine": 6.28
+    }
+  },
+  "l5b": {
+    "duration": 12.258,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Here's how seven of our companies are tracking. Helix and Momentum are running ahead of plan, Lifted Trucks grew revenue forty percent, and we're watching margins at MSI Express and Ross-Simons.",
+    "cues": {
+      "seven": 0.678,
+      "Helix": 2.274,
+      "Momentum": 3.161,
+      "Lifted Trucks": 5.7,
+      "MSI Express": 9.652,
+      "Ross-Simons": 11.332
     }
   },
   "l6": {

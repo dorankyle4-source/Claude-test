@@ -7,6 +7,7 @@
 Model weights + voice styles are fetched once from the npm registry into audio/voiceover/.cache/
 (kokoro-q8-shards = the ONNX model, kokoro-js = voice style vectors). Output: audio/voiceover/<id>.wav
 + timing.json with each line's duration (read by build-audio + the captions).
+A storyboard may set "pronounce": {"Word": "<IPA phonemes>"} to fix a name the model mispronounces; captions keep the spelling.
 A line may list "cues": words/phrases whose start time inside the line is measured (by synthesising the text
 up to that phrase), so animation can sync to specific words. Results land in timing.json → <id>.cues.
 
@@ -100,10 +101,19 @@ def main():
     k = Kokoro(model, voices)
     tpath = os.path.join(out_dir, 'timing.json')
     timing = json.load(open(tpath)) if os.path.exists(tpath) and only else {}
+    fixes = [(k.tokenizer.phonemize(w, 'en-us'), ph) for w, ph in sb.get('pronounce', {}).items()]
+
+    def synth(text, spd):
+        if not any(w in text for w in sb.get('pronounce', {})):
+            return k.create(text, voice=voice, speed=spd, lang='en-us')
+        ph = k.tokenizer.phonemize(text, 'en-us')
+        for default, target in fixes:
+            ph = ph.replace(default, target)
+        return k.create(ph, voice=voice, speed=spd, lang='en-us', is_phonemes=True)
     for line in sb['voiceover']:
         if only and line['id'] not in only:
             continue
-        audio, sr = k.create(line['text'], voice=voice, speed=line.get('speed', speed), lang='en-us')
+        audio, sr = synth(line['text'], line.get('speed', speed))
         audio, _ = trim(audio, sr)
         sf.write(os.path.join(out_dir, f"{line['id']}.wav"), audio, sr, subtype='PCM_16')
         gaps = pauses(audio, sr)
@@ -115,7 +125,7 @@ def main():
                 entry['cues'][cue] = 0.0
                 continue
             prefix = line['text'][:pos].rstrip(' ,—-')
-            pa, _ = k.create(prefix, voice=voice, speed=line.get('speed', speed), lang='en-us')
+            pa, _ = synth(prefix, line.get('speed', speed))
             pa, _ = trim(pa, sr)
             est = max(0.0, len(pa) / sr - 0.05)
             # After a comma/dash the speaker pauses: snap to the end of that pause (much more accurate).
