@@ -1,0 +1,110 @@
+{
+  "_note": "ADP SBS Digital Sales: post-presentation recap. 'at' = narration start (s). Cue words measured by `npm run adp:voiceover`.",
+  "title": "ADP SBS Digital Sales: Recap and Next Steps",
+  "duration": 74,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voice": "af_heart",
+  "voiceSpeed": 1.0,
+  "sections": [],
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 1.4,
+      "text": "Thanks for the time today. Here's a quick recap of what we covered, and how we move forward.",
+      "cues": [
+        "quick recap",
+        "move forward"
+      ]
+    },
+    {
+      "id": "l2",
+      "at": 7.5,
+      "text": "The big takeaway: SBS Digital doesn't have a demand problem. It has a capacity problem.",
+      "cues": [
+        "demand",
+        "capacity"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 13.9,
+      "text": "New reps leave before they ramp, and the ones who stay spend too little of their day actually selling.",
+      "cues": [
+        "leave",
+        "ramp",
+        "the ones who stay",
+        "too little"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 20.5,
+      "text": "Cut first-year attrition by ten points, and we win back about twelve sellers of capacity, without adding headcount.",
+      "cues": [
+        "ten points",
+        "twelve sellers",
+        "without adding"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 28.9,
+      "text": "The plan comes down to four priorities. Keep the sellers we hire. Give reps their time back. Route the right buyer, fast. And compete on ease.",
+      "cues": [
+        "four priorities",
+        "Keep the sellers",
+        "Give reps",
+        "Route the right",
+        "compete on ease"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 38.5,
+      "text": "All on one operating model and one dashboard, so every site works from the same numbers.",
+      "cues": [
+        "one operating model",
+        "one dashboard",
+        "same numbers"
+      ]
+    },
+    {
+      "id": "l7",
+      "at": 45.1,
+      "text": "The economics: three point one million invested, three point seven million in new year-one bookings, and payback around month six.",
+      "cues": [
+        "three point one",
+        "three point seven",
+        "payback"
+      ]
+    },
+    {
+      "id": "l8",
+      "at": 55.0,
+      "text": "From here, the first thirty days are about listening and setting the baseline. By sixty, we pilot. By ninety, we scale what works.",
+      "cues": [
+        "first thirty",
+        "By sixty",
+        "By ninety"
+      ]
+    },
+    {
+      "id": "l9",
+      "at": 64.0,
+      "text": "Five decisions will shape year one, and we'd love your input on each. Thank you.",
+      "cues": [
+        "Five decisions",
+        "your input",
+        "Thank you"
+      ]
+    }
+  ],
+  "endCard": {
+    "title": "Re-accelerating SBS Digital Sales",
+    "thanks": "Thank you",
+    "from": "Kevin",
+    "role": "Senior Director, Strategy & Operations"
+  }
+}

@@ -31,7 +31,12 @@
     "ep04:render": "node scripts/render.mjs --comp ep04",
     "ep04:captions": "node scripts/captions.mjs --comp ep04",
     "ep04:vertical": "node scripts/vertical.mjs --comp ep04",
-    "ep04:build": "npm run ep04:audio && npm run ep04:render && npm run ep04:captions && npm run ep04:vertical"
+    "ep04:build": "npm run ep04:audio && npm run ep04:render && npm run ep04:captions && npm run ep04:vertical",
+    "adp:voiceover": "python3 scripts/voiceover.py --comp adp",
+    "adp:audio": "node scripts/build-audio.mjs --comp adp",
+    "adp:render": "node scripts/render.mjs --comp adp",
+    "adp:captions": "node scripts/captions.mjs --comp adp",
+    "adp:build": "npm run adp:audio && npm run adp:render && npm run adp:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",

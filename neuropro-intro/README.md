@@ -73,6 +73,25 @@ The sound follows the picture. Café ambience builds layer by layer (hum, espres
 
 Build with `npm run ep04:build` (audio → render → captions → vertical).
 
+# ADP SBS Digital Sales: Recap and Next Steps
+
+A 74-second follow-up video for Kevin to send the ADP team after the case presentation. It sums up what was discussed and how the work moves forward. It uses the same engine, voice (Kokoro `af_heart`), procedural score and SFX as the NeuroPro episodes, styled to match the ADP case deck (navy, cream, ADP red, Source Serif 4 + Public Sans). No mascot and no logos.
+
+**Watch:** `output/adp-sbs-recap.mp4` (1920×1080, 30 fps) · captions `output/adp-sbs-recap.srt`
+
+| Time | Scene | What happens |
+|---|---|---|
+| 0:00–0:07 | Open | Navy title card like the deck cover: *Re-accelerating SBS Digital Sales*, then "Recap and next steps" and an arrow drawing forward. |
+| 0:07–0:13 | The big takeaway | "Demand problem" is struck through; "Capacity problem" stamps down. |
+| 0:13–0:20 | Why | Three new reps walk out the door and the ramp bar resets. A rep's day bar shows selling crowded out by CRM, quoting and paperwork, with the 50%+ goal marker. |
+| 0:20–0:28 | Sizing the prize | First-year attrition counts 48% to 38% (−10 pts), ~12 sellers of capacity pop in, "No new headcount", ~$3.5M a year avoided cost. |
+| 0:28–0:44 | The plan | The four priority cards pop on each word, then the foundation bar. On "one dashboard" a mini SBS Digital Command Center rises, its 12-month goal sparklines draw, and Sites A–D wire into it. |
+| 0:44–0:54 | Economics | $3.1M invested, +$3.7M year-one bookings, and the cumulative value line crossing investment at month 6. |
+| 0:54–1:03 | First 90 days | 30-60-90 timeline fills node by node, each with its "Done when". |
+| 1:03–1:14 | Decisions + end card | The five leadership decisions, "We'd value your input on each", then a *Thank you* end card with Kevin's name and role. |
+
+Files: `config/episodes/adp.json` (narration, end-card text), `src/episodes/adp/` (`timeline.js` beats/SFX/music moods, `scenes.js` all seven scenes, `kit.js` palette and helpers, `main.js` stage + wipes). Build with `npm run adp:voiceover` (only after editing the narration) and `npm run adp:build`. To change the name or role on the end card, edit `endCard` in `config/episodes/adp.json` and re-render.
+
 # Series intro (10-second style test)
 
 A 10-second proof of concept for a recurring NeuroPro educational cartoon series.

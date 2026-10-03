@@ -48,5 +48,15 @@
     "output": "output/ep04-why-does-everything-feel-so-loud.mp4",
     "captions": "output/ep04-why-does-everything-feel-so-loud.srt",
     "vertical": "output/ep04-why-does-everything-feel-so-loud-vertical.mp4"
+  },
+  "adp": {
+    "title": "ADP SBS Digital Sales: Recap and Next Steps",
+    "storyboard": "config/episodes/adp.json",
+    "stage": "src/episodes/adp/main.js",
+    "timeline": "src/episodes/adp/timeline.js",
+    "voiceDir": "audio/voiceover/adp",
+    "audioDir": "audio/generated/adp",
+    "output": "output/adp-sbs-recap.mp4",
+    "captions": "output/adp-sbs-recap.srt"
   }
 }

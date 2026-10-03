@@ -1,0 +1,102 @@
+{
+  "l1": {
+    "duration": 5.018,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Thanks for the time today. Here's a quick recap of what we covered, and how we move forward.",
+    "cues": {
+      "quick recap": 2.031,
+      "move forward": 4.161
+    }
+  },
+  "l2": {
+    "duration": 5.84,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "The big takeaway: SBS Digital doesn't have a demand problem. It has a capacity problem.",
+    "cues": {
+      "demand": 2.979,
+      "capacity": 4.601
+    }
+  },
+  "l3": {
+    "duration": 5.168,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "New reps leave before they ramp, and the ones who stay spend too little of their day actually selling.",
+    "cues": {
+      "leave": 0.684,
+      "ramp": 1.339,
+      "the ones who stay": 2.07,
+      "too little": 3.158
+    }
+  },
+  "l4": {
+    "duration": 6.623,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Cut first-year attrition by ten points, and we win back about twelve sellers of capacity, without adding headcount.",
+    "cues": {
+      "ten points": 1.509,
+      "twelve sellers": 3.436,
+      "without adding": 5.35
+    }
+  },
+  "l5": {
+    "duration": 8.915,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "The plan comes down to four priorities. Keep the sellers we hire. Give reps their time back. Route the right buyer, fast. And compete on ease.",
+    "cues": {
+      "four priorities": 1.26,
+      "Keep the sellers": 2.209,
+      "Give reps": 3.793,
+      "Route the right": 5.417,
+      "compete on ease": 7.73
+    }
+  },
+  "l6": {
+    "duration": 5.104,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "All on one operating model and one dashboard, so every site works from the same numbers.",
+    "cues": {
+      "one operating model": 0.587,
+      "one dashboard": 1.912,
+      "same numbers": 4.25
+    }
+  },
+  "l7": {
+    "duration": 8.284,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "The economics: three point one million invested, three point seven million in new year-one bookings, and payback around month six.",
+    "cues": {
+      "three point one": 1.35,
+      "three point seven": 3.55,
+      "payback": 6.64
+    }
+  },
+  "l8": {
+    "duration": 7.869,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "From here, the first thirty days are about listening and setting the baseline. By sixty, we pilot. By ninety, we scale what works.",
+    "cues": {
+      "first thirty": 0.74,
+      "By sixty": 4.145,
+      "By ninety": 6.01
+    }
+  },
+  "l9": {
+    "duration": 4.484,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Five decisions will shape year one, and we'd love your input on each. Thank you.",
+    "cues": {
+      "Five decisions": 0.0,
+      "your input": 2.718,
+      "Thank you": 3.702
+    }
+  }
+}
