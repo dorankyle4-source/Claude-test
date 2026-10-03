@@ -1,0 +1,97 @@
+{
+  "l1": {
+    "duration": 6.417,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Welcome to the Nonantum Capital Partners annual meeting. Here's our update on the portfolio, year to date.",
+    "cues": {
+      "year to date": 5.66
+    }
+  },
+  "l2": {
+    "duration": 10.367,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Since twenty eighteen, our partners have committed about one billion dollars across two funds, backing founder-owned businesses, corporate carve-outs, and complex situations.",
+    "cues": {
+      "one billion": 2.812,
+      "founder-owned": 6.01,
+      "carve-outs": 7.795,
+      "complex": 8.85
+    }
+  },
+  "l3": {
+    "duration": 5.575,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Today that's twelve platform investments, across consumer, industrials, and business services.",
+    "cues": {
+      "twelve": 0.772,
+      "consumer": 2.703,
+      "industrials": 3.66,
+      "business services": 4.45
+    }
+  },
+  "l4": {
+    "duration": 9.095,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Twenty twenty-six has been active. We welcomed Flatiron Search Partners in January, and RoadOne added Higgins Transport at the Port of Charleston.",
+    "cues": {
+      "Flatiron": 2.756,
+      "RoadOne": 5.53
+    }
+  },
+  "l5": {
+    "duration": 8.417,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Across the portfolio, revenue is up fourteen percent year to date, and EBITDA is up seventeen, with nine add-on acquisitions closed.",
+    "cues": {
+      "fourteen": 2.292,
+      "seventeen": 5.171,
+      "nine": 6.28
+    }
+  },
+  "l6": {
+    "duration": 5.3,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Fund One stands at two point one times invested capital, and Fund Two at one point four.",
+    "cues": {
+      "two point one": 1.153,
+      "Fund Two": 3.68,
+      "one point four": 4.301
+    }
+  },
+  "l7": {
+    "duration": 8.475,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "One standout: Lifted Trucks has sold more than six thousand four hundred trucks this year, up thirty-seven percent, and opened five new stores.",
+    "cues": {
+      "Lifted Trucks": 1.29,
+      "six thousand": 2.664,
+      "thirty-seven": 5.2,
+      "five new": 7.379
+    }
+  },
+  "l8": {
+    "duration": 6.553,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "For the rest of the year, we're focused on add-ons, cash conversion, and preparing Fund One for realizations.",
+    "cues": {
+      "add-ons": 1.975,
+      "cash conversion": 3.07,
+      "realizations": 5.257
+    }
+  },
+  "l9": {
+    "duration": 1.97,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Thank you for your continued partnership.",
+    "cues": {}
+  }
+}
