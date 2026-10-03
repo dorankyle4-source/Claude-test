@@ -1,0 +1,99 @@
+{
+  "l1": {
+    "duration": 3.813,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Here's how NeuroPro is doing this year, January through September.",
+    "cues": {
+      "January": 2.43
+    }
+  },
+  "l2": {
+    "duration": 8.643,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Visits are up seventy-eight percent, from three hundred forty a month in January to about six hundred five in September. Our busiest month yet.",
+    "cues": {
+      "seventy-eight": 0.829,
+      "three hundred forty": 2.18,
+      "six hundred five": 4.965,
+      "busiest": 7.536
+    }
+  },
+  "l3": {
+    "duration": 6.449,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "We've served about a thousand and ten patients. Therapy is the base, and testing more than doubled in August.",
+    "cues": {
+      "a thousand and ten": 1.027,
+      "Therapy": 2.366,
+      "testing": 4.44
+    }
+  },
+  "l4": {
+    "duration": 9.309,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "From February through August, we booked one point zero one million dollars, and kept forty-nine cents of every dollar. In August, it was fifty-seven.",
+    "cues": {
+      "one point zero one": 1.96,
+      "forty-nine": 5.14,
+      "fifty-seven": 8.72
+    }
+  },
+  "l5": {
+    "duration": 5.544,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Each visit now brings in three hundred twenty-four dollars, and costs one thirty-nine to deliver.",
+    "cues": {
+      "three hundred twenty-four": 1.348,
+      "one thirty-nine": 4.33
+    }
+  },
+  "l6": {
+    "duration": 7.704,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "But cash is lagging. Seven hundred fifty-nine thousand has come in. Liens and unpaid invoices hold most of the rest.",
+    "cues": {
+      "lagging": 0.788,
+      "Seven hundred fifty-nine": 1.098,
+      "Liens": 3.97
+    }
+  },
+  "l7": {
+    "duration": 8.272,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Three things need action now. Submit the injury backlog. Name an owner for lien collections. And work the rejected insurance claims.",
+    "cues": {
+      "Three things": 0.0,
+      "Submit": 1.47,
+      "Name an owner": 3.215,
+      "rejected": 6.299
+    }
+  },
+  "l8": {
+    "duration": 8.55,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "The team is scaling, too. Counselor visits more than doubled, and Doctor Doran's share of visits is down from fifty-seven percent to thirty-nine.",
+    "cues": {
+      "Counselor": 1.32,
+      "Doctor Doran's": 4.33,
+      "thirty-nine": 7.811
+    }
+  },
+  "l9": {
+    "duration": 5.775,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "And with nine hundred ninety-nine visits already booked for the fourth quarter, we're set up for a strong finish.",
+    "cues": {
+      "nine hundred ninety-nine": 0.534,
+      "strong finish": 4.869
+    }
+  }
+}

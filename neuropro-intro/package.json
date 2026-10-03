@@ -36,7 +36,12 @@
     "adp:audio": "node scripts/build-audio.mjs --comp adp",
     "adp:render": "node scripts/render.mjs --comp adp",
     "adp:captions": "node scripts/captions.mjs --comp adp",
-    "adp:build": "npm run adp:audio && npm run adp:render && npm run adp:captions"
+    "adp:build": "npm run adp:audio && npm run adp:render && npm run adp:captions",
+    "ytd:voiceover": "python3 scripts/voiceover.py --comp ytd",
+    "ytd:audio": "node scripts/build-audio.mjs --comp ytd",
+    "ytd:render": "node scripts/render.mjs --comp ytd",
+    "ytd:captions": "node scripts/captions.mjs --comp ytd",
+    "ytd:build": "npm run ytd:audio && npm run ytd:render && npm run ytd:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",

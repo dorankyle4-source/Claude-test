@@ -73,6 +73,26 @@ The sound follows the picture. Café ambience builds layer by layer (hum, espres
 
 Build with `npm run ep04:build` (audio → render → captions → vertical).
 
+# NeuroPro 2026 Year to Date
+
+A 79-second performance video built from the NeuroPro Clinic Dashboard (TherapyNotes pulled Sep 30, monthly close through August). It uses the same motion style as the ADP recap, in NeuroPro's own palette, type (Manrope + Inter) and real logo. The voice is Kokoro `af_heart`.
+
+**Watch:** `output/neuropro-2026-ytd.mp4` (1920×1080, 30 fps) · captions `output/neuropro-2026-ytd.srt`
+
+| Time | Scene | What happens |
+|---|---|---|
+| 0:00–0:06 | Open | The NeuroPro logo, then *2026 Year to Date* and "January through September". |
+| 0:06–0:15 | Visits | Monthly bars grow from 340 (Jan) to 605 (Sep). +78% counts up, and a "Busiest month yet" tag appears on September. |
+| 0:15–0:23 | Patients and mix | ~1,010 unique patients. Therapy is 48% of September visits (up 89%), and testing more than doubled in August. |
+| 0:23–0:33 | Revenue and margin | Booked revenue bars Feb–Aug with the expense line, $1.01M booked, 49¢ kept per dollar, then August at 57¢. |
+| 0:33–0:40 | Per visit | Revenue per visit $226 to $324 and cost per visit $155 to $139: $185 kept per visit in August. |
+| 0:40–0:48 | Cash | $1.01M booked splits into $759K collected, $149K liens, $43K unpaid invoices and $62K timing. |
+| 0:48–0:57 | Act now | $117K PI backlog, $260K lien collections and $150K rejected claims. |
+| 0:57–1:07 | Clinical team | Counselor visits 92 to 213 a month, and Dr. Doran's share of visits 57% to 39%. |
+| 1:07–1:19 | Q4 + end card | 999 visits already scheduled for Oct–Dec, then the logo, tagline and source line. |
+
+Files: `config/episodes/ytd.json` (narration, end card), `src/episodes/ytd/` (`timeline.js`, `scenes.js`, `kit.js`, `main.js`). Build with `npm run ytd:build` (and `npm run ytd:voiceover` first, if the narration changes). When the September close is done, update the numbers in `scenes.js` and the narration, then rebuild.
+
 # ADP SBS Digital Sales: Recap and Next Steps
 
 A 74-second follow-up video for Kevin to send the ADP team after the case presentation. It sums up what was discussed and how the work moves forward. It uses the same engine, voice (Kokoro `af_heart`), procedural score and SFX as the NeuroPro episodes, styled to match the ADP case deck (navy, cream, ADP red, Source Serif 4 + Public Sans). No mascot and no logos.

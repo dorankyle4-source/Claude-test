@@ -1,0 +1,105 @@
+{
+  "_note": "NeuroPro 2026 year-to-date performance video. 'at' = narration start (s). Cue words measured by `npm run ytd:voiceover`. Numbers from the NeuroPro Clinic Dashboard (TherapyNotes pulled Sep 30, monthly close through Aug).",
+  "title": "NeuroPro 2026 Year to Date",
+  "duration": 79,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voice": "af_heart",
+  "voiceSpeed": 1.0,
+  "sections": [],
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 1.3,
+      "text": "Here's how NeuroPro is doing this year, January through September.",
+      "cues": [
+        "January"
+      ]
+    },
+    {
+      "id": "l2",
+      "at": 6.2,
+      "text": "Visits are up seventy-eight percent, from three hundred forty a month in January to about six hundred five in September. Our busiest month yet.",
+      "cues": [
+        "seventy-eight",
+        "three hundred forty",
+        "six hundred five",
+        "busiest"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 15.8,
+      "text": "We've served about a thousand and ten patients. Therapy is the base, and testing more than doubled in August.",
+      "cues": [
+        "a thousand and ten",
+        "Therapy",
+        "testing"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 23.2,
+      "text": "From February through August, we booked one point zero one million dollars, and kept forty-nine cents of every dollar. In August, it was fifty-seven.",
+      "cues": [
+        "one point zero one",
+        "forty-nine",
+        "fifty-seven"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 33.4,
+      "text": "Each visit now brings in three hundred twenty-four dollars, and costs one thirty-nine to deliver.",
+      "cues": [
+        "three hundred twenty-four",
+        "one thirty-nine"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 39.9,
+      "text": "But cash is lagging. Seven hundred fifty-nine thousand has come in. Liens and unpaid invoices hold most of the rest.",
+      "cues": [
+        "lagging",
+        "Seven hundred fifty-nine",
+        "Liens"
+      ]
+    },
+    {
+      "id": "l7",
+      "at": 48.5,
+      "text": "Three things need action now. Submit the injury backlog. Name an owner for lien collections. And work the rejected insurance claims.",
+      "cues": [
+        "Three things",
+        "Submit",
+        "Name an owner",
+        "rejected"
+      ]
+    },
+    {
+      "id": "l8",
+      "at": 57.7,
+      "text": "The team is scaling, too. Counselor visits more than doubled, and Doctor Doran's share of visits is down from fifty-seven percent to thirty-nine.",
+      "cues": [
+        "Counselor",
+        "Doctor Doran's",
+        "thirty-nine"
+      ]
+    },
+    {
+      "id": "l9",
+      "at": 67.2,
+      "text": "And with nine hundred ninety-nine visits already booked for the fourth quarter, we're set up for a strong finish.",
+      "cues": [
+        "nine hundred ninety-nine",
+        "strong finish"
+      ]
+    }
+  ],
+  "endCard": {
+    "tagline": "Understand the brain. Improve the outcome.",
+    "source": "Source: NeuroPro Clinic Dashboard. TherapyNotes pulled Sep 30; monthly close through August (July and August are drafts)."
+  }
+}

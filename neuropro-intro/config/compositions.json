@@ -58,5 +58,15 @@
     "audioDir": "audio/generated/adp",
     "output": "output/adp-sbs-recap.mp4",
     "captions": "output/adp-sbs-recap.srt"
+  },
+  "ytd": {
+    "title": "NeuroPro 2026 Year to Date",
+    "storyboard": "config/episodes/ytd.json",
+    "stage": "src/episodes/ytd/main.js",
+    "timeline": "src/episodes/ytd/timeline.js",
+    "voiceDir": "audio/voiceover/ytd",
+    "audioDir": "audio/generated/ytd",
+    "output": "output/neuropro-2026-ytd.mp4",
+    "captions": "output/neuropro-2026-ytd.srt"
   }
 }
