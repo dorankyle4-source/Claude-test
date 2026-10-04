@@ -51,7 +51,12 @@
     "nonantum:audio": "node scripts/build-audio.mjs --comp nonantum",
     "nonantum:render": "node scripts/render.mjs --comp nonantum",
     "nonantum:captions": "node scripts/captions.mjs --comp nonantum",
-    "nonantum:build": "npm run nonantum:audio && npm run nonantum:render && npm run nonantum:captions"
+    "nonantum:build": "npm run nonantum:audio && npm run nonantum:render && npm run nonantum:captions",
+    "roast:voiceover": "python3 scripts/voiceover.py --comp roast",
+    "roast:audio": "node scripts/build-audio.mjs --comp roast",
+    "roast:render": "node scripts/render.mjs --comp roast",
+    "roast:captions": "node scripts/captions.mjs --comp roast",
+    "roast:build": "npm run roast:audio && npm run roast:render && npm run roast:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",

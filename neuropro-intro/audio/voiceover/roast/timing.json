@@ -1,0 +1,219 @@
+{
+  "o1": {
+    "duration": 2.996,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Welcome to the roast of Nonantum Capital Partners!",
+    "cues": {}
+  },
+  "o2": {
+    "duration": 5.414,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Tonight we honor five people who've generated incredible returns. Mostly in Excel.",
+    "cues": {
+      "Mostly": 3.785
+    }
+  },
+  "j1": {
+    "duration": 4.748,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "First up, the founder himself, Jon Biotti. Jon has three degrees from Harvard.",
+    "cues": {
+      "three degrees": 3.359
+    }
+  },
+  "j2": {
+    "duration": 3.747,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Three! At this point, he's not an alumnus. He's a returning customer.",
+    "cues": {
+      "returning customer": 2.764
+    }
+  },
+  "j3": {
+    "duration": 4.218,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Jon spent twenty years at Charlesbank before leaving to start his own firm.",
+    "cues": {
+      "twenty years": 0.812
+    }
+  },
+  "j4": {
+    "duration": 2.881,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "The longest notice period in private equity history.",
+    "cues": {}
+  },
+  "j5": {
+    "duration": 5.875,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Then he named it after a village in Newton, so nobody would ever pronounce it right. It took me three takes.",
+    "cues": {
+      "village": 1.299,
+      "three takes": 5.215
+    }
+  },
+  "d1": {
+    "duration": 2.604,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "David Ganitsky went to Harvard, and Stanford.",
+    "cues": {
+      "Harvard": 1.406,
+      "Stanford": 1.83
+    }
+  },
+  "d2": {
+    "duration": 3.863,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "He couldn't decide which coast to feel superior on, so he picked both.",
+    "cues": {}
+  },
+  "d3": {
+    "duration": 7.108,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Before that, David worked at the Parthenon Group, named after a building that's been under renovation for twenty-five hundred years.",
+    "cues": {
+      "Parthenon": 1.655,
+      "under renovation": 4.317
+    }
+  },
+  "d4": {
+    "duration": 1.81,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Which explains his hold periods.",
+    "cues": {}
+  },
+  "p1": {
+    "duration": 4.09,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Peter Apostolides is our CFO, and our Chief Compliance Officer.",
+    "cues": {
+      "Chief Compliance": 2.5
+    }
+  },
+  "p2": {
+    "duration": 5.359,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "So the guy who rejects your expense reports also approves his own. Convenient, Peter.",
+    "cues": {
+      "approves his own": 2.847,
+      "Convenient": 3.917
+    }
+  },
+  "p3": {
+    "duration": 5.227,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Peter's idea of a wild Friday night is reconciling capital accounts to the penny.",
+    "cues": {
+      "reconciling": 2.419
+    }
+  },
+  "p4": {
+    "duration": 1.773,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Then doing it again. For fun.",
+    "cues": {}
+  },
+  "s1": {
+    "duration": 2.909,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Shawn Jordan has a master's degree in philosophy.",
+    "cues": {
+      "philosophy": 2.105
+    }
+  },
+  "s2": {
+    "duration": 5.556,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "In private equity. Finally, someone who can explain why we're all here. Spoiler: it's the carry.",
+    "cues": {
+      "why we're all here": 3.005,
+      "Spoiler": 4.085
+    }
+  },
+  "s3": {
+    "duration": 3.53,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Shawn started as office manager, and now he's vice president.",
+    "cues": {
+      "office manager": 1.075,
+      "vice president": 2.695
+    }
+  },
+  "s4": {
+    "duration": 4.206,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Honestly, the best value creation story in the entire portfolio.",
+    "cues": {}
+  },
+  "k1": {
+    "duration": 3.585,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Kyle Guinivan worked at McKinsey and Citadel, and went to Wharton.",
+    "cues": {
+      "McKinsey": 1.348,
+      "Citadel": 2.134,
+      "Wharton": 3.194
+    }
+  },
+  "k2": {
+    "duration": 3.707,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "His resume is just a list of places that ruined his weekends.",
+    "cues": {}
+  },
+  "k3": {
+    "duration": 6.757,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "At Citadel, Kyle traded in milliseconds. Now he's in private equity, where a fast exit takes seven years.",
+    "cues": {
+      "milliseconds": 1.553,
+      "seven years": 5.92
+    }
+  },
+  "k4": {
+    "duration": 3.188,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "And he still can't order lunch without a two by two matrix.",
+    "cues": {}
+  },
+  "c1": {
+    "duration": 4.529,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "But seriously. Five brilliant people. One great firm. We love you guys.",
+    "cues": {
+      "Five brilliant": 0.859,
+      "We love": 3.393
+    }
+  },
+  "c2": {
+    "duration": 4.227,
+    "sampleRate": 24000,
+    "voice": "af_heart",
+    "text": "Now get back to work. Those LPs aren't going to I R R themselves.",
+    "cues": {}
+  }
+}

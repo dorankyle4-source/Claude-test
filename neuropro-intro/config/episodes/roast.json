@@ -1,0 +1,227 @@
+{
+  "_note": "The Roast of Nonantum Capital Partners: an affectionate internal roast. Jokes are built only from public professional bios (titles, schools, prior firms). 'at' values and segment starts are laid out by scripts in the session from measured narration.",
+  "title": "The Roast of Nonantum Capital Partners",
+  "duration": 149.2,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voice": "af_heart",
+  "voiceSpeed": 1.0,
+  "sections": [],
+  "pronounce": {
+    "Nonantum": "nˌoʊnˈæntəm",
+    "Biotti": "bˌiːˈoʊɾi",
+    "Apostolides": "æpəstˈoʊlɪdiz",
+    "Guinivan": "ɡwˈɪnɪvən",
+    "LPs": "ˌɛlpˈiːz"
+  },
+  "voiceover": [
+    {
+      "id": "o1",
+      "at": 1.6,
+      "text": "Welcome to the roast of Nonantum Capital Partners!",
+      "cues": []
+    },
+    {
+      "id": "o2",
+      "at": 4.95,
+      "text": "Tonight we honor five people who've generated incredible returns. Mostly in Excel.",
+      "cues": [
+        "Mostly"
+      ]
+    },
+    {
+      "id": "j1",
+      "at": 13.76,
+      "text": "First up, the founder himself, Jon Biotti. Jon has three degrees from Harvard.",
+      "cues": [
+        "three degrees"
+      ]
+    },
+    {
+      "id": "j2",
+      "at": 18.86,
+      "text": "Three! At this point, he's not an alumnus. He's a returning customer.",
+      "cues": [
+        "returning customer"
+      ]
+    },
+    {
+      "id": "j3",
+      "at": 24.41,
+      "text": "Jon spent twenty years at Charlesbank before leaving to start his own firm.",
+      "cues": [
+        "twenty years"
+      ]
+    },
+    {
+      "id": "j4",
+      "at": 28.97,
+      "text": "The longest notice period in private equity history.",
+      "cues": []
+    },
+    {
+      "id": "j5",
+      "at": 33.65,
+      "text": "Then he named it after a village in Newton, so nobody would ever pronounce it right. It took me three takes.",
+      "cues": [
+        "village",
+        "three takes"
+      ]
+    },
+    {
+      "id": "d1",
+      "at": 42.93,
+      "text": "David Ganitsky went to Harvard, and Stanford.",
+      "cues": [
+        "Harvard",
+        "Stanford"
+      ]
+    },
+    {
+      "id": "d2",
+      "at": 45.88,
+      "text": "He couldn't decide which coast to feel superior on, so he picked both.",
+      "cues": []
+    },
+    {
+      "id": "d3",
+      "at": 51.55,
+      "text": "Before that, David worked at the Parthenon Group, named after a building that's been under renovation for twenty-five hundred years.",
+      "cues": [
+        "Parthenon",
+        "under renovation"
+      ]
+    },
+    {
+      "id": "d4",
+      "at": 59.0,
+      "text": "Which explains his hold periods.",
+      "cues": []
+    },
+    {
+      "id": "p1",
+      "at": 64.21,
+      "text": "Peter Apostolides is our CFO, and our Chief Compliance Officer.",
+      "cues": [
+        "Chief Compliance"
+      ]
+    },
+    {
+      "id": "p2",
+      "at": 68.65,
+      "text": "So the guy who rejects your expense reports also approves his own. Convenient, Peter.",
+      "cues": [
+        "approves his own",
+        "Convenient"
+      ]
+    },
+    {
+      "id": "p3",
+      "at": 75.81,
+      "text": "Peter's idea of a wild Friday night is reconciling capital accounts to the penny.",
+      "cues": [
+        "reconciling"
+      ]
+    },
+    {
+      "id": "p4",
+      "at": 81.39,
+      "text": "Then doing it again. For fun.",
+      "cues": []
+    },
+    {
+      "id": "s1",
+      "at": 86.56,
+      "text": "Shawn Jordan has a master's degree in philosophy.",
+      "cues": [
+        "philosophy"
+      ]
+    },
+    {
+      "id": "s2",
+      "at": 89.82,
+      "text": "In private equity. Finally, someone who can explain why we're all here. Spoiler: it's the carry.",
+      "cues": [
+        "why we're all here",
+        "Spoiler"
+      ]
+    },
+    {
+      "id": "s3",
+      "at": 97.18,
+      "text": "Shawn started as office manager, and now he's vice president.",
+      "cues": [
+        "office manager",
+        "vice president"
+      ]
+    },
+    {
+      "id": "s4",
+      "at": 101.06,
+      "text": "Honestly, the best value creation story in the entire portfolio.",
+      "cues": []
+    },
+    {
+      "id": "k1",
+      "at": 108.66,
+      "text": "Kyle Guinivan worked at McKinsey and Citadel, and went to Wharton.",
+      "cues": [
+        "McKinsey",
+        "Citadel",
+        "Wharton"
+      ]
+    },
+    {
+      "id": "k2",
+      "at": 112.6,
+      "text": "His resume is just a list of places that ruined his weekends.",
+      "cues": []
+    },
+    {
+      "id": "k3",
+      "at": 118.11,
+      "text": "At Citadel, Kyle traded in milliseconds. Now he's in private equity, where a fast exit takes seven years.",
+      "cues": [
+        "milliseconds",
+        "seven years"
+      ]
+    },
+    {
+      "id": "k4",
+      "at": 126.66,
+      "text": "And he still can't order lunch without a two by two matrix.",
+      "cues": []
+    },
+    {
+      "id": "c1",
+      "at": 133.25,
+      "text": "But seriously. Five brilliant people. One great firm. We love you guys.",
+      "cues": [
+        "Five brilliant",
+        "We love"
+      ]
+    },
+    {
+      "id": "c2",
+      "at": 138.13,
+      "text": "Now get back to work. Those LPs aren't going to I R R themselves.",
+      "cues": [],
+      "caption": "Now get back to work. Those LPs aren't going to IRR themselves."
+    }
+  ],
+  "endCard": {
+    "title": "The Roast of Nonantum Capital Partners",
+    "note": "All in good fun. Jokes are based on public bios only."
+  },
+  "segments": {
+    "intro": 0.0,
+    "jon": 12.36,
+    "david": 41.53,
+    "peter": 62.81,
+    "shawn": 85.16,
+    "kyle": 107.26,
+    "close": 131.85,
+    "end": 143.16
+  }
+}

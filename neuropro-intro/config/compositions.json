@@ -88,5 +88,15 @@
     "audioDir": "audio/generated/nonantum",
     "output": "output/nonantum-2026-annual-meeting.mp4",
     "captions": "output/nonantum-2026-annual-meeting.srt"
+  },
+  "roast": {
+    "title": "The Roast of Nonantum Capital Partners",
+    "storyboard": "config/episodes/roast.json",
+    "stage": "src/episodes/roast/main.js",
+    "timeline": "src/episodes/roast/timeline.js",
+    "voiceDir": "audio/voiceover/roast",
+    "audioDir": "audio/generated/roast",
+    "output": "output/nonantum-roast.mp4",
+    "captions": "output/nonantum-roast.srt"
   }
 }

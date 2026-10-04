@@ -453,6 +453,23 @@ const SFX = {
     }
   },
   // big stamp: thump + slap
+  // ba-dum-tss: two snare hits and a crash, for punchlines
+  rimshot(buf, t0, g) {
+    const hit = (t, a) => {
+      const s0 = Math.floor(t * SR), bp = biquadBP();
+      for (let n = s0; n < Math.min(N, s0 + SR * 0.2); n++) {
+        const x = (n - s0) / SR, v = (bp(rand(), 1900, 0.7) * Math.exp(-x * 28) + Math.sin(2 * Math.PI * 185 * x) * Math.exp(-x * 45) * 0.7) * a * g;
+        add(buf, n, v, v);
+      }
+    };
+    hit(t0, 0.8); hit(t0 + 0.14, 0.9);
+    const s0 = Math.floor((t0 + 0.3) * SR); let prev = 0, lp = 0;
+    for (let n = s0; n < Math.min(N, s0 + SR * 1.6); n++) {
+      const x = (n - s0) / SR, r = rand(), hp = r - prev; prev = r; lp += 0.5 * (hp - lp);
+      const v = lp * Math.exp(-x * 3.2) * 0.75 * g;
+      add(buf, n, v * 0.8, v);
+    }
+  },
   stamp(buf, t0, g) {
     SFX.thud(buf, t0, g * 0.9);
     const s0 = Math.floor(t0 * SR), bp = biquadBP();

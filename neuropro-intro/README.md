@@ -73,6 +73,24 @@ The sound follows the picture. Café ambience builds layer by layer (hum, espres
 
 Build with `npm run ep04:build` (audio → render → captions → vertical).
 
+# The Roast of Nonantum Capital Partners
+
+A 149-second affectionate internal roast on a roast-night stage (velvet curtains, a moving spotlight, a gold marquee). Every joke is built only from public professional bios: titles, schools and prior firms. Nothing touches looks, family or personal life. Each punchline gets a beat and a rimshot (`rimshot` SFX in `scripts/build-audio.mjs`). The names Nonantum, Biotti, Apostolides and Guinivan are voiced through phoneme overrides (`pronounce` in `config/episodes/roast.json`).
+
+**Watch:** `output/nonantum-roast.mp4` (1920×1080, 30 fps) · captions `output/nonantum-roast.srt`
+
+| Segment | Roastee | Sight gags |
+|---|---|---|
+| Intro | — | Marquee with chasing bulbs; "incredible returns. Mostly in Excel." |
+| 1 | Jon Biotti | Three Harvard diplomas, a "Harvard Rewards" loyalty card, 1998 to 2018 counter, NOTICE PERIOD: 20 YEARS stamp, three takes on pronouncing Nonantum |
+| 2 | David Ganitsky | Harvard and Stanford pennants, coast-smugness checkboxes, the Parthenon under scaffolding, HOLD PERIOD: TBD stamp |
+| 3 | Peter Apostolides | Two-title business card, a self-approved expense report, a Friday 11:47 PM reconciliation, "Reconcile again? YES" |
+| 4 | Shawn Jordan | Kant, Hegel and the LPA; "WHY ARE WE HERE? THE CARRY."; Office Manager to VP ladder; value-creation hockey stick |
+| 5 | Kyle Guinivan | Résumé with NO WEEKENDS tags, 0.003 s trade vs a 7-year "fast" exit, 2×2 lunch matrix |
+| Close | All five | Monograms, WE LOVE YOU GUYS, "Those LPs aren't going to IRR themselves." |
+
+Files: `config/episodes/roast.json` (lines, segment starts, pronunciations), `src/episodes/roast/`. Lines and segment starts are laid out from the measured narration: punchlines get 1.8 s of air. Build with `npm run roast:build`.
+
 # Nonantum Capital Partners: 2026 Annual Meeting (theoretical)
 
 A 90-second LP annual-meeting update in the same style. "Nonantum" is voiced as *No-NAN-tum* via a phoneme override (`pronounce` in the storyboard; captions keep the spelling). **Firm history (founded 2018, Boston; Fund I $385M+, Fund II $625M+) and the deals shown are from public announcements. Portfolio performance (+14% revenue, +17% EBITDA, 9 add-ons), the seven-company scorecard and fund multiples (2.1x, 1.4x) are illustrative placeholders, tagged ILLUSTRATIVE on screen. Lifted Trucks figures are the operating dashboard's estimates.** The wordmark is typographic in a navy, ivory and gold palette; the firm's logo wasn't reachable from this environment.

@@ -33,7 +33,7 @@ const stamp = (s) => {
 
 let n = 0, srt = '';
 for (const line of sb.voiceover) {
-  const dur = timing[line.id]?.duration ?? 3, parts = chunks(line.text);
+  const dur = timing[line.id]?.duration ?? 3, parts = chunks(line.caption || line.text);
   const total = parts.reduce((a, p) => a + p.length, 0);
   let t = line.at;
   for (const p of parts) {
