@@ -130,6 +130,27 @@ A 72-second YTD video in the same style as the NeuroPro YTD, branded for Lifted 
 
 Files: `config/episodes/lifted.json`, `src/episodes/lifted/`. Build with `npm run lifted:build`.
 
+# The NeuroPro Playbook: Partner Training for MoveDocs
+
+A 129-second pre-training video for the MoveDocs reps who sell NeuroPro to attorneys. It is built from *The NeuroPro Playbook* (Attorney Sales Kit, 2026 edition), without ADHD/autism testing, the case study, the kids message or the medical & rehab tile. It uses the same look as the YTD video. The voice is Kokoro `af_heart` at 1.08×. Dr. Doran's headshot (`assets/brand/doran-headshot.png`) is taken from the playbook.
+
+**Watch:** `output/neuropro-playbook-movedocs-training.mp4` (1920×1080, 30 fps) · captions `output/neuropro-playbook-movedocs-training.srt`
+
+| Time | Scene | What happens |
+|---|---|---|
+| 0:00–0:07 | Open | Logo, "Attorney Sales Kit · 2026 Edition", *The NeuroPro Playbook* and "Partner training for the MoveDocs team". |
+| 0:07–0:24 | Who we are | Concussion care · neuropsychological testing · mental health care, then 150,000+ head injuries, 46 states, 7–10 days and trial-ready. |
+| 0:24–0:44 | Our founding | Dr. Doran's headshot, a 15+ years badge and his career timeline, then one dot growing to ~30 clinicians nationwide. |
+| 0:44–0:58 | Your role | "Recognize it. Don't diagnose it." Three referral-trigger cards and "Send the referral. Our clinicians decide." |
+| 0:58–1:12 | One network | A 4-step pathway (evaluation → testing → mental health → medico-legal) and the 15+ / 10 / care-coordination tiles. |
+| 1:12–1:26 | Clean scan | "Most concussions don't show up on CT or MRI", then neurologist vs. NeuroPro neuropsychologist. |
+| 1:26–1:38 | DTI | Scan first ends at "No damage"; NeuroPro first ends at "Damages documented". |
+| 1:38–1:52 | What you'll hear | Three attorney questions, each with the rep's answer: too late, faking, who pays. |
+| 1:52–2:03 | Refer a client | Three steps, "think NeuroPro." and Kyle's contact card. |
+| 2:03–2:09 | End card | The logo and *"Thank you for trusting us with your care."* |
+
+Files: `config/episodes/movedocs.json`, `src/episodes/movedocs/`. Build with `npm run movedocs:build` (run `npm run movedocs:voiceover` first if the narration changes; each scene follows its line's `at`).
+
 # NeuroPro 2026 Year to Date
 
 A 79-second performance video built from the NeuroPro Clinic Dashboard (TherapyNotes pulled Sep 30, monthly close through August). It uses the same motion style as the ADP recap, in NeuroPro's own palette, type (Manrope + Inter) and real logo. The voice is Kokoro `af_heart`.

@@ -1,0 +1,224 @@
+1
+00:00:01,000 --> 00:00:02,931
+Welcome to the NeuroPro Playbook,
+
+2
+00:00:02,951 --> 00:00:04,940
+a quick primer for our partners at
+
+3
+00:00:04,960 --> 00:00:06,418
+MoveDocs before training.
+
+4
+00:00:07,300 --> 00:00:09,810
+NeuroPro is a national concussion clinic,
+
+5
+00:00:09,830 --> 00:00:11,414
+providing concussion care,
+
+6
+00:00:11,434 --> 00:00:13,080
+neuropsychological testing,
+
+7
+00:00:13,100 --> 00:00:15,610
+and mental health care. Our team has seen
+
+8
+00:00:15,630 --> 00:00:18,017
+more than a hundred fifty thousand head
+
+9
+00:00:18,037 --> 00:00:20,300
+injuries, we're licensed in forty-six
+
+10
+00:00:20,320 --> 00:00:22,768
+states, and most clients are seen within
+
+11
+00:00:22,788 --> 00:00:23,879
+seven to ten days.
+
+12
+00:00:24,900 --> 00:00:27,224
+NeuroPro was founded more than fifteen
+
+13
+00:00:27,244 --> 00:00:29,321
+years ago by Doctor Anthony Doran,
+
+14
+00:00:29,341 --> 00:00:31,665
+a neuropsychologist with a twenty-year
+
+15
+00:00:31,685 --> 00:00:33,886
+Navy career, who taught at the Naval
+
+16
+00:00:33,906 --> 00:00:35,489
+Academy and Johns Hopkins,
+
+17
+00:00:35,509 --> 00:00:38,080
+and helped pass Maryland's concussion law.
+
+18
+00:00:38,100 --> 00:00:40,671
+What started as one doctor is now close to
+
+19
+00:00:40,691 --> 00:00:43,200
+thirty clinicians, serving clients across
+
+20
+00:00:43,220 --> 00:00:43,940
+the country.
+
+21
+00:00:45,000 --> 00:00:47,294
+Your job is simple. You don't need to
+
+22
+00:00:47,314 --> 00:00:49,670
+diagnose anything, just recognize when
+
+23
+00:00:49,690 --> 00:00:51,984
+something isn't right: a head injury,
+
+24
+00:00:52,004 --> 00:00:54,235
+anxiety or poor sleep after a crash,
+
+25
+00:00:54,255 --> 00:00:56,111
+or a client who needs testing.
+
+26
+00:00:56,131 --> 00:00:57,549
+Then send the referral.
+
+27
+00:00:58,500 --> 00:01:00,860
+One referral puts the client into one
+
+28
+00:01:00,880 --> 00:01:02,983
+coordinated network: a concussion
+
+29
+00:01:03,003 --> 00:01:05,492
+evaluation, neuropsychological testing,
+
+30
+00:01:05,512 --> 00:01:07,036
+mental health treatment,
+
+31
+00:01:07,056 --> 00:01:08,645
+and medico-legal support,
+
+32
+00:01:08,665 --> 00:01:11,218
+with one team from intake through trial.
+
+33
+00:01:12,200 --> 00:01:14,842
+The most common pushback is a clean scan.
+
+34
+00:01:14,862 --> 00:01:17,569
+But most concussions don't show up on a CT
+
+35
+00:01:17,589 --> 00:01:20,166
+or MRI. A neurologist checks whether the
+
+36
+00:01:20,186 --> 00:01:22,763
+brain is damaged. NeuroPro measures what
+
+37
+00:01:22,783 --> 00:01:25,230
+that damage does to the client's life.
+
+38
+00:01:26,100 --> 00:01:27,796
+And be careful with a DTI.
+
+39
+00:01:27,816 --> 00:01:30,370
+It's discoverable, and if it comes back
+
+40
+00:01:30,390 --> 00:01:32,944
+normal, the defense calls it no damage.
+
+41
+00:01:32,964 --> 00:01:35,056
+Lead with a NeuroPro evaluation,
+
+42
+00:01:35,076 --> 00:01:37,234
+and add imaging only if it helps.
+
+43
+00:01:38,100 --> 00:01:40,484
+You'll hear the same questions again and
+
+44
+00:01:40,504 --> 00:01:42,648
+again. The accident was a while ago?
+
+45
+00:01:42,668 --> 00:01:44,992
+It's not too late. The defense says the
+
+46
+00:01:45,012 --> 00:01:47,517
+client is faking? Our testing has built-in
+
+47
+00:01:47,537 --> 00:01:48,959
+effort checks. Who pays?
+
+48
+00:01:48,979 --> 00:01:51,183
+Injury cases can go on a lien through
+
+49
+00:01:51,203 --> 00:01:51,724
+MoveDocs.
+
+50
+00:01:52,600 --> 00:01:54,141
+Sending a client is simple:
+
+51
+00:01:54,161 --> 00:01:56,048
+spot the need, send the referral,
+
+52
+00:01:56,068 --> 00:01:57,551
+and we take it from there.
+
+53
+00:01:57,571 --> 00:01:59,400
+When a client has a head injury,
+
+54
+00:01:59,420 --> 00:02:01,828
+or anything affecting their mental health,
+
+55
+00:02:01,848 --> 00:02:02,695
+think NeuroPro.
+
+56
+00:02:04,600 --> 00:02:06,273
+Thank you for trusting us with your care.
+

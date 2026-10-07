@@ -1,0 +1,130 @@
+{
+  "_note": "NeuroPro Playbook partner training for MoveDocs (~2 min). Content from NeuroPro_Attorney_Playbook_2026.pdf, minus ADHD/autism testing, the case study, the kids message and the medical & rehab tile, per Kyle. 'at' = narration start (s); cue words measured by `npm run movedocs:voiceover`.",
+  "title": "The NeuroPro Playbook: Partner Training for MoveDocs",
+  "duration": 129,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voice": "af_heart",
+  "voiceSpeed": 1.08,
+  "sections": [],
+  "pronounce": {
+    "MoveDocs": "mˈuːv dˈɑːks",
+    "Doran": "dˈɔːɹən"
+  },
+  "voiceover": [
+    {
+      "id": "l1",
+      "at": 1.0,
+      "text": "Welcome to the NeuroPro Playbook, a quick primer for our partners at MoveDocs before training.",
+      "cues": [
+        "MoveDocs"
+      ]
+    },
+    {
+      "id": "l2",
+      "at": 7.3,
+      "text": "NeuroPro is a national concussion clinic, providing concussion care, neuropsychological testing, and mental health care. Our team has seen more than a hundred fifty thousand head injuries, we're licensed in forty-six states, and most clients are seen within seven to ten days.",
+      "cues": [
+        "concussion care",
+        "neuropsychological testing",
+        "mental health care",
+        "a hundred fifty thousand",
+        "forty-six",
+        "seven to ten"
+      ]
+    },
+    {
+      "id": "l3",
+      "at": 24.9,
+      "text": "NeuroPro was founded more than fifteen years ago by Doctor Anthony Doran, a neuropsychologist with a twenty-year Navy career, who taught at the Naval Academy and Johns Hopkins, and helped pass Maryland's concussion law. What started as one doctor is now close to thirty clinicians, serving clients across the country.",
+      "cues": [
+        "fifteen years",
+        "Navy",
+        "Naval Academy",
+        "Johns Hopkins",
+        "Maryland's",
+        "one doctor",
+        "close to thirty"
+      ]
+    },
+    {
+      "id": "l4",
+      "at": 45.0,
+      "text": "Your job is simple. You don't need to diagnose anything, just recognize when something isn't right: a head injury, anxiety or poor sleep after a crash, or a client who needs testing. Then send the referral.",
+      "cues": [
+        "recognize",
+        "a head injury",
+        "anxiety",
+        "needs testing",
+        "send the referral"
+      ]
+    },
+    {
+      "id": "l5",
+      "at": 58.5,
+      "text": "One referral puts the client into one coordinated network: a concussion evaluation, neuropsychological testing, mental health treatment, and medico-legal support, with one team from intake through trial.",
+      "cues": [
+        "concussion evaluation",
+        "neuropsychological testing",
+        "mental health treatment",
+        "medico-legal",
+        "one team"
+      ]
+    },
+    {
+      "id": "l6",
+      "at": 72.2,
+      "text": "The most common pushback is a clean scan. But most concussions don't show up on a CT or MRI. A neurologist checks whether the brain is damaged. NeuroPro measures what that damage does to the client's life.",
+      "cues": [
+        "clean scan",
+        "most concussions",
+        "A neurologist",
+        "NeuroPro measures"
+      ]
+    },
+    {
+      "id": "l7",
+      "at": 86.1,
+      "text": "And be careful with a DTI. It's discoverable, and if it comes back normal, the defense calls it no damage. Lead with a NeuroPro evaluation, and add imaging only if it helps.",
+      "cues": [
+        "discoverable",
+        "comes back normal",
+        "Lead with",
+        "only if it helps"
+      ]
+    },
+    {
+      "id": "l8",
+      "at": 98.1,
+      "text": "You'll hear the same questions again and again. The accident was a while ago? It's not too late. The defense says the client is faking? Our testing has built-in effort checks. Who pays? Injury cases can go on a lien through MoveDocs.",
+      "cues": [
+        "a while ago",
+        "not too late",
+        "faking",
+        "effort checks",
+        "Who pays",
+        "a lien"
+      ]
+    },
+    {
+      "id": "l9",
+      "at": 112.6,
+      "text": "Sending a client is simple: spot the need, send the referral, and we take it from there. When a client has a head injury, or anything affecting their mental health, think NeuroPro.",
+      "cues": [
+        "spot the need",
+        "send the referral",
+        "take it from there",
+        "think NeuroPro"
+      ]
+    },
+    {
+      "id": "l10",
+      "at": 124.6,
+      "text": "Thank you for trusting us with your care."
+    }
+  ],
+  "endCard": {
+    "tagline": "Thank you for trusting us with your care."
+  }
+}

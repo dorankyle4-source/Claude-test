@@ -98,5 +98,15 @@
     "audioDir": "audio/generated/roast",
     "output": "output/nonantum-roast.mp4",
     "captions": "output/nonantum-roast.srt"
+  },
+  "movedocs": {
+    "title": "The NeuroPro Playbook: Partner Training for MoveDocs",
+    "storyboard": "config/episodes/movedocs.json",
+    "stage": "src/episodes/movedocs/main.js",
+    "timeline": "src/episodes/movedocs/timeline.js",
+    "voiceDir": "audio/voiceover/movedocs",
+    "audioDir": "audio/generated/movedocs",
+    "output": "output/neuropro-playbook-movedocs-training.mp4",
+    "captions": "output/neuropro-playbook-movedocs-training.srt"
   }
 }

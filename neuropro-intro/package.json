@@ -56,7 +56,12 @@
     "roast:audio": "node scripts/build-audio.mjs --comp roast",
     "roast:render": "node scripts/render.mjs --comp roast",
     "roast:captions": "node scripts/captions.mjs --comp roast",
-    "roast:build": "npm run roast:audio && npm run roast:render && npm run roast:captions"
+    "roast:build": "npm run roast:audio && npm run roast:render && npm run roast:captions",
+    "movedocs:voiceover": "python3 scripts/voiceover.py --comp movedocs",
+    "movedocs:audio": "node scripts/build-audio.mjs --comp movedocs",
+    "movedocs:render": "node scripts/render.mjs --comp movedocs",
+    "movedocs:captions": "node scripts/captions.mjs --comp movedocs",
+    "movedocs:build": "npm run movedocs:audio && npm run movedocs:render && npm run movedocs:captions"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.1.0",
