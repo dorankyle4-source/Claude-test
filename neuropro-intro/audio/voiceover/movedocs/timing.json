@@ -1,116 +1,119 @@
 {
   "l1": {
-    "duration": 5.438,
+    "duration": 6.072,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "Welcome to the NeuroPro Playbook, a quick primer for our partners at MoveDocs before training.",
+    "text": "Welcome to NeuroPro, brought to you with our partners at MoveDocs. Here's how we care for your injured clients.",
     "cues": {
-      "MoveDocs": 3.778
+      "MoveDocs": 2.875,
+      "injured clients": 5.131
     }
   },
   "l2": {
-    "duration": 16.599,
+    "duration": 16.703,
     "sampleRate": 24000,
     "voice": "af_heart",
     "text": "NeuroPro is a national concussion clinic, providing concussion care, neuropsychological testing, and mental health care. Our team has seen more than a hundred fifty thousand head injuries, we're licensed in forty-six states, and most clients are seen within seven to ten days.",
     "cues": {
-      "concussion care": 3.021,
-      "neuropsychological testing": 4.48,
-      "mental health care": 6.36,
-      "a hundred fifty thousand": 8.99,
-      "forty-six": 12.25,
-      "seven to ten": 15.299
+      "concussion care": 2.73,
+      "neuropsychological testing": 4.45,
+      "mental health care": 6.38,
+      "a hundred fifty thousand": 8.888,
+      "forty-six": 12.349,
+      "seven to ten": 15.324
     }
   },
   "l3": {
-    "duration": 19.06,
+    "duration": 20.907,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "NeuroPro was founded more than fifteen years ago by Doctor Anthony Doran, a neuropsychologist with a twenty-year Navy career, who taught at the Naval Academy and Johns Hopkins, and helped pass Maryland's concussion law. What started as one doctor is now close to thirty clinicians, serving clients across the country.",
+    "text": "NeuroPro was founded more than fifteen years ago by Doctor Anthony Doran, a neuropsychologist with a twenty-year Navy career. He completed a fellowship at Harvard, taught at the Naval Academy and Johns Hopkins, and helped pass Maryland's concussion law. What started as one doctor is now close to thirty clinicians, caring for clients across the country.",
     "cues": {
-      "fifteen years": 1.602,
-      "Navy": 6.796,
-      "Naval Academy": 8.31,
-      "Johns Hopkins": 9.571,
-      "Maryland's": 11.49,
-      "one doctor": 14.198,
-      "close to thirty": 15.271
+      "fifteen years": 1.598,
+      "Navy": 6.689,
+      "Harvard": 9.236,
+      "Naval Academy": 10.402,
+      "Johns Hopkins": 11.491,
+      "Maryland's": 13.433,
+      "one doctor": 16.055,
+      "close to thirty": 17.195
     }
   },
   "l4": {
-    "duration": 12.569,
+    "duration": 14.397,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "Your job is simple. You don't need to diagnose anything, just recognize when something isn't right: a head injury, anxiety or poor sleep after a crash, or a client who needs testing. Then send the referral.",
+    "text": "You don't need to diagnose anything. You only need to recognize when something isn't right: a head injury, anxiety or poor sleep after a crash, or a client who needs testing. Send the referral, and our clinicians determine the right evaluation.",
     "cues": {
-      "recognize": 3.25,
-      "a head injury": 5.68,
-      "anxiety": 6.61,
-      "needs testing": 9.552,
-      "send the referral": 11.398
+      "recognize": 2.766,
+      "a head injury": 4.87,
+      "anxiety": 5.89,
+      "needs testing": 9.029,
+      "Send the referral": 9.897
     }
   },
   "l5": {
-    "duration": 12.738,
+    "duration": 12.788,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "One referral puts the client into one coordinated network: a concussion evaluation, neuropsychological testing, mental health treatment, and medico-legal support, with one team from intake through trial.",
+    "text": "One referral puts your client into one coordinated network: a concussion evaluation, neuropsychological testing, mental health treatment, and medico-legal support, with one team from intake through trial.",
     "cues": {
-      "concussion evaluation": 3.92,
-      "neuropsychological testing": 5.61,
-      "mental health treatment": 7.54,
-      "medico-legal": 8.82,
-      "one team": 10.58
+      "concussion evaluation": 3.9,
+      "neuropsychological testing": 5.64,
+      "mental health treatment": 7.62,
+      "medico-legal": 8.89,
+      "one team": 10.66
     }
   },
   "l6": {
-    "duration": 13.05,
+    "duration": 12.697,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "The most common pushback is a clean scan. But most concussions don't show up on a CT or MRI. A neurologist checks whether the brain is damaged. NeuroPro measures what that damage does to the client's life.",
+    "text": "A clean scan doesn't mean a healthy brain. Most concussions don't show up on a CT or MRI. A neurologist checks whether the brain is damaged. NeuroPro measures what that damage does to your client's life.",
     "cues": {
-      "clean scan": 1.473,
-      "most concussions": 2.52,
-      "A neurologist": 6.02,
-      "NeuroPro measures": 9.224
+      "clean scan": 0.354,
+      "Most concussions": 2.114,
+      "A neurologist": 5.755,
+      "NeuroPro measures": 8.977
     }
   },
   "l7": {
-    "duration": 11.154,
+    "duration": 11.032,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "And be careful with a DTI. It's discoverable, and if it comes back normal, the defense calls it no damage. Lead with a NeuroPro evaluation, and add imaging only if it helps.",
+    "text": "Be careful with a DTI. It's discoverable, and if it comes back normal, the defense calls it no damage. Lead with a NeuroPro evaluation, and add imaging only if it helps.",
     "cues": {
-      "discoverable": 2.059,
-      "comes back normal": 3.23,
-      "Lead with": 6.409,
-      "only if it helps": 9.878
+      "discoverable": 1.895,
+      "comes back normal": 3.19,
+      "Lead with": 6.289,
+      "only if it helps": 9.834
     }
   },
   "l8": {
-    "duration": 13.644,
+    "duration": 13.556,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "You'll hear the same questions again and again. The accident was a while ago? It's not too late. The defense says the client is faking? Our testing has built-in effort checks. Who pays? Injury cases can go on a lien through MoveDocs.",
+    "text": "A few questions we hear often. The accident was a while ago? It's not too late. The defense says your client is faking? Our testing has built-in effort checks. And who pays? Injury cases can be handled on a lien through MoveDocs.",
     "cues": {
-      "a while ago": 3.329,
-      "not too late": 4.353,
-      "faking": 6.937,
-      "effort checks": 8.903,
-      "Who pays": 9.776,
-      "a lien": 12.179
+      "a while ago": 2.835,
+      "not too late": 3.882,
+      "faking": 6.38,
+      "effort checks": 8.352,
+      "who pays": 9.514,
+      "a lien": 12.117
     }
   },
   "l9": {
-    "duration": 10.115,
+    "duration": 15.162,
     "sampleRate": 24000,
     "voice": "af_heart",
-    "text": "Sending a client is simple: spot the need, send the referral, and we take it from there. When a client has a head injury, or anything affecting their mental health, think NeuroPro.",
+    "text": "Referring a client is simple: spot the need, send the referral directly to NeuroPro, and we take it from there. Your MoveDocs representative is always there to help. When a client has a head injury, or anything affecting their mental health, think NeuroPro.",
     "cues": {
-      "spot the need": 1.76,
-      "send the referral": 2.68,
-      "take it from there": 4.32,
-      "think NeuroPro": 9.04
+      "spot the need": 1.88,
+      "send the referral": 2.83,
+      "take it from there": 5.38,
+      "Your MoveDocs": 6.292,
+      "think NeuroPro": 14.16
     }
   },
   "l10": {

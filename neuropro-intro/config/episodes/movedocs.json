@@ -1,7 +1,7 @@
 {
-  "_note": "NeuroPro Playbook partner training for MoveDocs (~2 min). Content from NeuroPro_Attorney_Playbook_2026.pdf, minus ADHD/autism testing, the case study, the kids message and the medical & rehab tile, per Kyle. 'at' = narration start (s); cue words measured by `npm run movedocs:voiceover`.",
-  "title": "The NeuroPro Playbook: Partner Training for MoveDocs",
-  "duration": 129,
+  "_note": "NeuroPro Playbook video for attorneys, shown by MoveDocs (~2 min). Attorneys refer directly to NeuroPro; MoveDocs represents NeuroPro to them and helps sell. Content from NeuroPro_Attorney_Playbook_2026.pdf minus ADHD/autism testing, the case study, the kids message and the medical & rehab tile. 'at' = narration start (s); cues measured by `npm run movedocs:voiceover`.",
+  "title": "The NeuroPro Playbook: For Attorneys, with MoveDocs",
+  "duration": 138,
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -10,20 +10,27 @@
   "sections": [],
   "pronounce": {
     "MoveDocs": "mˈuːv dˈɑːks",
-    "Doran": "dˈɔːɹən"
+    "Doran": "dˈɔːɹən",
+    "NeuroPro": "nˈʊɹoʊ pɹˈoʊ",
+    "neuropsychological": "nˌʊɹoʊsˌaɪkəlˈɑːdʒɪkəl",
+    "neuropsychologist": "nˌʊɹoʊsaɪkˈɑːlədʒɪst",
+    "Maryland's": "mˈɛɹələndz",
+    "lien": "lˈiːn",
+    "neurologist": "nʊɹˈɑːlədʒɪst"
   },
   "voiceover": [
     {
       "id": "l1",
       "at": 1.0,
-      "text": "Welcome to the NeuroPro Playbook, a quick primer for our partners at MoveDocs before training.",
+      "text": "Welcome to NeuroPro, brought to you with our partners at MoveDocs. Here's how we care for your injured clients.",
       "cues": [
-        "MoveDocs"
+        "MoveDocs",
+        "injured clients"
       ]
     },
     {
       "id": "l2",
-      "at": 7.3,
+      "at": 7.97,
       "text": "NeuroPro is a national concussion clinic, providing concussion care, neuropsychological testing, and mental health care. Our team has seen more than a hundred fifty thousand head injuries, we're licensed in forty-six states, and most clients are seen within seven to ten days.",
       "cues": [
         "concussion care",
@@ -36,11 +43,12 @@
     },
     {
       "id": "l3",
-      "at": 24.9,
-      "text": "NeuroPro was founded more than fifteen years ago by Doctor Anthony Doran, a neuropsychologist with a twenty-year Navy career, who taught at the Naval Academy and Johns Hopkins, and helped pass Maryland's concussion law. What started as one doctor is now close to thirty clinicians, serving clients across the country.",
+      "at": 25.57,
+      "text": "NeuroPro was founded more than fifteen years ago by Doctor Anthony Doran, a neuropsychologist with a twenty-year Navy career. He completed a fellowship at Harvard, taught at the Naval Academy and Johns Hopkins, and helped pass Maryland's concussion law. What started as one doctor is now close to thirty clinicians, caring for clients across the country.",
       "cues": [
         "fifteen years",
         "Navy",
+        "Harvard",
         "Naval Academy",
         "Johns Hopkins",
         "Maryland's",
@@ -50,20 +58,20 @@
     },
     {
       "id": "l4",
-      "at": 45.0,
-      "text": "Your job is simple. You don't need to diagnose anything, just recognize when something isn't right: a head injury, anxiety or poor sleep after a crash, or a client who needs testing. Then send the referral.",
+      "at": 47.38,
+      "text": "You don't need to diagnose anything. You only need to recognize when something isn't right: a head injury, anxiety or poor sleep after a crash, or a client who needs testing. Send the referral, and our clinicians determine the right evaluation.",
       "cues": [
         "recognize",
         "a head injury",
         "anxiety",
         "needs testing",
-        "send the referral"
+        "Send the referral"
       ]
     },
     {
       "id": "l5",
-      "at": 58.5,
-      "text": "One referral puts the client into one coordinated network: a concussion evaluation, neuropsychological testing, mental health treatment, and medico-legal support, with one team from intake through trial.",
+      "at": 62.68,
+      "text": "One referral puts your client into one coordinated network: a concussion evaluation, neuropsychological testing, mental health treatment, and medico-legal support, with one team from intake through trial.",
       "cues": [
         "concussion evaluation",
         "neuropsychological testing",
@@ -74,19 +82,19 @@
     },
     {
       "id": "l6",
-      "at": 72.2,
-      "text": "The most common pushback is a clean scan. But most concussions don't show up on a CT or MRI. A neurologist checks whether the brain is damaged. NeuroPro measures what that damage does to the client's life.",
+      "at": 76.37,
+      "text": "A clean scan doesn't mean a healthy brain. Most concussions don't show up on a CT or MRI. A neurologist checks whether the brain is damaged. NeuroPro measures what that damage does to your client's life.",
       "cues": [
         "clean scan",
-        "most concussions",
+        "Most concussions",
         "A neurologist",
         "NeuroPro measures"
       ]
     },
     {
       "id": "l7",
-      "at": 86.1,
-      "text": "And be careful with a DTI. It's discoverable, and if it comes back normal, the defense calls it no damage. Lead with a NeuroPro evaluation, and add imaging only if it helps.",
+      "at": 89.97,
+      "text": "Be careful with a DTI. It's discoverable, and if it comes back normal, the defense calls it no damage. Lead with a NeuroPro evaluation, and add imaging only if it helps.",
       "cues": [
         "discoverable",
         "comes back normal",
@@ -96,31 +104,32 @@
     },
     {
       "id": "l8",
-      "at": 98.1,
-      "text": "You'll hear the same questions again and again. The accident was a while ago? It's not too late. The defense says the client is faking? Our testing has built-in effort checks. Who pays? Injury cases can go on a lien through MoveDocs.",
+      "at": 101.9,
+      "text": "A few questions we hear often. The accident was a while ago? It's not too late. The defense says your client is faking? Our testing has built-in effort checks. And who pays? Injury cases can be handled on a lien through MoveDocs.",
       "cues": [
         "a while ago",
         "not too late",
         "faking",
         "effort checks",
-        "Who pays",
+        "who pays",
         "a lien"
       ]
     },
     {
       "id": "l9",
-      "at": 112.6,
-      "text": "Sending a client is simple: spot the need, send the referral, and we take it from there. When a client has a head injury, or anything affecting their mental health, think NeuroPro.",
+      "at": 116.36,
+      "text": "Referring a client is simple: spot the need, send the referral directly to NeuroPro, and we take it from there. Your MoveDocs representative is always there to help. When a client has a head injury, or anything affecting their mental health, think NeuroPro.",
       "cues": [
         "spot the need",
         "send the referral",
         "take it from there",
+        "Your MoveDocs",
         "think NeuroPro"
       ]
     },
     {
       "id": "l10",
-      "at": 124.6,
+      "at": 133.42,
       "text": "Thank you for trusting us with your care."
     }
   ],

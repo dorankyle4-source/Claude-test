@@ -1,4 +1,4 @@
-// NeuroPro Playbook partner training (MoveDocs): scene boundaries + measured narration cues.
+// NeuroPro Playbook video for attorneys, shown by MoveDocs: scene boundaries + measured narration cues.
 // Pure module — shared by the renderer and scripts/build-audio.mjs.
 // Each scene opens just before its narration line, so retiming a line in the storyboard moves its scene too.
 
@@ -18,14 +18,14 @@ export function buildTimeline(sb, timing) {
     svc: [vo('l2', 'concussion care'), vo('l2', 'neuropsychological testing'), vo('l2', 'mental health care')],
     stat: [vo('l2', 'a hundred fifty thousand'), vo('l2', 'forty-six'), vo('l2', 'seven to ten'), vo('l2', 'seven to ten') + 0.6],
     years: vo('l3', 'fifteen years'),
-    bio: [vo('l3', 'Navy'), vo('l3', 'Naval Academy'), vo('l3', 'Johns Hopkins'), vo('l3', "Maryland's")],
+    bio: [vo('l3', 'Navy'), vo('l3', 'Harvard'), vo('l3', 'Naval Academy'), vo('l3', 'Johns Hopkins'), vo('l3', "Maryland's")],
     oneDoc: vo('l3', 'one doctor'), thirty: vo('l3', 'close to thirty'),
     recognize: vo('l4', 'recognize'),
-    trig: [vo('l4', 'a head injury'), vo('l4', 'anxiety'), vo('l4', 'needs testing')], sendRef: vo('l4', 'send the referral'),
+    trig: [vo('l4', 'a head injury'), vo('l4', 'anxiety'), vo('l4', 'needs testing')], sendRef: vo('l4', 'Send the referral'),
     path: [vo('l5', 'concussion evaluation'), vo('l5', 'neuropsychological testing'), vo('l5', 'mental health treatment'), vo('l5', 'medico-legal')], oneTeam: vo('l5', 'one team'),
     clean: vo('l6', 'clean scan'), most: vo('l6', 'most concussions'), neuro: vo('l6', 'A neurologist'), measures: vo('l6', 'NeuroPro measures'),
     disc: vo('l7', 'discoverable'), normal: vo('l7', 'comes back normal'), lead: vo('l7', 'Lead with'), helps: vo('l7', 'only if it helps'),
-    q: [vo('l8', 'a while ago'), vo('l8', 'faking'), vo('l8', 'Who pays')], a: [vo('l8', 'not too late'), vo('l8', 'effort checks'), vo('l8', 'a lien')],
+    q: [vo('l8', 'a while ago'), vo('l8', 'faking'), vo('l8', 'who pays')], a: [vo('l8', 'not too late'), vo('l8', 'effort checks'), vo('l8', 'a lien')],
     steps: [vo('l9', 'spot the need'), vo('l9', 'send the referral'), vo('l9', 'take it from there')], think: vo('l9', 'think NeuroPro'),
     thanks: vo('l10'),
   };

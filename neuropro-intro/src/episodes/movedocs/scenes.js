@@ -1,4 +1,4 @@
-// The scenes of the NeuroPro Playbook partner training for MoveDocs. Each returns { id, from, to, markup, update(t) }.
+// The scenes of the NeuroPro Playbook video for attorneys, shown by MoveDocs (attorneys refer directly to NeuroPro; MoveDocs represents NeuroPro to them). Each returns { id, from, to, markup, update(t) }.
 // Content comes from NeuroPro_Attorney_Playbook_2026.pdf (Attorney Sales Kit, 2026 edition), trimmed per Kyle:
 // no ADHD/autism testing, no case study, no kids message, no medical & rehab tile.
 import { h } from '../../engine/svg.js';
@@ -42,10 +42,10 @@ function open(K, T) {
     neural('o-netR', 29, 1480, 80, 400, 420, 11, C.teal, 0.3),
     g('o-logo', rect({ x: -lw / 2 - 40, y: -lh / 2 - 26, width: lw + 80, height: lh + 52, rx: 26, fill: C.paper }),
       h('image', { href: LOGO, x: -lw / 2, y: -lh / 2, width: lw, height: lh })),
-    g('o-eye', txt('ATTORNEY SALES KIT · 2026 EDITION', { size: 28, weight: 800, family: DISPLAY, fill: C.teal, anchor: 'middle', ls: 4 })),
+    g('o-eye', txt('FOR ATTORNEYS · PRESENTED WITH MOVEDOCS', { size: 28, weight: 800, family: DISPLAY, fill: C.teal, anchor: 'middle', ls: 4 })),
     g('o-title', txt('The NeuroPro Playbook', { size: 132, weight: 800, family: DISPLAY, fill: C.white, anchor: 'middle', ls: -2 })),
     stroke('o-rule', 'M860,712 H1060', C.teal, 8),
-    g('o-sub', txt('Partner training for the MoveDocs team', { size: 48, weight: 500, fill: C.light, anchor: 'middle' })),
+    g('o-sub', txt('Concussion, testing and mental health care for your injured clients', { size: 42, weight: 500, fill: C.light, anchor: 'middle' })),
   );
   return {
     id: 'open', from: 0, to: T.who, markup,
@@ -100,7 +100,7 @@ function who(K, T) {
 }
 
 // ------------------------------------------------------------------ 3 · FOUNDING
-const BIO = ['20-year U.S. Navy career', 'Naval Academy concussion specialist', 'Johns Hopkins faculty', "Helped pass Maryland's concussion law"];
+const BIO = ['20-year U.S. Navy career', 'Harvard fellowship', 'Naval Academy concussion specialist', 'Johns Hopkins faculty', "Helped pass Maryland's concussion law"];
 function founding(K, T) {
   const dots = Array.from({ length: 30 }, (_, i) => h('circle', { id: `f-d${i}`, cx: 0, cy: 0, r: 17, fill: i === 0 ? C.coral : C.teal, opacity: 0 }));
   const markup = h('g', { id: 'sc-founding' },
@@ -114,7 +114,7 @@ function founding(K, T) {
       txt('Founder & CEO', { y: 80, size: 26, fill: C.ink2, anchor: 'middle' })),
     g('f-years', rect({ x: -130, y: -36, width: 260, height: 72, rx: 36, fill: C.navy }),
       txt('15+ years', { y: 12, size: 34, weight: 800, family: DISPLAY, fill: C.white, anchor: 'middle' })),
-    h('line', { id: 'f-spine', x1: 620, y1: 420, x2: 620, y2: 420, stroke: C.track, 'stroke-width': 4 }),
+    h('line', { id: 'f-spine', x1: 620, y1: 400, x2: 620, y2: 400, stroke: C.track, 'stroke-width': 4 }),
     ...BIO.map((b, i) => g(`f-b${i}`, h('circle', { r: 13, fill: C.teal }), txt(b, { x: 34, y: 11, size: 29, weight: 600, family: DISPLAY }))),
     g('f-card', rect({ x: 0, y: 0, width: 520, height: 600, rx: 28, fill: C.navy }),
       txt('FROM ONE DOCTOR…', { id: 'f-cap', x: 44, y: 70, size: 24, weight: 800, family: DISPLAY, fill: C.teal, ls: 3 }),
@@ -131,9 +131,9 @@ function founding(K, T) {
       K.pop('f-photo', 360, 560, t, T.founding + 0.4, { amount: 0.08 });
       K.rise('f-name', 360, 770, t, T.founding + 0.7, { dist: 16 });
       K.pop('f-years', 360, 920, t, T.years - 0.1);
-      const sp = prog(t, T.bio[0] - 0.3, T.bio[3] + 0.3, inOutCubic);
-      K.attr('f-spine', 'y2', lerp(420, 420 + 3 * 130, sp).toFixed(1));
-      BIO.forEach((_, i) => K.rise(`f-b${i}`, 620, 420 + i * 130, t, T.bio[i] - 0.2, { dist: 0, oy: 0 }));
+      const sp = prog(t, T.bio[0] - 0.3, T.bio[4] + 0.3, inOutCubic);
+      K.attr('f-spine', 'y2', lerp(400, 400 + 4 * 108, sp).toFixed(1));
+      BIO.forEach((_, i) => K.rise(`f-b${i}`, 620, 400 + i * 108, t, T.bio[i] - 0.2, { dist: 0, oy: 0 }));
       K.rise('f-card', CX, CY, t, T.oneDoc - 0.6, { dist: 40 });
       const grow = prog(t, T.thirty - 0.1, T.thirty + 1.0, outCubic);
       const n = Math.max(1, Math.round(1 + 29 * grow));
@@ -160,7 +160,7 @@ function role(K, T) {
   const CW = 510;
   const markup = h('g', { id: 'sc-role' },
     bg(C.cream),
-    ...header('r', 'YOUR ROLE', 'Recognize it. Don’t diagnose it.'),
+    ...header('r', 'WHEN TO REFER', 'Recognize it. Don’t diagnose it.'),
     ...TRIG.map((c, i) => g(`r-c${i}`, rect({ x: 0, y: 0, width: CW, height: 410, rx: 24, fill: C.card, stroke: C.line, 'stroke-width': 2 }),
       rect({ x: 0, y: 0, width: CW, height: 8, rx: 4, fill: C.teal }),
       txt(c.t, { x: 36, y: 74, size: 34, weight: 800, family: DISPLAY }),
@@ -226,7 +226,7 @@ function scan(K, T) {
     ...items.map((it, j) => [check(60, 200 + j * 50, dark ? C.teal : C.grey), txt(it, { x: 92, y: 210 + j * 50, size: 29, fill: dark ? C.white : C.ink2 })]));
   const markup = h('g', { id: 'sc-scan' },
     bg(C.cream),
-    ...header('s', 'THE CLEAN-SCAN OBJECTION', 'Normal scan. Not a normal brain.'),
+    ...header('s', 'WHEN THE SCANS ARE CLEAN', 'Normal scan. Not a normal brain.'),
     g('s-most', rect({ x: 0, y: 0, width: 1600, height: 150, rx: 26, fill: C.navy }),
       txt('Most', { x: 50, y: 108, size: 110, weight: 800, family: DISPLAY, fill: C.teal, ls: -3 }),
       txt('concussions and mild brain injuries don’t show up on CT or MRI.', { x: 360, y: 70, size: 34, weight: 700, family: DISPLAY, fill: C.white }),
@@ -283,19 +283,19 @@ function dti(K, T) {
 const FAQ = [
   { q: '“The accident was a while ago.”', a: 'Not too late. We evaluate months or years after injury.' },
   { q: '“Defense says my client is faking.”', a: 'Built-in effort checks show the client gave full effort.' },
-  { q: '“Who pays? How fast?”', a: 'PI cases on a lien through MoveDocs. First visit in 7–10 days.' },
+  { q: '“Who pays? How fast?”', a: 'Lien-based through MoveDocs. First visit in 7–10 days.' },
 ];
 function faq(K, T) {
   const markup = h('g', { id: 'sc-faq' },
     bg(C.navy),
     neural('q-net', 77, 1460, 40, 420, 260, 8, C.teal, 0.16),
-    ...header('q', 'WHAT YOU’LL HEAR', 'Quick answers to the usual questions', true),
+    ...header('q', 'COMMON QUESTIONS', 'Quick answers for attorneys', true),
     ...FAQ.map((f, i) => [
       g(`q-q${i}`, rect({ x: 0, y: 0, width: 640, height: 150, rx: 22, fill: C.navy2 }),
-        txt('THE ATTORNEY SAYS', { x: 36, y: 50, size: 20, weight: 800, family: DISPLAY, fill: C.light, ls: 3 }),
+        txt('YOU ASK', { x: 36, y: 50, size: 20, weight: 800, family: DISPLAY, fill: C.light, ls: 3 }),
         txt(f.q, { x: 36, y: 106, size: 32, weight: 700, family: DISPLAY, fill: C.white })),
       g(`q-a${i}`, rect({ x: 0, y: 0, width: 920, height: 150, rx: 22, fill: C.teal }),
-        txt('YOU SAY', { x: 36, y: 50, size: 20, weight: 800, family: DISPLAY, fill: C.navy, ls: 3 }),
+        txt('OUR ANSWER', { x: 36, y: 50, size: 20, weight: 800, family: DISPLAY, fill: C.navy, ls: 3 }),
         txt(f.a, { x: 36, y: 106, size: 28, weight: 700, family: DISPLAY, fill: C.navy })),
       g(`q-x${i}`, h('path', { d: 'M0,0 h22 m-10,-10 l10,10 l-10,10', fill: 'none', stroke: C.teal, 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })),
     ]),
@@ -319,8 +319,8 @@ function faq(K, T) {
 // ------------------------------------------------------------------ 9 · REFER
 const STEPS = [
   { t: 'Spot the need', s: 'A head injury, a testing need, or anything affecting mental health.' },
-  { t: 'Send the referral', s: 'Through MoveDocs, or straight to NeuroPro with basic case details.' },
-  { t: 'We take it from there', s: 'Scheduling, the right evaluation, and updates to the attorney.' },
+  { t: 'Send the referral', s: 'Directly to NeuroPro, online or by phone, with basic case details.' },
+  { t: 'We take it from there', s: 'Scheduling, the right evaluation, and updates to you.' },
 ];
 function wrap(s, n) { const out = []; let line = ''; for (const w of s.split(' ')) { if ((line + ' ' + w).trim().length > n) { out.push(line); line = w; } else line = (line + ' ' + w).trim(); } out.push(line); return out; }
 function refer(K, T) {
@@ -337,11 +337,13 @@ function refer(K, T) {
     g('e-think', txt('When a client has a head injury or anything', { size: 34, fill: C.light }),
       txt('affecting their mental health,', { y: 46, size: 34, fill: C.light }),
       txt('think NeuroPro.', { y: 136, size: 72, weight: 800, family: DISPLAY, fill: C.teal, ls: -1 })),
-    g('e-card', rect({ x: 0, y: 0, width: 640, height: 196, rx: 22, fill: C.paper }),
-      txt('neuroprocares.com/contact-us', { x: 36, y: 56, size: 28, weight: 800, family: DISPLAY, fill: C.tealDeep }),
-      txt('Kyle Doran · Head of Business Development', { x: 36, y: 102, size: 25, weight: 600, fill: C.navy }),
-      txt('443-962-7716', { x: 36, y: 142, size: 25, fill: C.ink2 }),
-      txt('kyle@neuroprocares.com', { x: 36, y: 178, size: 25, fill: C.ink2 })),
+    g('e-card', rect({ x: 0, y: 0, width: 640, height: 236, rx: 22, fill: C.paper }),
+      txt('REFER A CLIENT', { x: 36, y: 50, size: 20, weight: 800, family: DISPLAY, fill: C.muted, ls: 3 }),
+      txt('neuroprocares.com/contact-us', { x: 36, y: 96, size: 30, weight: 800, family: DISPLAY, fill: C.tealDeep }),
+      txt('Kyle Doran · Head of Business Development', { x: 36, y: 140, size: 24, weight: 600, fill: C.navy }),
+      txt('443-962-7716 · kyle@neuroprocares.com', { x: 36, y: 176, size: 24, fill: C.ink2 }),
+      txt('Questions? Ask your MoveDocs representative.', { id: 'e-md', x: 36, y: 214, size: 22, weight: 600, fill: C.muted })),
+    foot('e-foot', 'Educational material, not legal advice. Clinical recommendations are made by the treating provider after evaluation.', true),
   );
   return {
     id: 'refer', from: T.refer, to: T.end, markup,
@@ -350,7 +352,8 @@ function refer(K, T) {
       headerIn(K, 'e', t, T.refer + 0.15);
       STEPS.forEach((_, i) => K.rise(`e-s${i}`, 160 + i * 545, 360, t, T.steps[i] - 0.3, { dist: 40 }));
       K.rise('e-think', 160, 720, t, T.think - 2.6, { dist: 20 });
-      K.rise('e-card', 1120, 700, t, T.steps[2] + 0.8, { dist: 30 });
+      K.rise('e-card', 1120, 690, t, T.steps[2] + 0.8, { dist: 30 });
+      K.rise('e-foot', 160, 1030, t, T.steps[2] + 1.2, { dist: 10 });
     },
   };
 }

@@ -130,24 +130,24 @@ A 72-second YTD video in the same style as the NeuroPro YTD, branded for Lifted 
 
 Files: `config/episodes/lifted.json`, `src/episodes/lifted/`. Build with `npm run lifted:build`.
 
-# The NeuroPro Playbook: Partner Training for MoveDocs
+# The NeuroPro Playbook: For Attorneys, with MoveDocs
 
-A 129-second pre-training video for the MoveDocs reps who sell NeuroPro to attorneys. It is built from *The NeuroPro Playbook* (Attorney Sales Kit, 2026 edition), without ADHD/autism testing, the case study, the kids message or the medical & rehab tile. It uses the same look as the YTD video. The voice is Kokoro `af_heart` at 1.08×. Dr. Doran's headshot (`assets/brand/doran-headshot.png`) is taken from the playbook.
+A 138-second video that MoveDocs shows attorneys after their training. MoveDocs represents NeuroPro and helps sell it; attorneys refer clients directly to NeuroPro. It is built from *The NeuroPro Playbook* (Attorney Sales Kit, 2026 edition), without ADHD/autism testing, the case study, the kids message or the medical & rehab tile. It uses the same look as the YTD video. The voice is Kokoro `af_heart` at 1.08×. Pronunciation overrides (`pronounce` in the storyboard) fix NeuroPro, MoveDocs, Doran, neuropsychological, neuropsychologist, neurologist, Maryland's and lien ("leen"). Dr. Doran's headshot (`assets/brand/doran-headshot.png`) is taken from the playbook.
 
-**Watch:** `output/neuropro-playbook-movedocs-training.mp4` (1920×1080, 30 fps) · captions `output/neuropro-playbook-movedocs-training.srt`
+**Watch:** `output/neuropro-playbook-for-attorneys.mp4` (1920×1080, 30 fps) · captions `output/neuropro-playbook-for-attorneys.srt`
 
-| Time | Scene | What happens |
-|---|---|---|
-| 0:00–0:07 | Open | Logo, "Attorney Sales Kit · 2026 Edition", *The NeuroPro Playbook* and "Partner training for the MoveDocs team". |
-| 0:07–0:24 | Who we are | Concussion care · neuropsychological testing · mental health care, then 150,000+ head injuries, 46 states, 7–10 days and trial-ready. |
-| 0:24–0:44 | Our founding | Dr. Doran's headshot, a 15+ years badge and his career timeline, then one dot growing to ~30 clinicians nationwide. |
-| 0:44–0:58 | Your role | "Recognize it. Don't diagnose it." Three referral-trigger cards and "Send the referral. Our clinicians decide." |
-| 0:58–1:12 | One network | A 4-step pathway (evaluation → testing → mental health → medico-legal) and the 15+ / 10 / care-coordination tiles. |
-| 1:12–1:26 | Clean scan | "Most concussions don't show up on CT or MRI", then neurologist vs. NeuroPro neuropsychologist. |
-| 1:26–1:38 | DTI | Scan first ends at "No damage"; NeuroPro first ends at "Damages documented". |
-| 1:38–1:52 | What you'll hear | Three attorney questions, each with the rep's answer: too late, faking, who pays. |
-| 1:52–2:03 | Refer a client | Three steps, "think NeuroPro." and Kyle's contact card. |
-| 2:03–2:09 | End card | The logo and *"Thank you for trusting us with your care."* |
+| Scene | What happens |
+|---|---|
+| Open | Logo, "For attorneys · Presented with MoveDocs", *The NeuroPro Playbook*, "Concussion, testing and mental health care for your injured clients". |
+| Who we are | Concussion care · neuropsychological testing · mental health care, then 150,000+ head injuries, 46 states, 7–10 days and trial-ready. |
+| Our founding | Dr. Doran's headshot and a 15+ years badge. His timeline: Navy, Harvard fellowship, Naval Academy, Johns Hopkins, Maryland's concussion law. Then one dot grows to ~30 clinicians nationwide. |
+| When to refer | "Recognize it. Don't diagnose it." Three referral-trigger cards and "Send the referral. Our clinicians decide." |
+| One network | A 4-step pathway (evaluation → testing → mental health → medico-legal) and the 15+ / 10 / care-coordination tiles. |
+| Clean scan | "Most concussions don't show up on CT or MRI", then neurologist vs. NeuroPro neuropsychologist. |
+| DTI | Scan first ends at "No damage"; NeuroPro first ends at "Damages documented". |
+| Common questions | Three attorney questions with NeuroPro's answers: too late, faking, who pays. |
+| Refer a client | Three steps (refer directly to NeuroPro), "think NeuroPro.", the contact card ("Questions? Ask your MoveDocs representative.") and an educational / not-legal-advice line. |
+| End card | The logo and *"Thank you for trusting us with your care."* |
 
 Files: `config/episodes/movedocs.json`, `src/episodes/movedocs/`. Build with `npm run movedocs:build` (run `npm run movedocs:voiceover` first if the narration changes; each scene follows its line's `at`).
 
