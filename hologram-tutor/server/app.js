@@ -98,6 +98,8 @@ export function createApp({ provider, store = createConversationStore(), publicD
   if (nodeModulesDir) {
     // Expose only the specific browser libraries the front end needs.
     app.use('/vendor/marked', express.static(path.join(nodeModulesDir, 'marked', 'lib')));
+    app.use('/vendor/three/build', express.static(path.join(nodeModulesDir, 'three', 'build')));
+    app.use('/vendor/three/addons', express.static(path.join(nodeModulesDir, 'three', 'examples', 'jsm')));
   }
   if (publicDir) app.use(express.static(publicDir));
 

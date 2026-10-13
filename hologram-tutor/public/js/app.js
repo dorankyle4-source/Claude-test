@@ -25,7 +25,7 @@ const STATE_LABELS = { idle: 'Ready', thinking: 'Thinking…', speaking: 'Speaki
 const CONVERSATION_KEY = 'conversation.id';
 
 const speaker = createSpeaker();
-const character = createCharacter($('character'));
+const character = await createCharacter($('character'));
 
 let conversationId = null;
 let ready = false;

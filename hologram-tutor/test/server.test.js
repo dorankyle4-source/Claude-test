@@ -63,12 +63,15 @@ test('unknown conversation is a 404', async () => {
   assert.equal(res.status, 404);
 });
 
-test('serves the web page and the vendored Markdown library', async () => {
+test('serves the web page and the vendored browser libraries', async () => {
   const page = await fetch(base + '/');
   assert.equal(page.status, 200);
   assert.match(await page.text(), /Hologram Tutor/);
   const marked = await fetch(base + '/vendor/marked/marked.esm.js');
   assert.equal(marked.status, 200);
+  for (const lib of ['/vendor/three/build/three.module.js', '/vendor/three/addons/postprocessing/UnrealBloomPass.js']) {
+    assert.equal((await fetch(base + lib)).status, 200, lib);
+  }
   const secret = await fetch(base + '/vendor/marked/../../@anthropic-ai/sdk/package.json');
   assert.notEqual(secret.status, 200);
 });

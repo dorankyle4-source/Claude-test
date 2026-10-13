@@ -3,10 +3,14 @@
 A personal AI tutor that talks with you, and will grow into an animated 3D character
 shown on a Looking Glass holographic display.
 
-**Current stage: Phase 1, a working AI conversation.** You can type a question, watch the
+**Current stage: Phase 1 complete, Phase 3 started.** You can type a question, watch the
 answer stream in, hear it read aloud, scroll back through the conversation, stop an answer
-part-way, and start a new conversation. The character on screen is a 2D placeholder
-that blinks, glows while it's thinking and moves its mouth as words are spoken.
+part-way, and start a new conversation. The tutor, Vector, appears as a real-time 3D
+red-and-gold armored bust. He blinks, looks around, glances toward your mouse pointer, tilts
+his head while thinking and moves his jaw as words are spoken.
+
+Vector is an original design in the armored-hero style. He isn't Marvel's Iron Man and uses
+none of Marvel's assets or branding.
 
 ## Quick start (Mac mini)
 
@@ -46,6 +50,7 @@ To keep spending predictable, set a monthly spend limit in the console under **L
 | Pick a voice | Drop-down next to it. On macOS, nicer voices can be downloaded in System Settings → Accessibility → Spoken Content → System Voice → Manage Voices (look for "Premium" or "Enhanced") |
 | Hear an answer again | **🔊 Replay** on any answer |
 | Start fresh | **New conversation** |
+| Use the lightweight 2D character | Open <http://localhost:3000/?character=2d> (used automatically if 3D graphics are unavailable) |
 
 In Phase 1, history is kept in the server's memory and survives a page reload, but not a server
 restart. Persistent memory arrives in Phase 5.
@@ -86,7 +91,9 @@ public/                 The browser app: plain HTML/CSS/JS, no build step
   js/api.js             Talks to the local server (answers stream as NDJSON)
   js/speech.js          Text-to-speech (browser voices), sentence by sentence
   js/spoken-text.js     Markdown/LaTeX → speakable text; sentence chunking
-  js/character.js       Placeholder character (Phase 3 swaps in a 3D model)
+  js/character.js       Picks the character renderer (3D, or the 2D fallback)
+  js/character-3d.js    3D armored bust (Three.js), with bloom glow, head motion, blink and jaw
+  js/character-2d.js    Lightweight 2D fallback with the same interface
   js/render.js          Safe Markdown rendering
 test/                   node:test unit + API tests
 ```
@@ -102,6 +109,9 @@ Design notes:
   touching the other parts.
 - **Stop works end to end.** Pressing Stop silences the voice, cancels the request to the AI
   (so you stop paying for tokens), and records the partial answer, so the tutor knows it was cut off.
+- **The 3D character is built from simple shapes in code**, so there are no model files to download
+  or license. It renders to a standard Three.js scene, which is what the Looking Glass web
+  integration works with.
 - **Claude features used:** streaming, adaptive thinking with a configurable effort level,
   server-side refusal fallback, and verbatim replay of earlier turns, which keeps the prompt
   cache effective.
@@ -110,7 +120,10 @@ Design notes:
 
 1. ✅ **Phase 1:** typed conversation, streamed answers, spoken replies, history, stop, new conversation
 2. **Phase 2:** microphone input (push-to-talk first), interrupting the tutor by speaking, mic status
-3. **Phase 3:** 3D character (Three.js), with head motion, blinking, lip sync, gestures and emotional states
+3. 🚧 **Phase 3:** 3D character (Three.js). Done: an original armored bust with head motion, blinking,
+   pointer glances, thinking/speaking/error states and a word-driven jaw. Still to do: lip sync driven
+   by real audio (needs a cloud voice), gestures, emotional expressions, and optionally a professional
+   or licensed model in place of the shapes-in-code version
 4. **Phase 4:** teaching mode with quizzes, adaptive explanations and rendered equations
 5. **Phase 5:** persistent memory in local SQLite, with a screen to view and delete memories
 6. **Phase 6:** Looking Glass HLD output (after checking the current official docs)
