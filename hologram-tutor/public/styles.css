@@ -113,6 +113,12 @@ button.secondary {
   border: 1px solid var(--border);
 }
 
+button.small {
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
 button.danger {
   background: var(--danger);
 }

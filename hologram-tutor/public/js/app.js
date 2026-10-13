@@ -19,6 +19,7 @@ const els = {
   modelLabel: $('model-label'),
   characterName: $('character-name'),
   characterState: $('character-state'),
+  framing: $('framing'),
 };
 
 const STATE_LABELS = { idle: 'Ready', thinking: 'Thinking…', speaking: 'Speaking', error: 'Problem' };
@@ -26,6 +27,8 @@ const CONVERSATION_KEY = 'conversation.id';
 
 const speaker = createSpeaker();
 const character = await createCharacter($('character'));
+// Lets automated checks drive the character directly: open with ?debug
+if (new URLSearchParams(location.search).has('debug')) window.tutorDebug = { character, speaker };
 
 let conversationId = null;
 let ready = false;
@@ -138,6 +141,7 @@ async function startNewConversation() {
   }
   clearLog();
   showEmptyState(els.characterName.textContent);
+  character.gesture?.('greet');
 }
 
 async function restoreConversation() {
@@ -154,6 +158,7 @@ async function restoreConversation() {
       clearLog();
       for (const turn of conversation.turns) addMessage(turn.role, turn.text, { interrupted: turn.interrupted });
       showEmptyState(els.characterName.textContent);
+      character.gesture?.('greet');
       return;
     } catch (err) {
       if (err.status !== 404) throw err;
@@ -262,6 +267,29 @@ function setupSpeechControls() {
   populateVoices();
 }
 
+function setupFraming() {
+  if (!character.setFraming) return;
+  const label = () => (els.framing.textContent = character.framing === 'full' ? 'Close-up' : 'Full body');
+  let saved = null;
+  try {
+    saved = localStorage.getItem('character.framing');
+  } catch {
+    /* ignore */
+  }
+  if (saved) character.setFraming(saved);
+  label();
+  els.framing.hidden = false;
+  els.framing.addEventListener('click', () => {
+    character.setFraming(character.framing === 'full' ? 'closeup' : 'full');
+    label();
+    try {
+      localStorage.setItem('character.framing', character.framing);
+    } catch {
+      /* ignore */
+    }
+  });
+}
+
 // ---- events -------------------------------------------------------------
 
 els.form.addEventListener('submit', (e) => {
@@ -289,6 +317,7 @@ els.newConversation.addEventListener('click', () => startNewConversation().catch
 // ---- boot ---------------------------------------------------------------
 
 setupSpeechControls();
+setupFraming();
 await refreshStatus();
 try {
   await restoreConversation();

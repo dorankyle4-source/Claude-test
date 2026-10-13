@@ -5,9 +5,10 @@ shown on a Looking Glass holographic display.
 
 **Current stage: Phase 1 complete, Phase 3 started.** You can type a question, watch the
 answer stream in, hear it read aloud, scroll back through the conversation, stop an answer
-part-way, and start a new conversation. The tutor, Vector, appears as a real-time 3D
-red-and-gold armored bust. He blinks, looks around, glances toward your mouse pointer, tilts
-his head while thinking and moves his jaw as words are spoken.
+part-way, and start a new conversation. The tutor, Vector, appears as a real-time 3D,
+full-body armored figure in red, champagne gold and gunmetal, standing on a holographic projector
+ring. He greets you with a raised, glowing palm, puts a hand to his chin while thinking, gestures
+while he talks, blinks, glances toward your mouse pointer and moves his jaw as words are spoken.
 
 Vector is an original design in the armored-hero style. He isn't Marvel's Iron Man and uses
 none of Marvel's assets or branding.
@@ -50,6 +51,7 @@ To keep spending predictable, set a monthly spend limit in the console under **L
 | Pick a voice | Drop-down next to it. On macOS, nicer voices can be downloaded in System Settings → Accessibility → Spoken Content → System Voice → Manage Voices (look for "Premium" or "Enhanced") |
 | Hear an answer again | **🔊 Replay** on any answer |
 | Start fresh | **New conversation** |
+| Switch between full body and head-and-shoulders | **Close-up / Full body** button under the character |
 | Use the lightweight 2D character | Open <http://localhost:3000/?character=2d> (used automatically if 3D graphics are unavailable) |
 
 In Phase 1, history is kept in the server's memory and survives a page reload, but not a server
@@ -92,7 +94,7 @@ public/                 The browser app: plain HTML/CSS/JS, no build step
   js/speech.js          Text-to-speech (browser voices), sentence by sentence
   js/spoken-text.js     Markdown/LaTeX → speakable text; sentence chunking
   js/character.js       Picks the character renderer (3D, or the 2D fallback)
-  js/character-3d.js    3D armored bust (Three.js), with bloom glow, head motion, blink and jaw
+  js/character-3d.js    3D armored figure (Three.js): joint hierarchy, poses, gestures, glow
   js/character-2d.js    Lightweight 2D fallback with the same interface
   js/render.js          Safe Markdown rendering
 test/                   node:test unit + API tests
@@ -120,8 +122,9 @@ Design notes:
 
 1. ✅ **Phase 1:** typed conversation, streamed answers, spoken replies, history, stop, new conversation
 2. **Phase 2:** microphone input (push-to-talk first), interrupting the tutor by speaking, mic status
-3. 🚧 **Phase 3:** 3D character (Three.js). Done: an original armored bust with head motion, blinking,
-   pointer glances, thinking/speaking/error states and a word-driven jaw. Still to do: lip sync driven
+3. 🚧 **Phase 3:** 3D character (Three.js). Done: an original full-body armored figure with a joint
+   hierarchy, a greeting gesture, thinking/speaking/error poses, head motion, blinking, pointer
+   glances, a word-driven jaw, and full-body/close-up framing. Still to do: lip sync driven
    by real audio (needs a cloud voice), gestures, emotional expressions, and optionally a professional
    or licensed model in place of the shapes-in-code version
 4. **Phase 4:** teaching mode with quizzes, adaptive explanations and rendered equations
